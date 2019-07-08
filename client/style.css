@@ -2,14 +2,7 @@
     display: none;
 }
 
-.columns-container {
-    display: flex;
-    flex-direction: row;
-    overflow: hidden;
-}
-
-.column {
-    display: flex;
-    flex-direction: column;
+.horizontal-scroll {
+    overflow-x: auto;
 }
 

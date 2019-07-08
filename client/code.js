@@ -3,7 +3,7 @@ var app = new Vue ({
     el: "#app",
 
     data: {
-        columns: 7,
+        columns: 12,
 
     },
 
