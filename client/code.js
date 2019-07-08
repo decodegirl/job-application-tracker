@@ -1,17 +1,11 @@
+var app = new Vue({
+  el: "#app",
 
-var app = new Vue ({
-    el: "#app",
+  data: {
+    columns: 7
+  },
 
-    data: {
-        columns: 7,
+  methods: {},
 
-    },
-
-    methods: {
-        
-    },
-
-    computed: {
-
-    },
-})
+  computed: {}
+});

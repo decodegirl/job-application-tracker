@@ -1,15 +1,24 @@
 [v-cloak] {
-    display: none;
+  display: none;
+}
+
+#app {
+  padding: 20px;
+  font-family: "Roboto", sans-serif;
+  line-height: 2;
+}
+
+.job-card {
+  padding-top: 10px;
 }
 
 .columns-container {
-    display: flex;
-    flex-direction: row;
-    overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
 }
 
 .column {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
-
