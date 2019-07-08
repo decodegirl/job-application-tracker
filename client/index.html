@@ -15,10 +15,21 @@
             <v-content>
                     <v-layout row align-content-center class="horizontal-scroll">
                         <v-flex xs6 v-for="column in columns">
-                            <v-card width="300px">
-                                <v-card-title>This is column {{column}}</v-card-title>
+                            <v-card width="300px"  class="pl-4 pr-4 pt-4" style="border-left: 1px solid #4444;" flat>
+                                <v-card-actions class="white justify-center">
+                                    <v-btn fab icon small>
+                                        <v-icon>delete</v-icon>
+                                    </v-btn>
+                                    <v-spacer></v-spacer>
+                                    <v-title>{{column.title}}</v-title>
+                                    <v-spacer></v-spacer>
+                                    <v-btn fab icon small>
+                                        <v-icon>more_horiz</v-icon>
+                                    </v-btn>
+                                </v-card-actions>
+                                <v-subheader class="white justify-center">{{column.jobs}} Jobs</v-subheader>
+                                <v-btn block>+</v-btn>
                                 <v-card-text row wrap>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque. Diam phasellus vestibulum lorem sed risus ultricies tristique nulla. Viverra adipiscing at in tellus integer feugiat. Porttitor lacus luctus accumsan tortor posuere ac ut consequat semper. Suspendisse potenti nullam ac tortor vitae. Bibendum enim facilisis gravida neque convallis a cras. Nec nam aliquam sem et. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Tortor at auctor urna nunc id cursus metus aliquam. Iaculis eu non diam phasellus vestibulum lorem sed risus. Augue eget arcu dictum varius duis at consectetur lorem. Dui ut ornare lectus sit amet est placerat. Odio pellentesque diam volutpat commodo sed egestas. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Vel pharetra vel turpis nunc eget. Vitae justo eget magna fermentum iaculis eu non diam. Sed odio morbi quis commodo odio aenean. Et ligula ullamcorper malesuada proin. Ipsum a arcu cursus vitae congue mauris rhoncus aenean.
                                 </v-card-text>
                             </v-card>
                         </v-flex>
