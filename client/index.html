@@ -25,37 +25,57 @@
 
   <div id="app" v-cloak>
     <v-app>
-      <v-card xs12 color="green" dark max-width="400">
-        <v-list-tile class="job-card">
-          <v-list-tile-avatar>
-            <v-img
-              large
-              left
-              src="images/google-icon.svg"
-              height="40px"
-              contain
+      <v-content>
+        <v-layout row align-content-center class="horizontal-scroll">
+          <v-flex xs6 v-for="column in columns">
+            <v-card
+              width="300px"
+              class="pl-4 pr-4 pt-4"
+              style="border-left: 1px solid #4444;"
+              flat
             >
-            </v-img>
-          </v-list-tile-avatar>
-
-          <v-list-tile-content>
-            <v-list-tile-title>Google</v-list-tile-title>
-            <v-list-tile-sub-title>Product Manager</v-list-tile-sub-title>
-          </v-list-tile-content>
-
-          <v-card-actions>
-            <v-list-tile class="grow">
-              <v-layout align-center justify-end>
-                <v-icon class="mr-1">mdi-delete</v-icon>
-              </v-layout>
-            </v-list-tile>
-          </v-card-actions>
-        </v-list-tile>
-
-        <v-card-text class="text-xs-right">
-          added 2 years ago
-        </v-card-text>
-      </v-card>
+              <v-card-actions class="white justify-center">
+                <v-btn fab icon small>
+                  <v-icon>delete</v-icon>
+                </v-btn>
+                <v-spacer></v-spacer>
+                <v-card-title style="font-size: 1.5rem;">{{
+                  column.title
+                }}</v-card-title>
+                <v-spacer></v-spacer>
+                <template>
+                  <div class="text-xs-center">
+                    <v-menu>
+                      <template v-slot:activator="{ on }">
+                        <v-btn fab icon small v-on="on">
+                          <v-icon>more_horiz</v-icon>
+                        </v-btn>
+                      </template>
+                      <v-list>
+                        <v-list-tile
+                          v-for="(item, index) in items"
+                          :key="index"
+                          @click=""
+                        >
+                          <v-list-tile-title class="mr-4">{{
+                            item.title
+                          }}</v-list-tile-title
+                          ><v-icon class="ml-4">{{ item.icon }}</v-icon>
+                        </v-list-tile>
+                      </v-list>
+                    </v-menu>
+                  </div>
+                </template>
+              </v-card-actions>
+              <v-subheader class="white justify-center"
+                >{{ column.jobs }} Jobs</v-subheader
+              >
+              <v-btn block>+</v-btn>
+              <v-card-text row wrap> </v-card-text>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </v-content>
     </v-app>
   </div>
 
@@ -64,3 +84,33 @@
   <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
   <script src="code.js"></script>
 </html>
+
+<div id="app2" v-cloak>
+  <v-app>
+    <v-card xs12 color="green" dark max-width="400">
+      <v-list-tile class="job-card">
+        <v-list-tile-avatar>
+          <v-img large left src="images/google-icon.svg" height="40px" contain>
+          </v-img>
+        </v-list-tile-avatar>
+
+        <v-list-tile-content>
+          <v-list-tile-title>Google</v-list-tile-title>
+          <v-list-tile-sub-title>Product Manager</v-list-tile-sub-title>
+        </v-list-tile-content>
+
+        <v-card-actions>
+          <v-list-tile class="grow">
+            <v-layout align-center justify-end>
+              <v-icon class="mr-1">mdi-delete</v-icon>
+            </v-layout>
+          </v-list-tile>
+        </v-card-actions>
+      </v-list-tile>
+
+      <v-card-text class="text-xs-right">
+        added 2 years ago
+      </v-card-text>
+    </v-card>
+  </v-app>
+</div>
