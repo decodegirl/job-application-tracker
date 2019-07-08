@@ -28,7 +28,11 @@ var app = new Vue ({
                 title: "REJECTED",
                 jobs: 0,
             },
-        ]
+        ],
+        items: [
+            { title: 'Move list', icon: "open_with"},
+            { title: 'Rename', icon: "edit" }
+          ]
 
 
     },

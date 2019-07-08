@@ -21,11 +21,24 @@
                                         <v-icon>delete</v-icon>
                                     </v-btn>
                                     <v-spacer></v-spacer>
-                                    <v-title>{{column.title}}</v-title>
+                                    <v-title style="font-size: 1.5rem;">{{column.title}}</v-title>
                                     <v-spacer></v-spacer>
-                                    <v-btn fab icon small>
-                                        <v-icon>more_horiz</v-icon>
-                                    </v-btn>
+                                    <template>
+                                        <div class="text-xs-center">
+                                            <v-menu>
+                                            <template v-slot:activator="{ on }">
+                                                <v-btn fab icon small v-on="on">
+                                                    <v-icon>more_horiz</v-icon>
+                                                </v-btn>
+                                            </template>
+                                            <v-list>
+                                                <v-list-tile v-for="(item, index) in items" :key="index" @click="" >
+                                                <v-list-tile-title class="mr-4">{{ item.title }}</v-list-tile-title><v-icon class="ml-4">{{item.icon}}</v-icon>
+                                                </v-list-tile>
+                                            </v-list>
+                                            </v-menu>
+                                        </div>
+                                    </template>
                                 </v-card-actions>
                                 <v-subheader class="white justify-center">{{column.jobs}} Jobs</v-subheader>
                                 <v-btn block>+</v-btn>
