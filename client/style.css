@@ -1,0 +1,15 @@
+[v-cloak] {
+    display: none;
+}
+
+.columns-container {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
