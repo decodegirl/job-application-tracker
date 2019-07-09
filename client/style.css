@@ -3,9 +3,9 @@
 }
 
 #app {
-  padding: 20px;
   font-family: "Roboto", sans-serif;
   line-height: 2;
+  background-color: #ffffff;
 }
 
 .job-card {
@@ -14,4 +14,15 @@
 
 .horizontal-scroll {
   overflow-x: auto;
+}
+
+.vertical-scroll {
+  height: 400px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.column-height {
+  height: "900px";
+  overflow: scroll;
 }
