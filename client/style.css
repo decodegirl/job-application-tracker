@@ -12,17 +12,6 @@
   padding-top: 10px;
 }
 
-.columns-container {
-  display: flex;
-  flex-direction: row;
-  overflow: hidden;
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-}
-
 .horizontal-scroll {
   overflow-x: auto;
 }
