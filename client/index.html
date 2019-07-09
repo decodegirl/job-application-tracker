@@ -25,6 +25,17 @@
 
   <div id="app" v-cloak>
     <v-app>
+        <v-toolbar>
+      <v-toolbar-side-icon></v-toolbar-side-icon>
+      <v-toolbar-title>Track</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn flat>Boards</v-btn>
+        <v-btn flat>Contacts</v-btn>
+        <v-btn flat> briefcases</v-btn>
+         <v-btn flat color="info"> Sign up </v-btn>
+      </v-toolbar-items>
+    </v-toolbar>
       <v-content>
         <v-layout row align-content-center class="horizontal-scroll">
           <v-flex xs6 v-for="column in columns">
