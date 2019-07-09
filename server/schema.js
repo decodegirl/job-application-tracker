@@ -1,28 +1,33 @@
 const mongoose = require("mongoose");
 
-const playlistSchema = mongoose.Schema( {
-    title: {
-        type: String,
-        required: true,
-    },
-    artist: {
-        type: String,
-        required: true,
-    },
-    seconds: {
-        type: Number,
-        required: true,
-    },
-    album: {
-        type: String,
-        required: true,
-    },
-    genre: {
-        type: String,
-        required: true,
-    }
+const jobSchema = mongoose.Schema({
+  company: {
+    type: String,
+    required: true
+  },
+  title: {
+    type: String,
+    required: true
+  },
+  location: {
+    type: Number,
+    required: false
+  },
+  salary: {
+    type: String,
+    required: false
+  },
+  postURL: {
+    type: String,
+    required: false
+  },
+  date: {
+    type: String,
+    required: true,
+    default: new Date().toDateString()
+  }
 });
 
-var model = mongoose.model( "playlists", playlistSchema);
+var model = mongoose.model("jobs", jobSchema);
 
 module.exports = model;
