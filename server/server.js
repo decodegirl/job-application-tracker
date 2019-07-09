@@ -11,22 +11,37 @@ server.use(cors());
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
 
-// Database models
-var jobModel = require("./schemas/job.js");
+const jobsModel = require("./schemas/job.js");
 
 // REST endpoints
-server.get("/playlist", function(req, res) {
-  playlistModel
-    .find()
-    .then(function(playlist) {
-      res.json(playlist);
+// server.get("/playlist", function(req, res) {
+//   playlistModel
+//     .find()
+//     .then(function(playlist) {
+//       res.json(playlist);
+//     })
+//     .catch(function(error) {
+//       res.status(400).json({ msg: error.message });
+//     });
+// });
+
+server.post("/jobs", function(req, res) {
+  jobsModel
+    .create({
+      company: req.body.company,
+      title: req.body.title,
+      location: req.body.location
     })
-    .catch(function(error) {
-      res.status(400).json({ msg: error.message });
+    .then(function(job) {
+      res.status(201);
+      // log the job for development purposes
+      res.json(job);
+    })
+    .catch(function(err) {
+      res.status(400);
+      res.json({ msg: err.message });
     });
 });
-
-server.post("/jobs", function(req, res) {});
 
 // Start the server and connect to the database
 mongoose
