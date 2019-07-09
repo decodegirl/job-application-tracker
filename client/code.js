@@ -2,6 +2,7 @@ var app = new Vue({
   el: "#app",
 
   data: {
+    dropdown_font: ['My firstBoard'],
     columns: [
       {
         column: 1,
@@ -39,7 +40,7 @@ var app = new Vue({
       { title: "Move list", icon: "open_with" },
       { title: "Rename", icon: "edit" }
     ],
-    
+
     jobs: [
       {
         column: 1,
@@ -235,4 +236,3 @@ var app = new Vue({
 
   computed: {}
 });
-

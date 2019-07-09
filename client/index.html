@@ -25,7 +25,8 @@
 
   <div id="app" v-cloak>
     <v-app>
-        <v-toolbar>
+      <v-content>
+        <v-toolbar flat style="background-color: #ffffff; border-bottom: 1px solid #ccc; ">
       <v-toolbar-side-icon></v-toolbar-side-icon>
       <v-toolbar-title>Track</v-toolbar-title>
       <v-spacer></v-spacer>
@@ -36,26 +37,62 @@
          <v-btn flat color="info"> Sign up </v-btn>
       </v-toolbar-items>
     </v-toolbar>
-      <v-content>
+    <v-layout  row wrap id="dropdown-example" style="border-bottom: 1px solid #ccc; ">
+      
+      <v-flex xs12 sm2 class="pl-4">
+        <v-overflow-btn
+          :items="dropdown_font"
+          label="My first Board"
+          target="#dropdown-example"
+        ></v-overflow-btn>
+      </v-flex>
+
+      <v-spacer></v-spacer>
+
+      <v-layout class="pt-3">
+        <v-flex xs12 sm2 >
+          <v-btn outline color = "dark">  <v-icon> dashboard </v-icon> </v-btn>
+        </v-flex>
+        <v-flex xs12 sm2 >
+          <v-btn outline color = "dark">  <v-icon> list </v-icon> </v-btn>
+        </v-flex>
+
+        <v-flex xs12 sm2 >
+          <v-btn outline color = "dark">  <v-icon> map </v-icon> </v-btn>
+        </v-flex>
+
+        <v-flex xs12 sm2 >
+          <v-btn outline color = "dark">  <v-icon> insert_chart </v-icon> </v-btn>
+        </v-flex>
+      </v-layout>
+
+      <v-spacer></v-spacer>
+
+      <v-flex xs12 sm2 class="pt-3">
+        <v-btn outline color = "dark">  <v-icon right> share </v-icon> Share Board</v-btn>
+      </v-flex>
+      
+    </v-layout>
+
         <v-layout row align-content-center class="horizontal-scroll">
           <v-flex xs6 v-for="column in columns">
-            <v-card width="300px" class="pl-4 pr-4 pt-4" height="100%" style="border-left: 1px solid #4444;" flat>
-            
+            <v-card width="300px" class="pl-4 pr-4 pt-4" height="100%" style="border-left: 1px solid #4444;" flat>          
+
               <!-- Column actions -->
               <v-card-actions class="white justify-center">
-                
+
                 <!-- Column Delete button -->
                 <v-btn fab icon small>
                   <v-icon>delete</v-icon>
                 </v-btn>
                 <v-spacer></v-spacer>
-                
+
                 <!-- Column title -->
                 <v-card-title style="font-size: 1.5rem;">{{
                   column.title
                 }}</v-card-title>
                 <v-spacer></v-spacer>
-                
+
                 <!-- Column 'More' button -->
                 <template>
                   <div class="text-xs-center">
@@ -80,7 +117,7 @@
                     </v-menu>
                   </div>
                 </template>
-              
+
               </v-card-actions>
 
               <!-- Column jobs counter -->
@@ -143,6 +180,6 @@
 
 <div id="app2" v-cloak>
   <v-app>
-  
+
   </v-app>
 </div>
