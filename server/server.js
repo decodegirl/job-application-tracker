@@ -12,7 +12,7 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
 
 // Database models
-var playlistModel = require("./schema.js");
+var jobModel = require("./schemas/job.js");
 
 // REST endpoints
 server.get("/playlist", function(req, res) {
