@@ -16,22 +16,22 @@ var app = new Vue({
       {
         column: 3,
         title: "PHONE",
-        jobs: 3
+        jobs: 4
       },
       {
         column: 4,
         title: "ON SITE",
-        jobs: 2
+        jobs: 3
       },
       {
         column: 5,
         title: "OFFER",
-        jobs: 1
+        jobs: 2
       },
       {
         column: 6,
         title: "REJECTED",
-        jobs: 0
+        jobs: 1
       }
     ],
 
@@ -46,28 +46,168 @@ var app = new Vue({
         color: "green",
         title: "Google",
         subtitle: "Product Manager",
-        date_added: "2 Years"
+        date_added: "2 Years",
+        image: "images/google-icon.svg"
       },
       {
         column: 1,
-        color: "green",
+        color: "yellow",
         title: "Twitter",
         subtitle: "Product Manager",
-        date_added: "2 Years"
+        date_added: "2 Years",
+        image: "images/google-icon.svg"
       },
       {
         column: 1,
-        color: "green",
+        color: "blue",
         title: "WeWork",
         subtitle: "Product Manager",
-        date_added: "2 Years"
+        date_added: "2 Years",
+        image: "images/google-icon.svg"
+      },
+      {
+        column: 1,
+        color: "pink",
+        title: "Weave",
+        subtitle: "Product Manager",
+        date_added: "2 Years",
+        image: "images/google-icon.svg"
+      },
+      {
+        column: 1,
+        color: "purple",
+        title: "Weave",
+        subtitle: "Product Manager",
+        date_added: "2 Years",
+        image: "images/google-icon.svg"
+      },
+      {
+        column: 1,
+        color: "red",
+        title: "Weave",
+        subtitle: "Product Manager",
+        date_added: "2 Years",
+        image: "images/google-icon.svg"
+      },
+      {
+        column: 2,
+        color: "orange",
+        title: "Weave",
+        subtitle: "Product Manager",
+        date_added: "2 Years",
+        image: "images/google-icon.svg"
+      },
+      {
+        column: 2,
+        color: "purple",
+        title: "Weave",
+        subtitle: "Product Manager",
+        date_added: "2 Years",
+        image: "images/google-icon.svg"
+      },
+      {
+        column: 2,
+        color: "green",
+        title: "Weave",
+        subtitle: "Product Manager",
+        date_added: "2 Years",
+        image: "images/google-icon.svg"
+      },
+      {
+        column: 2,
+        color: "yellow",
+        title: "Weave",
+        subtitle: "Product Manager",
+        date_added: "2 Years",
+        image: "images/google-icon.svg"
+      },
+      {
+        column: 2,
+        color: "purple",
+        title: "Weave",
+        subtitle: "Product Manager",
+        date_added: "2 Years",
+        image: "images/google-icon.svg"
+      },
+      {
+        column: 3,
+        color: "green",
+        title: "Weave",
+        subtitle: "Product Manager",
+        date_added: "2 Years",
+        image: "images/google-icon.svg"
+      },
+      {
+        column: 3,
+        color: "orange",
+        title: "Weave",
+        subtitle: "Product Manager",
+        date_added: "2 Years",
+        image: "images/google-icon.svg"
+      },
+      {
+        column: 3,
+        color: "purple",
+        title: "Weave",
+        subtitle: "Product Manager",
+        date_added: "2 Years",
+        image: "images/google-icon.svg"
+      },
+      {
+        column: 3,
+        color: "yellow",
+        title: "Weave",
+        subtitle: "Product Manager",
+        date_added: "2 Years",
+        image: "images/google-icon.svg"
+      },
+      {
+        column: 4,
+        color: "pink",
+        title: "Weave",
+        subtitle: "Product Manager",
+        date_added: "2 Years",
+        image: "images/google-icon.svg"
+      },
+      {
+        column: 4,
+        color: "blue",
+        title: "Weave",
+        subtitle: "Product Manager",
+        date_added: "2 Years",
+        image: "images/google-icon.svg"
       },
       {
         column: 4,
         color: "green",
         title: "Weave",
         subtitle: "Product Manager",
-        date_added: "2 Years"
+        date_added: "2 Years",
+        image: "images/google-icon.svg"
+      },
+      {
+        column: 5,
+        color: "red",
+        title: "Weave",
+        subtitle: "Product Manager",
+        date_added: "2 Years",
+        image: "images/google-icon.svg"
+      },
+      {
+        column: 5,
+        color: "orange",
+        title: "Weave",
+        subtitle: "Product Manager",
+        date_added: "2 Years",
+        image: "images/google-icon.svg"
+      },
+      {
+        column: 6,
+        color: "yellow",
+        title: "Weave",
+        subtitle: "Product Manager",
+        date_added: "2 Years",
+        image: "images/google-icon.svg"
       }
     ]
 
