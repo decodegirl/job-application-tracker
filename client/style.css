@@ -17,7 +17,7 @@
 }
 
 .vertical-scroll {
-  height: 400px;
+  height: 290px;
   overflow: hidden;
   overflow-y: auto;
 }

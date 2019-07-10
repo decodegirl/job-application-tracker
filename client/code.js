@@ -210,8 +210,15 @@ var app = new Vue({
         date_added: "2 Years",
         image: "images/google-icon.svg"
       }
-    ]
+    ],
 
+    items: [
+      { icon: 'images/huntr_logo_mini.png' },
+      { icon: 'images/microphone.png' },
+      { icon: 'images/thumbtack.png' },
+      { icon: 'images/settings.png' },
+      { icon: 'images/power-off.png' }
+    ]
   },
 
   methods: {
