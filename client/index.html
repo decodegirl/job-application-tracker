@@ -17,10 +17,10 @@
       href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css"
       rel="stylesheet"
     />
-    <script 
-      defer 
-      src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" 
-      integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" 
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"
+      integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
       crossorigin="anonymous">
     </script>
 
@@ -54,81 +54,24 @@
         </v-navigation-drawer>
 
         <v-toolbar flat style="background-color: #ffffff; border-bottom: 1px solid #ccc; ">
-<<<<<<< HEAD
-      <!-- <v-toolbar-side-icon  @click=" page = 'Boards'"></v-toolbar-side-icon>
-      <v-toolbar-title>Track</v-toolbar-title> -->
-
-
-      <v-toolbar-items >
-
-        <v-btn flat @click="page = 'Boards'">Boards</v-btn>
-        <v-btn flat @click="page = 'Contacts'">Contacts</v-btn>
-        <v-btn flat @click="page = 'Briefcases'"> briefcases</v-btn>
-
-       <v-spacer></v-spacer>
-        <v-layout>
-
-         <v-btn round color="info" > Sign up </v-btn>
-         </v-layout>
-      </v-toolbar-items>
-    </v-toolbar>
-
-
-    <v-layout  row wrap id="dropdown-example" style="border-bottom: 1px solid #ccc; ">
-
-      <v-flex xs12 sm2 class="pl-4">
-        <v-overflow-btn
-          :items="dropdown_font"
-          label="My first Board"
-          target="#dropdown-example"
-        ></v-overflow-btn>
-      </v-flex>
-
-      <v-spacer></v-spacer>
-
-      <v-layout class="pt-3">
-        <v-flex xs12 sm2 >
-          <a href = "#"> <v-icon> dashboard </v-icon> </a>
-        </v-flex>
-        <v-flex xs12 sm2 >
-        <a href = "#"> <v-icon> list </v-icon> </a>
-        </v-flex>
-
-        <v-flex xs12 sm2 >
-      <a href = "#"> <v-icon> map </v-icon> </a>
-        </v-flex>
-
-        <v-flex xs12 sm2 >
-          <a href = "#"> <v-icon> insert_chart </v-icon> </a>
-        </v-flex>
-      </v-layout>
-
-      <v-spacer></v-spacer>
-
-      <v-flex xs12 sm2 class="pt-3">
-        <v-btn outline color = "grey">  <v-icon right> share </v-icon> Share Board</v-btn>
-      </v-flex>
-
-    </v-layout>
-=======
 
             <v-flex xs6>
                 <v-btn flat>Boards</v-btn>
                 <v-btn flat>Contacts</v-btn>
                 <v-btn flat> briefcases</v-btn>
             </v-flex>
-            
+
             <v-flex>
               <v-layout justify-end>
                 <v-btn flat outline round color="red"> Sign up for free</v-btn>
               </v-layout>
-            </v-flex> 
-          
+            </v-flex>
+
 
 
         </v-toolbar>
         <v-layout  row wrap id="dropdown-example" style="border-bottom: 1px solid #ccc; ">
-          
+
           <v-flex xs12 sm2 class="pl-4">
             <v-overflow-btn
               :items="dropdown_font"
@@ -142,29 +85,28 @@
 
           <v-layout class="pt-3" justify-center>
             <v-flex xs12 sm2 >
-              <v-btn  outline color = "#000" small flat class="elevation-2">  <v-icon> dashboard </v-icon> </v-btn>
+              <v-btn class ="tooltip"  color = "#ccc" small flat >  <v-icon> dashboard </v-icon>  <span class="tooltiptext"> Board </span> </v-btn>
             </v-flex>
             <v-flex xs12 sm2 >
-              <v-btn color = "#cccccc" small flat>  <v-icon> list </v-icon> </v-btn>
-            </v-flex>
-
-            <v-flex xs12 sm2 >
-              <v-btn color = "#cccccc" small flat>  <v-icon> map </v-icon> </v-btn>
+              <v-btn class = 'tooltip' color = "#cccccc" small flat>  <v-icon> list </v-icon> <span class="tooltiptext"> Tasks </span> </v-btn>
             </v-flex>
 
             <v-flex xs12 sm2 >
-              <v-btn color = "#cccccc" small flat>  <v-icon> insert_chart </v-icon> </v-btn>
+              <v-btn class = "tooltip" color = "#cccccc" small flat>  <v-icon> map </v-icon> <span class="tooltiptext"> maps </span></v-btn>
+            </v-flex>
+
+            <v-flex xs12 sm2 >
+              <v-btn class = "tooltip" color = "#cccccc" small flat>  <v-icon> insert_chart </v-icon> <span class="tooltiptext"> metrics </span> </v-btn>
             </v-flex>
           </v-layout>
 
           <v-spacer></v-spacer>
 
           <v-flex xs12 sm2 class="pt-3">
-            <v-btn outline color = "dark" small class="elevation-2">  <v-icon right> share </v-icon> Share Board</v-btn>
+            <v-btn outline color = "dark"  small class="elevation-2">  <v-icon right > share </v-icon> Share Board</v-btn>
           </v-flex>
-          
+
         </v-layout>
->>>>>>> 5de22aca4cf3f818c90af9b8add4382cd667d70d
 
         <v-layout row align-content-center class="horizontal-scroll">
           <v-flex xs6 v-for="column in columns">
