@@ -9,26 +9,51 @@ var port = process.env.PORT || 3000;
 // Middleware
 server.use(cors());
 server.use(express.json());
-server.use(express.urlencoded({extended: false}));
+server.use(express.urlencoded({ extended: false }));
 
-// Database models
-var playlistModel = require("./schema.js");
+const jobsModel = require("./schemas/job.js");
 
 // REST endpoints
-server.get("/playlist", function ( req, res ) {
-    playlistModel.find().then( function ( playlist ) {
-        res.json(playlist);
-    }).catch( function ( error ) {
-        res.status( 400 ).json( { msg: error.message });
+server.get("/jobs", function(req, res) {
+  jobsModel
+    .find()
+    .then(function(jobs) {
+      res.status(200);
+      res.json({ jobs: jobs });
+    })
+    .catch(function(error) {
+      res.status(400).json({ msg: error.message });
+    });
+});
+
+server.post("/jobs", function(req, res) {
+  jobsModel
+    .create({
+      company: req.body.company,
+      title: req.body.title,
+      location: req.body.location
+    })
+    .then(function(job) {
+      res.status(201);
+      // log the job for development purposes
+      res.json(job);
+    })
+    .catch(function(err) {
+      res.status(400);
+      res.json({ msg: err.message });
     });
 });
 
 // Start the server and connect to the database
-// change the "<password> to your database password" and the "test" to the name of the table you want
-mongoose.connect("mongodb+srv://myusername:myuserpass@mydatabase-ekvhd.mongodb.net/Server-Practice?retryWrites=true&w=majority", {
-    useNewUrlParser: true
-}).then( function( ) {
-    server.listen(port, function( ) {
-        console.log( `Listening on port ${ port }` );
+mongoose
+  .connect(
+    "mongodb+srv://fela:hwdXbg898CLhwObf@cluster0-nwalm.mongodb.net/app?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true
+    }
+  )
+  .then(function() {
+    server.listen(port, function() {
+      console.log(`Listening on port ${port}`);
     });
-});
+  });
