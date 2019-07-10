@@ -12,8 +12,21 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
 
 const jobsModel = require("./schemas/job.js");
+const stagesModel = require("./schemas/stages.js");
 
 // REST endpoints
+server.get("/stages", function(req, res) {
+  stagesModel
+    .find()
+    .then(function(stages) {
+      res.status(200);
+      res.json({ stages: stages });
+    })
+    .catch(function(error) {
+      res.status(400).json({ msg: error.message });
+    });
+});
+
 server.get("/jobs", function(req, res) {
   jobsModel
     .find()
@@ -26,7 +39,24 @@ server.get("/jobs", function(req, res) {
     });
 });
 
+server.post("/stage", function(req, res) {
+  stagesModel
+    .create({
+      stage: req.body.stage
+    })
+    .then(function(stage) {
+      res.status(201);
+      // log the stage for development purposes
+      res.json(stage);
+    })
+    .catch(function(err) {
+      res.status(400);
+      res.json({ msg: err.message });
+    });
+});
+
 server.post("/jobs", function(req, res) {
+  // TODO: Jobs should have a stage
   jobsModel
     .create({
       company: req.body.company,
