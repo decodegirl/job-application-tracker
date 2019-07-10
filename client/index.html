@@ -27,18 +27,27 @@
     <v-app>
       <v-content>
         <v-toolbar flat style="background-color: #ffffff; border-bottom: 1px solid #ccc; ">
-      <v-toolbar-side-icon></v-toolbar-side-icon>
-      <v-toolbar-title>Track</v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn flat>Boards</v-btn>
-        <v-btn flat>Contacts</v-btn>
-        <v-btn flat> briefcases</v-btn>
-         <v-btn flat color="info"> Sign up </v-btn>
+      <!-- <v-toolbar-side-icon  @click=" page = 'Boards'"></v-toolbar-side-icon>
+      <v-toolbar-title>Track</v-toolbar-title> -->
+
+
+      <v-toolbar-items >
+
+        <v-btn flat @click="page = 'Boards'">Boards</v-btn>
+        <v-btn flat @click="page = 'Contacts'">Contacts</v-btn>
+        <v-btn flat @click="page = 'Briefcases'"> briefcases</v-btn>
+
+       <v-spacer></v-spacer>
+        <v-layout>
+
+         <v-btn round color="info" > Sign up </v-btn>
+         </v-layout>
       </v-toolbar-items>
     </v-toolbar>
+
+
     <v-layout  row wrap id="dropdown-example" style="border-bottom: 1px solid #ccc; ">
-      
+
       <v-flex xs12 sm2 class="pl-4">
         <v-overflow-btn
           :items="dropdown_font"
@@ -51,32 +60,32 @@
 
       <v-layout class="pt-3">
         <v-flex xs12 sm2 >
-          <v-btn outline color = "dark">  <v-icon> dashboard </v-icon> </v-btn>
+          <a href = "#"> <v-icon> dashboard </v-icon> </a>
         </v-flex>
         <v-flex xs12 sm2 >
-          <v-btn outline color = "dark">  <v-icon> list </v-icon> </v-btn>
-        </v-flex>
-
-        <v-flex xs12 sm2 >
-          <v-btn outline color = "dark">  <v-icon> map </v-icon> </v-btn>
+        <a href = "#"> <v-icon> list </v-icon> </a>
         </v-flex>
 
         <v-flex xs12 sm2 >
-          <v-btn outline color = "dark">  <v-icon> insert_chart </v-icon> </v-btn>
+      <a href = "#"> <v-icon> map </v-icon> </a>
+        </v-flex>
+
+        <v-flex xs12 sm2 >
+          <a href = "#"> <v-icon> insert_chart </v-icon> </a>
         </v-flex>
       </v-layout>
 
       <v-spacer></v-spacer>
 
       <v-flex xs12 sm2 class="pt-3">
-        <v-btn outline color = "dark">  <v-icon right> share </v-icon> Share Board</v-btn>
+        <v-btn outline color = "grey">  <v-icon right> share </v-icon> Share Board</v-btn>
       </v-flex>
-      
+
     </v-layout>
 
         <v-layout row align-content-center class="horizontal-scroll">
           <v-flex xs6 v-for="column in columns">
-            <v-card width="300px" class="pl-4 pr-4 pt-4" height="100%" style="border-left: 1px solid #4444;" flat>          
+            <v-card width="300px" class="pl-4 pr-4 pt-4" height="100%" style="border-left: 1px solid #4444;" flat>
 
               <!-- Column actions -->
               <v-card-actions class="white justify-center">
@@ -132,18 +141,18 @@
               <!-- <v-card v-for="(job, index) in filterJobs(index)" xs12 color="green" dark max-width="400"> -->
               <div class="vertical-scroll">
                 <v-card v-for="job in filterJobs(column.column)" xs12 :color="job.color" dark max-width="400" class="mb-2">
-                  
+
                   <v-list-tile class="job-card">
                     <v-list-tile-avatar>
                       <v-img large left :src="job.image" height="40px" contain>
                       </v-img>
                     </v-list-tile-avatar>
-            
+
                     <v-list-tile-content>
                       <v-list-tile-title>{{job.title}}</v-list-tile-title>
                       <v-list-tile-sub-title>{{job.subtitle}}</v-list-tile-sub-title>
                     </v-list-tile-content>
-            
+
                     <v-card-actions>
                       <v-list-tile class="grow">
                         <v-layout align-center justify-end>
@@ -154,7 +163,7 @@
                       </v-list-tile>
                     </v-card-actions>
                   </v-list-tile>
-            
+
                   <v-card-text class="text-xs-right">
                     added {{job.date_added}} ago
                   </v-card-text>
