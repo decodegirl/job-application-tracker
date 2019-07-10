@@ -14,16 +14,17 @@ server.use(express.urlencoded({ extended: false }));
 const jobsModel = require("./schemas/job.js");
 
 // REST endpoints
-// server.get("/playlist", function(req, res) {
-//   playlistModel
-//     .find()
-//     .then(function(playlist) {
-//       res.json(playlist);
-//     })
-//     .catch(function(error) {
-//       res.status(400).json({ msg: error.message });
-//     });
-// });
+server.get("/jobs", function(req, res) {
+  jobsModel
+    .find()
+    .then(function(jobs) {
+      res.status(200);
+      res.json({ jobs: jobs });
+    })
+    .catch(function(error) {
+      res.status(400).json({ msg: error.message });
+    });
+});
 
 server.post("/jobs", function(req, res) {
   jobsModel
