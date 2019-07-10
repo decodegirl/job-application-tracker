@@ -56,12 +56,11 @@ server.post("/stage", function(req, res) {
 });
 
 server.post("/jobs", function(req, res) {
-  // TODO: Jobs should have a stage
   jobsModel
     .create({
       company: req.body.company,
       title: req.body.title,
-      location: req.body.location
+      stage: req.body.stage
     })
     .then(function(job) {
       res.status(201);

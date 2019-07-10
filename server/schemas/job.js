@@ -9,6 +9,10 @@ const jobsSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  stage: {
+    type: String,
+    required: true
+  },
   location: {
     type: String,
     required: false
