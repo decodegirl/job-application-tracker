@@ -26,3 +26,7 @@
   height: "900px";
   overflow: scroll;
 }
+
+.map { 
+  height: 500px;
+}

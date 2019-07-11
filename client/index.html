@@ -92,7 +92,7 @@
             </v-flex>
 
             <v-flex xs12 sm2 >
-              <v-btn color = "#cccccc" small flat>  <v-icon> map </v-icon> </v-btn>
+              <v-btn color = "#cccccc" small flat href="map.html">  <v-icon> map </v-icon> </v-btn>
             </v-flex>
 
             <v-flex xs12 sm2 >
@@ -203,14 +203,18 @@
     </v-app>
   </div>
 
+  <div id="app2" v-cloak>
+      <v-app>
+        <v-content>
+          <kanban-board :stages="stages" :blocks="blocks"></kanban-board>
+        </v-content>
+      </v-app>
+    </div>
+
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+  <!-- <script src="node_modules/vue-kanban"></script> -->
   <script src="code.js"></script>
+  <script src="board.js"></script>
 </html>
-
-<div id="app2" v-cloak>
-  <v-app>
-
-  </v-app>
-</div>
