@@ -3,6 +3,8 @@ var app = new Vue({
 
     data: {
         dropdown_font: ['My firstBoard'],
+        date: new Date().toISOString().substr(0, 10),
+        menu: false,
         columns: [{
                 column: 1,
                 title: "WISHLIST",
@@ -221,9 +223,29 @@ var app = new Vue({
             { icon: 'list', iconClass: 'indigo white--text', title: 'all' },
             { icon: 'star', iconClass: 'amber white--text', title: 'Today' },
             { icon: 'event', iconClass: 'blue white--text', title: 'Upcoming' },
-            { icon: 'check', iconClass: 'green white--text', title: 'Completed' },
-            { icon: 'work', iconClass: 'grey white--text', title: 'Jobs' }
+            { icon: 'check', iconClass: 'green white--text', title: 'Completed' }
         ],
+        items3: [{
+            action: 'work',
+            title: 'Jobs',
+            active: true,
+            items3: [
+                { title: 'product engineer' },
+                { title: 'software engineer' },
+                { title: 'senior data engineer' },
+                { title: 'senior data engineer' },
+                { title: 'product manager' },
+                { title: 'product manager' },
+                { title: 'product manager' },
+                { title: 'product manager' },
+                { title: 'product manager' },
+                { title: 'product manager' },
+                { title: 'senior data engineer' },
+                { title: 'Software engineer' },
+                { title: 'product manager' },
+                { title: 'software engineer' }
+            ]
+        }, ],
     },
 
     methods: {
