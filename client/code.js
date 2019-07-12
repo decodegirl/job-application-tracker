@@ -1,10 +1,9 @@
-
-
-
+import Bar from 'vue-chartjs';
 var app = new Vue({
   el: "#app",
   
   data: {
+    extends: Bar,
     map: null,
     tileLayer: null,
     layers: [
@@ -95,12 +94,13 @@ var app = new Vue({
       }
     ],
 
-        more_button_options: [
-            { title: "Move list", icon: "open_with" },
-            { title: "Rename", icon: "edit" }
-        ],
+    more_button_options: [
+        { title: "Move list", icon: "open_with" },
+        { title: "Rename", icon: "edit" }
+    ],
 
-        jobs: [{
+    jobs: [
+            {
                 column: 1,
                 color: "green",
                 title: "Google",
@@ -282,7 +282,8 @@ var app = new Vue({
   mounted: function() {
     this.initMap();
     this.initLayers();
-    this.layerChanged(0,true)
+    this.layerChanged(0,true);
+    this.renderChart(data, options);
   },
 
   methods: {
