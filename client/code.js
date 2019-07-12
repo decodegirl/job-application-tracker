@@ -2,9 +2,61 @@ var app = new Vue({
     el: "#app",
 
     data: {
+        map: null,
+        tileLayer: null,
         dropdown_font: ['My firstBoard'],
         date: new Date().toISOString().substr(0, 10),
         menu: false,
+        layers: [{
+            id: 0,
+            name: 'Restaurants',
+            active: false,
+            features: [{
+                    id: 0,
+                    name: 'Googleplex',
+                    type: 'marker',
+                    coords: [37.4220, -122.0841],
+                },
+                {
+                    id: 1,
+                    name: 'US Tech Securities',
+                    type: 'marker',
+                    coords: [33.785130, -84.480570],
+                },
+                {
+                    id: 2,
+                    name: 'Busy Busy',
+                    type: 'marker',
+                    coords: [37.277860, -83.291520],
+                },
+                {
+                    id: 3,
+                    name: 'Century Link',
+                    type: 'marker',
+                    coords: [32.462340, -93.672000],
+                },
+                {
+                    id: 4,
+                    name: 'Twitter',
+                    type: 'marker',
+                    coords: [35.290140, -80.755580],
+                },
+                {
+                    id: 5,
+                    name: 'Facebook',
+                    type: 'marker',
+                    coords: [37.481930, -122.159910],
+                },
+                {
+                    id: 6,
+                    name: 'Microsoft',
+                    type: 'marker',
+                    coords: [38.6143846, -90.280048],
+                },
+            ],
+
+        }, ],
+
         columns: [{
                 column: 1,
                 title: "WISHLIST",
@@ -212,6 +264,7 @@ var app = new Vue({
             }
         ],
 
+
         items: [
             { icon: 'images/huntr_logo_mini.png' },
             { icon: 'images/microphone.png' },
@@ -248,6 +301,12 @@ var app = new Vue({
         }, ],
     },
 
+    mounted: function() {
+        this.initMap();
+        this.initLayers();
+        this.layerChanged(0, true)
+    },
+
     methods: {
         filterJobs: function(index) {
             var sorted_jobs = this.jobs.filter(function(job) {
@@ -256,17 +315,40 @@ var app = new Vue({
             return sorted_jobs;
         },
 
-        // sorted_posts: function ( ) {
-        //   if( this.selected_category == "All"){
-        //       return this.posts;
-        //   } else {
-        //       var sorted_posts = this.posts.filter( function(post) {
-        //           return post.category == app.selected_category;
-        //       });
-        //       return sorted_posts;
-        //   }
-        // },
+        initMap: function() {
+            this.map = L.map('map').setView([40, -100], 4);
+            this.tileLayer = L.tileLayer(
+                'https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png', {
+                    maxZoom: 20,
+                    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>',
+                }
+            );
+            this.tileLayer.addTo(this.map);
+        },
+        initLayers: function() {
+            this.layers.forEach((layer) => {
+                // Initialize the layer
+                const markerFeatures = layer.features.filter(feature => feature.type === 'marker');
+                markerFeatures.forEach((feature) => {
+                    feature.leafletObject = L.marker(feature.coords)
+                        .bindPopup(feature.name);
+                });
+            });
+        },
+        layerChanged: function(layerId, active) {
+            const layer = this.layers.find(layer => layer.id === layerId);
+            layer.features.forEach((feature) => {
+                /* Show or hide the feature depending on the active argument */
+                if (active) {
+                    feature.leafletObject.addTo(this.map);
+                } else {
+                    feature.leafletObject.removeFrom(this.map);
+                }
+            });
+        },
     },
 
-    computed: {}
+    computed: {
+
+    }
 });

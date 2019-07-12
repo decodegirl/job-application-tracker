@@ -27,6 +27,10 @@
     overflow: scroll;
 }
 
+.map { 
+  height: 500px;
+}
+
 a {
     text-decoration: none;
 }
