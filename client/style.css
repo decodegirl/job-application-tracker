@@ -71,3 +71,15 @@ a {
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
+
+#column-graph {
+    height: 400px;
+}
+
+#bar-graph {
+    height: 400px;
+}
+
+#line-graph{
+    height: 400px;
+}
