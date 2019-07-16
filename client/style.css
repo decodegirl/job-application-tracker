@@ -1,73 +1,77 @@
-[v-cloak] {
-    display: none;
-}
-
-#app {
-    font-family: "Roboto", sans-serif;
-    line-height: 2;
-    background-color: #ffffff;
-}
-
-.job-card {
-    padding-top: 10px;
-}
-
-.horizontal-scroll {
-    overflow-x: auto;
-}
-
-.vertical-scroll {
-    height: 290px;
-    overflow: hidden;
-    overflow-y: auto;
-}
-
-.column-height {
-    height: "900px";
-    overflow: scroll;
-}
-
-.map { 
-  height: 500px;
-}
-
-a {
-    text-decoration: none;
-}
-
-.tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 0px;
-}
-
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: #ccc;
-    color: #000;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    top: 150%;
-    left: 50%;
-    margin-left: -60px;
-    text-transform: lowercase;
-}
-
-.tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent black transparent;
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-}
+        [v-cloak] {
+            display: none;
+        }
+        
+        #app {
+            font-family: "Roboto", sans-serif;
+            line-height: 2;
+            background-color: #ffffff;
+        }
+        
+        .job-card {
+            padding-top: 10px;
+        }
+        
+        .horizontal-scroll {
+            overflow-x: auto;
+        }
+        
+        .vertical-scroll {
+            height: 290px;
+            overflow: hidden;
+            overflow-y: auto;
+        }
+        
+        .column-height {
+            height: "900px";
+            overflow: scroll;
+        }
+        
+        .map {
+            height: 500px;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 0px;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: #ccc;
+            color: #000;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            top: 150%;
+            left: 50%;
+            margin-left: -60px;
+            text-transform: lowercase;
+        }
+        
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent black transparent;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+        }
+        
+        canvas {
+            border: 1px solid white;
+        }
