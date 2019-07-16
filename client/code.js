@@ -142,22 +142,12 @@ var app = new Vue({
             }
         ],
 
-<<<<<<< HEAD
         more_button_options: [
             { title: "Move list", icon: "open_with" },
             { title: "Rename", icon: "edit" }
         ],
 
         jobs: [{
-=======
-      more_button_options: [
-          { title: "Move list", icon: "open_with" },
-          { title: "Rename", icon: "edit" }
-      ],
-
-      jobs: [
-            {
->>>>>>> e0983eca7e4717e90075e709cfb0094ef9e8f5bf
                 column: 1,
                 color: "green",
                 title: "Google",
@@ -328,20 +318,20 @@ var app = new Vue({
         ],
 
 
-      items: [
-          { icon: 'images/huntr_logo_mini.png' },
-          { icon: 'images/microphone.png' },
-          { icon: 'images/thumbtack.png' },
-          { icon: 'images/settings.png' },
-          { icon: 'images/power-off.png' }
-      ],
-      items2: [
-          { icon: 'list', iconClass: 'indigo white--text', title: 'all' },
-          { icon: 'star', iconClass: 'amber white--text', title: 'Today' },
-          { icon: 'event', iconClass: 'blue white--text', title: 'Upcoming' },
-          { icon: 'check', iconClass: 'green white--text', title: 'Completed' }
-      ],
-      items3: [{
+        items: [
+            { icon: 'images/huntr_logo_mini.png' },
+            { icon: 'images/microphone.png' },
+            { icon: 'images/thumbtack.png' },
+            { icon: 'images/settings.png' },
+            { icon: 'images/power-off.png' }
+        ],
+        items2: [
+            { icon: 'list', iconClass: 'indigo white--text', title: 'all' },
+            { icon: 'star', iconClass: 'amber white--text', title: 'Today' },
+            { icon: 'event', iconClass: 'blue white--text', title: 'Upcoming' },
+            { icon: 'check', iconClass: 'green white--text', title: 'Completed' }
+        ],
+        items3: [{
             action: 'work',
             title: 'Jobs',
             active: true,
@@ -363,7 +353,6 @@ var app = new Vue({
             ]
         }, ],
 
-<<<<<<< HEAD
         todos: [{
                 title: "Follow up to find out status of application",
                 position: "Product Manager",
@@ -442,87 +431,6 @@ var app = new Vue({
                 image: "images/google-icon.svg",
                 active: false
             }
-=======
-        todos: [
-          {
-            title: "Follow up to find out status of application",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          },
-          {
-            title: "Prepare for phone interview",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          },
-          {
-            title: "Look for openings",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          },
-          {
-            title: "Prep for interview",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          },
-          {
-            title: "Prepare for interview",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          },
-          {
-            title: "Prepare for phone interview with leetcode",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          },
-          {
-            title: "Apply on website",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          },
-          {
-            title: "Send acceptance email!",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          },
-          {
-            title: "Send cover letter",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          },
-          {
-            title: "Send resume",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          },
-          {
-            title: "Email Edwin",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          },
-          {
-            title: "Fill out application",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          },
-          {
-            title: "Work on coding challenge",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          }
->>>>>>> e0983eca7e4717e90075e709cfb0094ef9e8f5bf
         ]
     },
 
