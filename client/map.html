@@ -101,9 +101,72 @@
                 <v-flex id="map" class="map">
                 </v-flex>
             </v-layout>
+<<<<<<< HEAD
             <!-- End Map -->
 
         </v-content>
+=======
+          </v-flex>
+        </v-toolbar>
+        <!-- End Tool Bar -->
+
+        <!-- Second Tool Bar -->
+        <v-layout row wrap id="dropdown-example" style="border-bottom: 1px solid #ccc; ">
+
+          <v-flex xs12 sm2 class="pl-4">
+              <v-overflow-btn :items="dropdown_font" label="My first Board" target="#dropdown-example" small></v-overflow-btn>
+          </v-flex>
+
+          <v-spacer></v-spacer>
+
+          <v-layout class="pt-3" justify-center>
+            <v-flex xs12 sm2>
+              <a href="index.html">
+                <v-btn class="tooltip" color="#cccccc"small flat href="index.html">
+                  <v-icon> dashboard </v-icon> <span class="tooltiptext"> Board </span> 
+                </v-btn>
+              </a>
+            </v-flex>
+            <v-flex xs12 sm2>
+              <a href="tasks.html">
+                <v-btn class='tooltip' color="#cccccc" small flat>
+                  <v-icon> list </v-icon> <span class="tooltiptext"> Tasks </span> 
+                </v-btn>
+              </a>
+            </v-flex>
+
+            <v-flex xs12 sm2>
+              <v-btn class="tooltip elevation-3" color="#000" small flat outline href="map.html">
+                <v-icon> map </v-icon> <span class="tooltiptext"> maps </span>
+              </v-btn>
+            </v-flex>
+
+            <v-flex xs12 sm2>
+              <v-btn class="tooltip" color="#cccccc" small flat href="metrics.html">
+                <v-icon> insert_chart </v-icon> <span class="tooltiptext"> metrics </span> 
+              </v-btn>
+            </v-flex>
+          </v-layout>
+
+          <v-spacer></v-spacer>
+
+          <v-flex xs12 sm2 class="pt-3">
+            <v-btn outline color="dark" small class="elevation-2">
+              <v-icon right> share </v-icon> Share Board
+            </v-btn>
+          </v-flex>
+        </v-layout>
+        <!-- End Second Tool Bar -->
+
+        <!-- Start Map -->
+        <v-layout row>
+          <v-flex id="map" class="map">
+          </v-flex>
+        </v-layout>
+        <!-- End Map -->
+
+      </v-content>
+>>>>>>> e0983eca7e4717e90075e709cfb0094ef9e8f5bf
     </v-app>
 </div>
 
