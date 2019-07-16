@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
 import SideNav from './components/SideNav.vue'
 import TopNav from './components/TopNav.vue'
 import TopNavTwo from './components/TopNavTwo.vue'
@@ -18,7 +17,6 @@ import TopNavTwo from './components/TopNavTwo.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld,
     SideNav,
     TopNav,
     TopNavTwo
