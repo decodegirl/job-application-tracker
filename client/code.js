@@ -1,4 +1,54 @@
+Vue.component("graphBar", {
+    props: ["labels", "values", "type"],
+    template: '<canvas width="400" height="150"></canvas>',
+    mounted: function() {
+        new Chart(this.$el, {
+            type: this.type,
+            data: {
+                labels: this.labels,
+                datasets: [{
+                    label: "Jobs added",
+                    data: this.values,
+                    backgroundColor: "rgba(128, 128, 128, 0.5)",
 
+
+                    hoverBackgroundColor: "rgba(140, 20, 252, 1)",
+                    borderColor: "rgba(128, 128, 128, 0.5)",
+
+
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            display: false
+                        },
+                        gridLines: {
+                            display: false
+                        }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        },
+                        gridLines: {
+                            display: false
+                        }
+                    }]
+                }
+            }
+        });
+    }
+});
+
+
+//vue component
 var app = new Vue({
     el: "#app",
 
@@ -7,6 +57,8 @@ var app = new Vue({
         tileLayer: null,
         dropdown_font: ['My firstBoard'],
         date: new Date().toISOString().substr(0, 10),
+        labels: ["7/11", "7/12", "7/13", "7/14", "7/15", "7/16", "7/17", "/7/18"],
+        votes: [5, 19, 3, 5, 2, 15, 10, 20],
         menu: false,
         layers: [{
             id: 0,
@@ -90,13 +142,12 @@ var app = new Vue({
             }
         ],
 
-      more_button_options: [
-          { title: "Move list", icon: "open_with" },
-          { title: "Rename", icon: "edit" }
-      ],
+        more_button_options: [
+            { title: "Move list", icon: "open_with" },
+            { title: "Rename", icon: "edit" }
+        ],
 
-      jobs: [
-            {
+        jobs: [{
                 column: 1,
                 color: "green",
                 title: "Google",
@@ -267,20 +318,20 @@ var app = new Vue({
         ],
 
 
-      items: [
-          { icon: 'images/huntr_logo_mini.png' },
-          { icon: 'images/microphone.png' },
-          { icon: 'images/thumbtack.png' },
-          { icon: 'images/settings.png' },
-          { icon: 'images/power-off.png' }
-      ],
-      items2: [
-          { icon: 'list', iconClass: 'indigo white--text', title: 'all' },
-          { icon: 'star', iconClass: 'amber white--text', title: 'Today' },
-          { icon: 'event', iconClass: 'blue white--text', title: 'Upcoming' },
-          { icon: 'check', iconClass: 'green white--text', title: 'Completed' }
-      ],
-      items3: [{
+        items: [
+            { icon: 'images/huntr_logo_mini.png' },
+            { icon: 'images/microphone.png' },
+            { icon: 'images/thumbtack.png' },
+            { icon: 'images/settings.png' },
+            { icon: 'images/power-off.png' }
+        ],
+        items2: [
+            { icon: 'list', iconClass: 'indigo white--text', title: 'all' },
+            { icon: 'star', iconClass: 'amber white--text', title: 'Today' },
+            { icon: 'event', iconClass: 'blue white--text', title: 'Upcoming' },
+            { icon: 'check', iconClass: 'green white--text', title: 'Completed' }
+        ],
+        items3: [{
             action: 'work',
             title: 'Jobs',
             active: true,
@@ -302,87 +353,87 @@ var app = new Vue({
             ]
         }, ],
 
-        todos: [
-          {
-            title: "Follow up to find out status of application",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          },
-          {
-            title: "Prepare for phone interview",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          },
-          {
-            title: "Look for openings",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          },
-          {
-            title: "Prep for interview",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          },
-          {
-            title: "Prepare for interview",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          },
-          {
-            title: "Prepare for phone interview with leetcode",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          },
-          {
-            title: "Apply on website",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          },
-          {
-            title: "Send acceptance email!",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          },
-          {
-            title: "Send cover letter",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          },
-          {
-            title: "Send resume",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          },
-          {
-            title: "Email Edwin",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          },
-          {
-            title: "Fill out application",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          },
-          {
-            title: "Work on coding challenge",
-            position: "Product Manager",
-            image: "images/google-icon.svg",
-            active: false
-          }
+        todos: [{
+                title: "Follow up to find out status of application",
+                position: "Product Manager",
+                image: "images/google-icon.svg",
+                active: false
+            },
+            {
+                title: "Prepare for phone interview",
+                position: "Product Manager",
+                image: "images/google-icon.svg",
+                active: false
+            },
+            {
+                title: "Look for openings",
+                position: "Product Manager",
+                image: "images/google-icon.svg",
+                active: false
+            },
+            {
+                title: "Prep for interview",
+                position: "Product Manager",
+                image: "images/google-icon.svg",
+                active: false
+            },
+            {
+                title: "Prepare for interview",
+                position: "Product Manager",
+                image: "images/google-icon.svg",
+                active: false
+            },
+            {
+                title: "Prepare for phone interview with leetcode",
+                position: "Product Manager",
+                image: "images/google-icon.svg",
+                active: false
+            },
+            {
+                title: "Apply on website",
+                position: "Product Manager",
+                image: "images/google-icon.svg",
+                active: false
+            },
+            {
+                title: "Send acceptance email!",
+                position: "Product Manager",
+                image: "images/google-icon.svg",
+                active: false
+            },
+            {
+                title: "Send cover letter",
+                position: "Product Manager",
+                image: "images/google-icon.svg",
+                active: false
+            },
+            {
+                title: "Send resume",
+                position: "Product Manager",
+                image: "images/google-icon.svg",
+                active: false
+            },
+            {
+                title: "Email Edwin",
+                position: "Product Manager",
+                image: "images/google-icon.svg",
+                active: false
+            },
+            {
+                title: "Fill out application",
+                position: "Product Manager",
+                image: "images/google-icon.svg",
+                active: false
+            },
+            {
+                title: "Work on coding challenge",
+                position: "Product Manager",
+                image: "images/google-icon.svg",
+                active: false
+            }
         ]
     },
+
 
     mounted: function() {
         this.initMap();
@@ -397,6 +448,7 @@ var app = new Vue({
             });
             return sorted_jobs;
         },
+
 
         initMap: function() {
             this.map = L.map('map').setView([40, -100], 4);
