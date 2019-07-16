@@ -10,24 +10,24 @@
 
         <v-layout class="pt-3" justify-center>
         <v-flex xs12 sm2>
-            <v-btn class="tooltip elevation-3" color="#000" outline small flat href="index.html">
+            <v-btn class="tooltip" color="#ccc" small flat to="/">
                 <v-icon> dashboard </v-icon> <span class="tooltiptext"> Board </span> 
             </v-btn>
         </v-flex>
         <v-flex xs12 sm2>
-            <v-btn class='tooltip' color="#cccccc" small flat href="tasks.html">
+            <v-btn class='tooltip' color="#cccccc" small flat to="/tasks">
                 <v-icon> list </v-icon> <span class="tooltiptext"> Tasks </span> 
             </v-btn>
         </v-flex>
 
         <v-flex xs12 sm2>
-            <v-btn class="tooltip" color="#cccccc" small flat href="map.html">
+            <v-btn class="tooltip" color="#cccccc" small flat to="/map">
             <v-icon> map </v-icon> <span class="tooltiptext"> maps </span>
             </v-btn>
         </v-flex>
 
         <v-flex xs12 sm2>
-            <v-btn class="tooltip" color="#cccccc" small flat>
+            <v-btn class="tooltip" color="#cccccc" small flat to="/metrics">
             <v-icon> insert_chart </v-icon> <span class="tooltiptext"> metrics </span> 
             </v-btn>
         </v-flex>
@@ -53,3 +53,47 @@ export default {
   }
 }
 </script>
+
+<style>
+     a {
+            text-decoration: none;
+        }
+        
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 0px;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: #ccc;
+            color: #000;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            top: 150%;
+            left: 50%;
+            margin-left: -60px;
+            text-transform: lowercase;
+        }
+        
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent black transparent;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+        }
+ 
+</style>

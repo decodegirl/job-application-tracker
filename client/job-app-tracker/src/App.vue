@@ -1,6 +1,6 @@
 <template>
-  <v-app>
-  <v-content>
+  <v-app v-cloak>
+    <v-content>
       <SideNav />
       <TopNav />
       <TopNavTwo />
@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
 import SideNav from './components/SideNav.vue'
 import TopNav from './components/TopNav.vue'
 import TopNavTwo from './components/TopNavTwo.vue'
@@ -18,7 +17,6 @@ import TopNavTwo from './components/TopNavTwo.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld,
     SideNav,
     TopNav,
     TopNavTwo
@@ -29,5 +27,18 @@ export default {
   }
 }
 </script>
+
+<style>
+  [v-cloak] {
+      display: none;
+  }
+  
+  #app {
+      font-family: "Roboto", sans-serif;
+      line-height: 2;
+      background-color: #ffffff;
+  }
+</style>
+
 
 

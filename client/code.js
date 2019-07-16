@@ -110,7 +110,8 @@ var app = new Vue({
 
         }, ],
 
-        columns: [{
+        columns: [
+            {
                 column: 1,
                 title: "WISHLIST",
                 jobs: 6
@@ -147,7 +148,8 @@ var app = new Vue({
             { title: "Rename", icon: "edit" }
         ],
 
-        jobs: [{
+        jobs: [
+          {
                 column: 1,
                 color: "green",
                 title: "Google",
