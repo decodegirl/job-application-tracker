@@ -1,3 +1,4 @@
+//graph two start
 var densityCanvas = document.getElementById("densityChart");
 
 Chart.defaults.global.defaultFontFamily = "Lato";
@@ -62,6 +63,8 @@ var barChart = new Chart(densityCanvas, {
     },
     options: chartOptions
 });
+
+//graph three
 var speedCanvas = document.getElementById("speedChart");
 
 Chart.defaults.global.defaultFontFamily = "Roboto";
@@ -186,4 +189,66 @@ var lineChart = new Chart(speedCanvas, {
     type: 'line',
     data: speedData,
     options: chartOptions
+});
+
+
+//start of graph one.
+
+var canvas = document.getElementById("barChart");
+var ctx = canvas.getContext('2d');
+
+// Global Options:
+Chart.defaults.global.defaultFontColor = 'dodgerblue';
+Chart.defaults.global.defaultFontSize = 16;
+
+
+// Data with datasets options
+var data = {
+    labels: ["7/11", "7/12", "7/13", "7/14", "7/15", "7/16", "7/17", "/7/18"],
+    datasets: [{
+        label: "Jobs Applied ",
+        fill: true,
+        backgroundColor: "rgba(128, 128, 128, 0.5)",
+        hoverBackgroundColor: "rgba(140, 20, 252, 1)",
+        borderColor: "rgba(128, 128, 128, 0.5)",
+
+        data: [5, 19, 3, 5, 2, 15, 10, 20]
+    }]
+};
+
+// Notice how nested the beginAtZero is
+var options = {
+    legend: {
+        display: false
+    },
+    scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true,
+                display: false
+            },
+            gridLines: {
+                display: false
+            }
+        }],
+
+        xAxes: [{
+            ticks: {
+                beginAtZero: true
+
+            },
+            gridLines: {
+                display: false
+            }
+        }],
+
+
+    }
+};
+
+// Chart declaration:
+var myBarChart = new Chart(ctx, {
+    type: 'bar',
+    data: data,
+    options: options
 });

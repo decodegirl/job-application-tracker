@@ -99,18 +99,18 @@
             <!--start of the metric tables and graphs -->
             <v-container fluid grid-list-md>
                 <v-layout row wrap>
-                    <v-flex d-flex xs12 sm6 class="pl-5 pt-3 pr-3" style='height:350px;'>
+                    <v-flex d-flex xs12 sm6 class="pl-5 pt-3 pr-" style='height:350px;'>
                         <v-card color="white" dark>
                             <v-card-title primary class="title" style="color:black;">Jobs added</v-card-title>
                             <v-card-text style="color:rgba(97, 97, 97, 0.753); padding-top: 0px;"> By Day </v-card-text>
-                            <graph-bar :labels="labels" :values="votes" type="bar">
-                            </graph-bar>
+                            <canvas id="barChart" width="400" height="150"></canvas>
+
 
 
                         </v-card>
                     </v-flex>
 
-                    <v-flex d-flex xs12 sm6 class="pl-3 pt-3 pr-5" style='height:350px;'>
+                    <v-flex d-flex xs12 sm6 class="pl-3 pt-3 pr-3" style='height:350px;'>
                         <v-card color="white" dark>
                             <v-card-title primary class="title" style="color:black;">Stage Analysis</v-card-title>
                             <canvas id="densityChart" width="400" height="180"></canvas>
@@ -119,7 +119,7 @@
                     </v-flex>
 
 
-                    <v-flex d-flex xs12 sm12 class="pl-5 pr-5 pt-3" style="height:500px;">
+                    <v-flex d-flex xs12 sm12 class="pl-5 pr-3 pt-3" style="height:500px;">
                         <v-card color="white" dark>
                             <v-card-title primary class="title" style="color:black;">Job Activity</v-card-title>
                             <v-card-text style="color:rgba(97, 97, 97, 0.753); padding-top: 0px;"> By Stage</v-card-text>
