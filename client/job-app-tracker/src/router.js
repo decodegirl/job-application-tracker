@@ -37,5 +37,10 @@ export default new Router({
       name: 'metrics',
       component: () => import(/* webpackChunkName: "metrics" */ './views/Metrics.vue')
     },
+    {
+      path: '/test',
+      name: 'test',
+      component: () => import(/* webpackChunkName: "test" */ './views/Test.vue')
+    },
   ]
 })
