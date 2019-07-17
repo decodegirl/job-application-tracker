@@ -10,7 +10,6 @@
 </template>
 
 <script>
-
 import SideNav from './components/SideNav.vue'
 import TopNav from './components/TopNav.vue'
 import TopNavTwo from './components/TopNavTwo.vue'
