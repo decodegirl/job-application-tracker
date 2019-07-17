@@ -1,54 +1,3 @@
-Vue.component("graphBar", {
-    props: ["labels", "values", "type"],
-    template: '<canvas width="400" height="150"></canvas>',
-    mounted: function() {
-        new Chart(this.$el, {
-            type: this.type,
-            data: {
-                labels: this.labels,
-                datasets: [{
-                    label: "Jobs added",
-                    data: this.values,
-                    backgroundColor: "rgba(128, 128, 128, 0.5)",
-
-
-                    hoverBackgroundColor: "rgba(140, 20, 252, 1)",
-                    borderColor: "rgba(128, 128, 128, 0.5)",
-
-
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                legend: {
-                    display: false
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true,
-                            display: false
-                        },
-                        gridLines: {
-                            display: false
-                        }
-                    }],
-                    xAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        },
-                        gridLines: {
-                            display: false
-                        }
-                    }]
-                }
-            }
-        });
-    }
-});
-
-
-//vue component
 var app = new Vue({
     el: "#app",
 
@@ -57,8 +6,6 @@ var app = new Vue({
         tileLayer: null,
         dropdown_font: ['My firstBoard'],
         date: new Date().toISOString().substr(0, 10),
-        labels: ["7/11", "7/12", "7/13", "7/14", "7/15", "7/16", "7/17", "/7/18"],
-        votes: [5, 19, 3, 5, 2, 15, 10, 20],
         menu: false,
         layers: [{
             id: 0,
@@ -486,4 +433,4 @@ var app = new Vue({
     computed: {
 
     }
-});
+})
