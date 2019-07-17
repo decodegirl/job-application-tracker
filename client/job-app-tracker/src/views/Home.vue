@@ -1,10 +1,10 @@
-<template>
+<template height="100%">
   <!-- Main Columns -->
   <v-layout row align-content-center class="horizontal-scroll">
     <v-flex xs6 v-for="column in columns" :key="column.id">
       <v-card
-        width="300px"
-        class="pl-4 pr-4 pt-4"
+        width="330px"
+        class="pl-3 pr-3 pt-3"
         height="100%"
         style="border-left: 1px solid #4444;"
         flat
@@ -71,7 +71,7 @@
               >
                 <JobCard
                   v-for="job in column.jobs"
-                  :key="job.title"
+                  :key="job.id"
                   :job="job"
                   :color="job.color"
                 />
@@ -159,10 +159,10 @@ export default {
           id: 3,
           column: 1,
           color: "yellow",
-          title: "WeWork",
+          title: "Genius",
           subtitle: "Product Manager",
           date_added: "2 Years",
-          image: "wework"
+          image: "genius"
         },
         {
           id: 4,
@@ -177,10 +177,10 @@ export default {
           id: 5,
           column: 1,
           color: "indigo",
-          title: "We Work",
+          title: "Genius",
           subtitle: "SWE Intern",
           date_added: "1 Year",
-          image: "wework"
+          image: "genius"
         },
         {
           id: 6,

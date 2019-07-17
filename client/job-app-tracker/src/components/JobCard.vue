@@ -2,11 +2,12 @@
   <v-card xs12 dark :color="job.color" max-width="400" class="mb-2">
     <v-list-tile class="job-card">
       <v-list-tile-avatar>
-        <!-- <v-img :src="require(`@/assets/${job.image}`)"></v-img> -->
-        <v-img
-          :src="`//logo.clearbit.com/${job.image}.com`"
-          contain="true"
-        ></v-img>
+        <v-avatar :size="24">
+          <v-img
+            :src="`//logo.clearbit.com/${job.image}.com`"
+            alt="avatar"
+          ></v-img>
+        </v-avatar>
       </v-list-tile-avatar>
 
       <v-list-tile-content>
@@ -14,7 +15,7 @@
         <v-list-tile-sub-title>{{ job.subtitle }}</v-list-tile-sub-title>
       </v-list-tile-content>
 
-      <v-card-actions>
+      <!-- <v-card-actions>
         <v-list-tile class="grow">
           <v-layout align-center justify-end>
             <v-btn icon fab>
@@ -22,7 +23,7 @@
             </v-btn>
           </v-layout>
         </v-list-tile>
-      </v-card-actions>
+      </v-card-actions> -->
     </v-list-tile>
 
     <v-card-text class="text-xs-right"
