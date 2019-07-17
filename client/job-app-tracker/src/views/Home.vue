@@ -144,17 +144,16 @@ export default {
           title: "Google",
           subtitle: "Product Manager",
           date_added: "2 Years",
-          image: "./assets/logo.svg"
+          image: "google"
         },
         {
           id: 2,
-
           column: 0,
           color: "blue",
           title: "Twitter",
           subtitle: "Product Manager",
           date_added: "2 Years",
-          image: "./assets/logo.svg"
+          image: "twitter"
         },
         {
           id: 3,
@@ -163,7 +162,7 @@ export default {
           title: "WeWork",
           subtitle: "Product Manager",
           date_added: "2 Years",
-          image: "./assets/logo.svg"
+          image: "wework"
         },
         {
           id: 4,
@@ -172,7 +171,7 @@ export default {
           title: "Weave",
           subtitle: "Product Manager",
           date_added: "2 Years",
-          image: "./assets/logo.svg"
+          image: "getweave"
         },
         {
           id: 5,
@@ -181,25 +180,25 @@ export default {
           title: "We Work",
           subtitle: "SWE Intern",
           date_added: "1 Year",
-          image: "./assets/logo.svg"
+          image: "wework"
         },
         {
           id: 6,
           column: 2,
           color: "purple",
-          title: "Hashcorp",
+          title: "Hashicorp",
           subtitle: "Backend Engineer",
           date_added: "2 Years",
-          image: "./assets/logo.svg"
+          image: "hashicorp"
         },
         {
           id: 7,
           column: 3,
-          color: "black",
+          color: "blue",
           title: "Postmates",
           subtitle: "Product Manager",
           date_added: "2 Years",
-          image: "./assets/logo.svg"
+          image: "postmates"
         }
       ]
     };

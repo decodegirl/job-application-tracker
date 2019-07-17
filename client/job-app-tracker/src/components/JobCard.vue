@@ -1,7 +1,13 @@
 <template>
   <v-card xs12 dark :color="job.color" max-width="400" class="mb-2">
     <v-list-tile class="job-card">
-      <v-list-tile-avatar></v-list-tile-avatar>
+      <v-list-tile-avatar>
+        <!-- <v-img :src="require(`@/assets/${job.image}`)"></v-img> -->
+        <v-img
+          :src="`//logo.clearbit.com/${job.image}.com`"
+          contain="true"
+        ></v-img>
+      </v-list-tile-avatar>
 
       <v-list-tile-content>
         <v-list-tile-title>{{ job.title }}</v-list-tile-title>
