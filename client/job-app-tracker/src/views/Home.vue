@@ -1,57 +1,98 @@
 <template>
-  <v-container>
-    <v-layout>
-      <v-flex xs6>
-        <v-card flat="false">
-          <v-list>
-            <draggable
-              :list="jobs1"
-              group="occupation"
-              :disabled="!enabled"
-              ghost-class="ghost"
-              :move="checkMove"
-              @start="dragging = true"
-              @end="dragging = false"
-            >
-              <div v-for="job in jobs1" :key="job.title">
-                <JobCard :job="job" :color="job.color" />
-              </div>
-            </draggable>
-          </v-list>
-        </v-card>
-      </v-flex>
+  <!-- Main Columns -->
+  <v-layout row align-content-center class="horizontal-scroll">
+    <v-flex xs6 v-for="column in columns" :key="column.id">
+      <v-card
+        width="300px"
+        class="pl-4 pr-4 pt-4"
+        height="100%"
+        style="border-left: 1px solid #4444;"
+        flat
+      >
+        <!-- Column actions -->
+        <v-card-actions class="white justify-center">
+          <!-- Column Delete button -->
+          <v-btn fab icon small>
+            <v-icon>delete</v-icon>
+          </v-btn>
+          <v-spacer></v-spacer>
 
-      <v-flex xs6>
-        <v-card flat="false">
-          <v-list>
-            <draggable
-              :list="jobs2"
-              group="occupation"
-              :disabled="!enabled"
-              ghost-class="ghost"
-              :move="checkMove"
-              @start="dragging = true"
-              @end="dragging = false"
-            >
-              <div v-for="job in jobs2" :key="job.title">
-                <JobCard :job="job" :color="job.color" />
-              </div>
-            </draggable>
-          </v-list>
-        </v-card>
-      </v-flex>
-    </v-layout>
-  </v-container>
+          <!-- Column title -->
+          <v-card-title style="font-size: 1.5rem;">
+            {{ column.title }}
+          </v-card-title>
+          <v-spacer></v-spacer>
+
+          <!-- Column 'More' button -->
+          <template>
+            <div class="text-xs-center">
+              <v-menu>
+                <template v-slot:activator="{ on }">
+                  <v-btn fab icon small v-on="on">
+                    <v-icon>more_horiz</v-icon>
+                  </v-btn>
+                </template>
+                <v-list>
+                  <v-list-tile
+                    v-for="(item, index) in more_button_options"
+                    :key="index"
+                  >
+                    <v-list-tile-title class="mr-4">
+                      {{ item.title }}
+                    </v-list-tile-title>
+                    <v-icon class="ml-4">{{ item.icon }}</v-icon>
+                  </v-list-tile>
+                </v-list>
+              </v-menu>
+            </div>
+          </template>
+        </v-card-actions>
+
+        <!-- Column jobs counter -->
+        <v-subheader class="white justify-center"
+          >{{ column.jobs.length }} Jobs</v-subheader
+        >
+
+        <!-- Add jobs button -->
+        <v-btn block>+</v-btn>
+
+        <!-- Start Job Cards -->
+        <div class="vertical-scroll">
+          <v-card flat="false">
+            <v-list>
+              <Draggable
+                :list="column.jobs"
+                group="occupation"
+                :disabled="!enabled"
+                ghost-class="ghost"
+                :move="checkMove"
+                @start="dragging = true"
+                @end="dragging = false"
+              >
+                <JobCard
+                  v-for="job in column.jobs"
+                  :key="job.title"
+                  :job="job"
+                  :color="job.color"
+                />
+              </Draggable>
+            </v-list>
+          </v-card>
+        </div>
+        <!-- End Job Cards -->
+      </v-card>
+    </v-flex>
+  </v-layout>
+  <!-- End Main Columns -->
 </template>
 
 <script>
-// import HelloWorld from "../components/HelloWorld";
-import draggable from "vuedraggable";
+import Draggable from "vuedraggable";
 import JobCard from "../components/JobCard.vue";
 
 export default {
   components: {
-    draggable,
+    Draggable,
     JobCard
   },
   data() {
@@ -59,8 +100,46 @@ export default {
       enabled: true,
       dragging: false,
       damis: 1,
-      jobs1: [
+      more_button_options: [
+        { title: "Move list", icon: "open_with" },
+        { title: "Rename", icon: "edit" }
+      ],
+      columns: [
         {
+          id: 0,
+          title: "WISHLIST",
+          jobs: []
+        },
+        {
+          id: 1,
+          title: "APPLIED",
+          jobs: []
+        },
+        {
+          id: 2,
+          title: "PHONE",
+          jobs: []
+        },
+        {
+          id: 3,
+          title: "ON SITE",
+          jobs: []
+        },
+        {
+          id: 4,
+          title: "OFFER",
+          jobs: []
+        },
+        {
+          id: 5,
+          title: "REJECTED",
+          jobs: []
+        }
+      ],
+      jobs: [
+        {
+          id: 1,
+          column: 2,
           color: "green",
           title: "Google",
           subtitle: "Product Manager",
@@ -68,6 +147,9 @@ export default {
           image: "./assets/logo.svg"
         },
         {
+          id: 2,
+
+          column: 0,
           color: "blue",
           title: "Twitter",
           subtitle: "Product Manager",
@@ -75,6 +157,8 @@ export default {
           image: "./assets/logo.svg"
         },
         {
+          id: 3,
+          column: 1,
           color: "yellow",
           title: "WeWork",
           subtitle: "Product Manager",
@@ -82,15 +166,17 @@ export default {
           image: "./assets/logo.svg"
         },
         {
+          id: 4,
+          column: 0,
           color: "purple",
           title: "Weave",
           subtitle: "Product Manager",
           date_added: "2 Years",
           image: "./assets/logo.svg"
-        }
-      ],
-      jobs2: [
+        },
         {
+          id: 5,
+          column: 1,
           color: "indigo",
           title: "We Work",
           subtitle: "SWE Intern",
@@ -98,6 +184,8 @@ export default {
           image: "./assets/logo.svg"
         },
         {
+          id: 6,
+          column: 2,
           color: "purple",
           title: "Hashcorp",
           subtitle: "Backend Engineer",
@@ -105,6 +193,8 @@ export default {
           image: "./assets/logo.svg"
         },
         {
+          id: 7,
+          column: 3,
           color: "black",
           title: "Postmates",
           subtitle: "Product Manager",
@@ -115,10 +205,33 @@ export default {
     };
   },
 
+  created: function() {
+    this.jobs.forEach(job => {
+      this.columns[job.column].jobs.push(job);
+    });
+  },
+
   methods: {
+    filterJobs: function(columnId) {
+      var sorted_jobs = this.jobs.filter(function(job) {
+        return job.column == columnId;
+      });
+      return sorted_jobs;
+    },
     checkMove(e) {
       window.console.log(`Future index: ${e.draggedContext.futureIndex}`);
     }
   }
 };
 </script>
+
+<style scoped>
+.vertical-scroll {
+  height: 290px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.horizontal-scroll {
+  overflow-x: auto;
+}
+</style>

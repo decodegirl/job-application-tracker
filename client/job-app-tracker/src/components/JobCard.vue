@@ -19,7 +19,9 @@
       </v-card-actions>
     </v-list-tile>
 
-    <v-card-text class="text-xs-right">added {{ job.date_added }} ago</v-card-text>
+    <v-card-text class="text-xs-right"
+      >added {{ job.date_added }} ago</v-card-text
+    >
   </v-card>
 </template>
 

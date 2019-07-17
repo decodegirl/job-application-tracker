@@ -1,6 +1,11 @@
 <template>
   <!-- Second Tool Bar -->
-  <v-layout row wrap id="dropdown-example" style="border-bottom: 1px solid #ccc;">
+  <v-layout
+    row
+    wrap
+    id="dropdown-example"
+    style="border-bottom: 1px solid #ccc;"
+  >
     <v-flex xs12 sm2 class="pl-4">
       <v-overflow-btn
         :items="dropdown_font"
