@@ -1,11 +1,11 @@
-<template height="100%">
+<template>
   <!-- Main Columns -->
   <v-layout row align-content-center class="horizontal-scroll">
-    <v-flex xs6 v-for="column in columns" :key="column.id">
+    <v-flex v-for="column in columns" :key="column.id">
       <v-card
         width="330px"
-        class="pl-3 pr-3 pt-3"
         height="100%"
+        class="pl-3 pr-3 pt-3"
         style="border-left: 1px solid #4444;"
         flat
       >
@@ -57,28 +57,26 @@
         <v-btn block>+</v-btn>
 
         <!-- Start Job Cards -->
+
         <div class="vertical-scroll">
-          <v-card flat="false">
-            <v-list>
-              <Draggable
-                :list="column.jobs"
-                group="occupation"
-                :disabled="!enabled"
-                ghost-class="ghost"
-                :move="checkMove"
-                @start="dragging = true"
-                @end="dragging = false"
-              >
-                <JobCard
-                  v-for="job in column.jobs"
-                  :key="job.id"
-                  :job="job"
-                  :color="job.color"
-                />
-              </Draggable>
-            </v-list>
-          </v-card>
+          <Draggable
+            :list="column.jobs"
+            group="occupation"
+            :disabled="!enabled"
+            ghost-class="ghost"
+            :move="checkMove"
+            @start="dragging = true"
+            @end="dragging = false"
+          >
+            <JobCard
+              v-for="job in column.jobs"
+              :key="job.id"
+              :job="job"
+              :color="job.color"
+            />
+          </Draggable>
         </div>
+
         <!-- End Job Cards -->
       </v-card>
     </v-flex>
@@ -139,7 +137,7 @@ export default {
       jobs: [
         {
           id: 1,
-          column: 2,
+          column: 1,
           color: "green",
           title: "Google",
           subtitle: "Product Manager",
@@ -148,7 +146,7 @@ export default {
         },
         {
           id: 2,
-          column: 0,
+          column: 1,
           color: "blue",
           title: "Twitter",
           subtitle: "Product Manager",
@@ -184,7 +182,7 @@ export default {
         },
         {
           id: 6,
-          column: 2,
+          column: 1,
           color: "purple",
           title: "Hashicorp",
           subtitle: "Backend Engineer",
@@ -224,13 +222,20 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+html,
+body {
+  height: 100%;
+}
 .vertical-scroll {
-  height: 290px;
-  overflow: hidden;
+  max-height: 50vh;
   overflow-y: auto;
 }
 .horizontal-scroll {
   overflow-x: auto;
+}
+.ghost {
+  color: #ccc;
+  background-color: #ccc;
 }
 </style>

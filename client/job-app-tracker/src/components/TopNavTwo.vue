@@ -1,5 +1,6 @@
 <template>
   <!-- Second Tool Bar -->
+  <!-- <v-toolbar flat="false" style="border-bottom: 1px solid #ccc;"> -->
   <v-layout
     row
     wrap
@@ -53,7 +54,9 @@
         <v-icon right>share</v-icon>Share Board
       </v-btn>
     </v-flex>
+    <!-- </v-toolbar> -->
   </v-layout>
+
   <!-- End Second Tool Bar -->
 </template>
 

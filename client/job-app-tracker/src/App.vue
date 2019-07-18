@@ -1,10 +1,12 @@
 <template>
   <v-app>
     <v-content>
-      <SideNav />
       <TopNav />
       <TopNavTwo />
+      <SideNav />
+      <!-- <v-container fluid> -->
       <router-view />
+      <!-- </v-container> -->
     </v-content>
   </v-app>
 </template>
