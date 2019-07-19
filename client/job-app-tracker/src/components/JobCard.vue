@@ -39,39 +39,6 @@
           added {{ job.date_added }} ago
         </v-list-tile-sub-title>
       </v-list-tile-content>
-
-      <!-- <v-list-tile>
-        <v-list-tile-avatar>
-          <v-avatar :size="24">
-            <v-img
-              :src="`//logo.clearbit.com/${job.image}.com`"
-              alt="avatar"
-            ></v-img>
-          </v-avatar>
-        </v-list-tile-avatar>
-
-        <v-list-tile-content>
-          <v-list-tile-title>{{ job.title }}</v-list-tile-title>
-          <v-list-tile-sub-title>{{ job.subtitle }}</v-list-tile-sub-title>
-        </v-list-tile-content>
-
-        <v-card-actions>
-          <v-hover>
-            <div slot-scope="{ hover }">
-              <v-btn icon v-if="!hover">
-                <v-icon> delete_outline </v-icon>
-              </v-btn>
-              <v-btn icon v-else>
-                <v-icon> delete </v-icon>
-              </v-btn>
-            </div>
-          </v-hover>
-        </v-card-actions>
-      </v-list-tile> -->
-
-      <!-- <v-card-text class="text-xs-right"
-        >added {{ job.date_added }} ago</v-card-text
-      > -->
     </v-card>
   </v-hover>
 </template>
