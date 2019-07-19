@@ -140,7 +140,7 @@ export default {
           column: 1,
           color: "green",
           title: "Google",
-          subtitle: "Product Manager",
+          subTitle: "Product Manager",
           date_added: "2 Years",
           image: "google"
         },
@@ -149,7 +149,7 @@ export default {
           column: 1,
           color: "blue",
           title: "Twitter",
-          subtitle: "Product Manager",
+          subTitle: "Product Manager",
           date_added: "2 Years",
           image: "twitter"
         },
@@ -158,7 +158,7 @@ export default {
           column: 1,
           color: "yellow",
           title: "Genius",
-          subtitle: "Product Manager",
+          subTitle: "Product Manager",
           date_added: "2 Years",
           image: "genius"
         },
@@ -167,7 +167,7 @@ export default {
           column: 0,
           color: "purple",
           title: "Weave",
-          subtitle: "Product Manager",
+          subTitle: "Product Manager",
           date_added: "2 Years",
           image: "getweave"
         },
@@ -176,7 +176,7 @@ export default {
           column: 1,
           color: "indigo",
           title: "Genius",
-          subtitle: "SWE Intern",
+          subTitle: "SWE Intern",
           date_added: "1 Year",
           image: "genius"
         },
@@ -185,7 +185,7 @@ export default {
           column: 1,
           color: "purple",
           title: "Hashicorp",
-          subtitle: "Backend Engineer",
+          subTitle: "Backend Engineer",
           date_added: "2 Years",
           image: "hashicorp"
         },
@@ -194,7 +194,7 @@ export default {
           column: 3,
           color: "blue",
           title: "Postmates",
-          subtitle: "Product Manager",
+          subTitle: "Product Manager",
           date_added: "2 Years",
           image: "postmates"
         }

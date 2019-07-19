@@ -1,35 +1,79 @@
 <template>
-  <v-card xs12 dark :color="job.color" max-width="400" class="mb-2">
-    <v-list-tile class="job-card">
-      <v-list-tile-avatar>
-        <v-avatar :size="24">
+  <v-hover>
+    <v-card
+      slot-scope="{ hover }"
+      xs12
+      dark
+      :color="job.color"
+      max-width="400"
+      class="mb-2"
+    >
+      <v-list-tile :class="job.color" class="pt-2">
+        <v-list-tile-avatar :size="24" class="pb-2">
           <v-img
             :src="`//logo.clearbit.com/${job.image}.com`"
             alt="avatar"
           ></v-img>
-        </v-avatar>
-      </v-list-tile-avatar>
+        </v-list-tile-avatar>
 
-      <v-list-tile-content>
-        <v-list-tile-title>{{ job.title }}</v-list-tile-title>
-        <v-list-tile-sub-title>{{ job.subtitle }}</v-list-tile-sub-title>
+        <v-list-tile-content>
+          <v-list-tile-title class="font-weight-regular">
+            {{ job.title }}
+          </v-list-tile-title>
+          <v-list-tile-sub-title class="font-weight-light">
+            {{ job.subTitle }}
+          </v-list-tile-sub-title>
+        </v-list-tile-content>
+
+        <v-list-tile-action v-if="hover">
+          <v-btn icon ripple>
+            <v-icon color="grey lighten-1"> delete </v-icon>
+          </v-btn>
+        </v-list-tile-action>
+      </v-list-tile>
+      <v-list-tile-content
+        class="text-xs-right pr-3 pt-4 pb-1"
+        :class="job.color"
+      >
+        <v-list-tile-sub-title class="font-weight-light caption">
+          added {{ job.date_added }} ago
+        </v-list-tile-sub-title>
       </v-list-tile-content>
 
-      <!-- <v-card-actions>
-        <v-list-tile class="grow">
-          <v-layout align-center justify-end>
-            <v-btn icon fab>
-              <v-icon class="mr-1">mdi-delete</v-icon>
-            </v-btn>
-          </v-layout>
-        </v-list-tile>
-      </v-card-actions> -->
-    </v-list-tile>
+      <!-- <v-list-tile>
+        <v-list-tile-avatar>
+          <v-avatar :size="24">
+            <v-img
+              :src="`//logo.clearbit.com/${job.image}.com`"
+              alt="avatar"
+            ></v-img>
+          </v-avatar>
+        </v-list-tile-avatar>
 
-    <v-card-text class="text-xs-right"
-      >added {{ job.date_added }} ago</v-card-text
-    >
-  </v-card>
+        <v-list-tile-content>
+          <v-list-tile-title>{{ job.title }}</v-list-tile-title>
+          <v-list-tile-sub-title>{{ job.subtitle }}</v-list-tile-sub-title>
+        </v-list-tile-content>
+
+        <v-card-actions>
+          <v-hover>
+            <div slot-scope="{ hover }">
+              <v-btn icon v-if="!hover">
+                <v-icon> delete_outline </v-icon>
+              </v-btn>
+              <v-btn icon v-else>
+                <v-icon> delete </v-icon>
+              </v-btn>
+            </div>
+          </v-hover>
+        </v-card-actions>
+      </v-list-tile> -->
+
+      <!-- <v-card-text class="text-xs-right"
+        >added {{ job.date_added }} ago</v-card-text
+      > -->
+    </v-card>
+  </v-hover>
 </template>
 
 <script>
