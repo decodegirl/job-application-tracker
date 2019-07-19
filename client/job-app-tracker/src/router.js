@@ -1,12 +1,18 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Board from './views/Board.vue'
-import Map from './views/Map.vue'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Board from './views/Board.vue';
+import Map from './views/Map.vue';
+import Home from "./views/Home.vue";
+import About from './views/About.vue';
+import Briefcase from './views/Briefcase.vue';
+import Tasks from './views/Tasks.vue';
+import Metrics from './views/Metrics.vue';
+import Contact from './views/Contact.vue';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
   routes: [
     {
@@ -15,42 +21,39 @@ export default new Router({
       component: Board
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      path: "/about",
+      name: "about",
+      component: About
     },
     {
       path: '/map',
       name: 'map',
-      component: () => import(/* webpackChunkName: "map" */ './views/Map.vue')
+      component: Map
     },
     {
       path: '/tasks',
       name: 'tasks',
-      component: () => import(/* webpackChunkName: "tasks" */ './views/Tasks.vue')
+      component: Tasks
     },
     {
       path: '/metrics',
       name: 'metrics',
-      component: () => import(/* webpackChunkName: "metrics" */ './views/Metrics.vue')
-    },
-    {
-      path: '/test',
-      name: 'test',
-      component: () => import(/* webpackChunkName: "test" */ './views/Test.vue')
+      component: Metrics
     },
     {
       path: '/contact',
       name: 'contact',
-      component: () => import(/* webpackChunkName: "contact" */ './views/Contact.vue')
+      component: Contact
     },
     {
       path: '/briefcase',
       name: 'briefcase',
-      component: () => import(/* webpackChunkName: "briefcase" */ './views/Briefcase.vue')
+      component: Briefcase
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component: Home
     },
   ]
-})
+});

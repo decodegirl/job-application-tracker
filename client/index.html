@@ -1,119 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <title>Job App Tracker</title>
     <link rel="stylesheet" href="style.css" type="text/css" media="all" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons"
+      rel="stylesheet"
+    />
 
-    <link href="https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet" />
-    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous">
-    </script>
+    <link
+      href="https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"
+      integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+      crossorigin="anonymous"
+    ></script>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
-</head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"
+    />
+  </head>
 
-<div id="app" v-cloak>
+  <div id="app" v-cloak>
     <v-app>
-        <v-content>
+      <v-content>
+        <!-- Navigation Drawer -->
+        <v-navigation-drawer
+          style="background-color: rgb(24, 0, 69)"
+          dark
+          permanent
+          app
+          width="60px"
+        >
+          <v-list>
+            <v-list-tile v-for="item in items" @click="">
+              <v-list-tile-action>
+                <img :src="item.icon" height="auto" width="15px" />
+              </v-list-tile-action>
+            </v-list-tile>
+          </v-list>
+        </v-navigation-drawer>
 
-            <!-- Navigation Drawer -->
-            <v-navigation-drawer style="background-color: rgb(24, 0, 69)" dark permanent app width="60px">
-                <v-list>
-                    <v-list-tile v-for="item in items" @click="">
-                        <v-list-tile-action>
-                            <img :src="item.icon" height="auto" width="15px"></img>
-                        </v-list-tile-action>
-                    </v-list-tile>
-                </v-list>
-            </v-navigation-drawer>
+        <!-- Tool Bar -->
+        <v-toolbar
+          flat
+          style="background-color: #ffffff; border-bottom: 1px solid #ccc; "
+        >
+          <v-flex xs6>
+            <v-btn flat>Boards</v-btn>
+            <v-btn flat>Contacts</v-btn>
+            <v-btn flat> briefcases</v-btn>
+          </v-flex>
 
-            <!-- Tool Bar -->
-            <v-toolbar flat style="background-color: #ffffff; border-bottom: 1px solid #ccc; ">
-                <v-flex xs6>
-                    <v-btn flat>Boards</v-btn>
-                    <v-btn flat>Contacts</v-btn>
-                    <v-btn flat> briefcases</v-btn>
-                </v-flex>
-
-                <v-flex>
-                    <v-layout justify-end>
-                        <v-btn flat outline round color="red"> Sign up for free</v-btn>
-                    </v-layout>
-                </v-flex>
-            </v-toolbar>
-            <!-- End Tool Bar -->
-
-            <!-- Second Tool Bar -->
-            <v-layout row wrap id="dropdown-example" style="border-bottom: 1px solid #ccc; ">
-
-                <v-flex xs12 sm2 class="pl-4">
-                    <v-overflow-btn :items="dropdown_font" label="My first Board" target="#dropdown-example" small></v-overflow-btn>
-                </v-flex>
-
-                <v-spacer></v-spacer>
-
-                <v-layout class="pt-3" justify-center>
-                    <v-flex xs12 sm2>
-                        <a href="index.html">
-                            <v-btn class="tooltip elevation-3" color="#000" outline small flat>
-                                <v-icon> dashboard </v-icon> <span class="tooltiptext"> Board </span>
-                            </v-btn>
-                        </a>
-                    </v-flex>
-                    <v-flex xs12 sm2>
-                        <a href="tasks.html">
-                            <v-btn class='tooltip' color="#cccccc" small flat>
-                                <v-icon> list </v-icon> <span class="tooltiptext"> Tasks </span>
-                            </v-btn>
-                        </a>
-                    </v-flex>
-
-                    <v-flex xs12 sm2>
-                        <v-btn class="tooltip" color="#cccccc" small flat href="map.html">
-                            <v-icon> map </v-icon> <span class="tooltiptext"> maps </span>
-                        </v-btn>
-                    </v-flex>
-
-                    <v-flex xs12 sm2>
-                        <v-btn class="tooltip" color="#cccccc" small flat href="metrics.html">
-                            <v-icon> insert_chart </v-icon> <span class="tooltiptext"> metrics </span>
-                        </v-btn>
-                    </v-flex>
-                </v-layout>
-
-                <v-spacer></v-spacer>
-
-                <v-flex xs12 sm2 class="pt-3">
-                    <v-btn outline color="dark" small class="elevation-2">
-                        <v-icon right> share </v-icon> Share Board</v-btn>
-                </v-flex>
+          <v-flex>
+            <v-layout justify-end>
+              <v-btn flat outline round color="red"> Sign up for free</v-btn>
             </v-layout>
-            <!-- End Second Tool Bar -->
+          </v-flex>
+        </v-toolbar>
+        <!-- End Tool Bar -->
 
-            <!-- Main Columns -->
-            <v-layout row align-content-center class="horizontal-scroll">
-                <v-flex xs6 v-for="column in columns">
-                    <v-card width="300px" class="pl-4 pr-4 pt-4" height="100%" style="border-left: 1px solid #4444;" flat>
+        <!-- Second Tool Bar -->
+        <v-layout
+          row
+          wrap
+          id="dropdown-example"
+          style="border-bottom: 1px solid #ccc; "
+        >
+          <v-flex xs12 sm2 class="pl-4">
+            <v-overflow-btn
+              :items="dropdown_font"
+              label="My first Board"
+              target="#dropdown-example"
+              small
+            ></v-overflow-btn>
+          </v-flex>
 
-                        <!-- Column actions -->
-                        <v-card-actions class="white justify-center">
+          <v-spacer></v-spacer>
 
-                            <!-- Column Delete button -->
-                            <v-btn fab icon small>
-                                <v-icon>delete</v-icon>
-                            </v-btn>
-                            <v-spacer></v-spacer>
+          <v-layout class="pt-3" justify-center>
+            <v-flex xs12 sm2>
+              <a href="index.html">
+                <v-btn
+                  class="tooltip elevation-3"
+                  color="#000"
+                  outline
+                  small
+                  flat
+                >
+                  <v-icon> dashboard </v-icon>
+                  <span class="tooltiptext"> Board </span>
+                </v-btn>
+              </a>
+            </v-flex>
+            <v-flex xs12 sm2>
+              <a href="tasks.html">
+                <v-btn class="tooltip" color="#cccccc" small flat>
+                  <v-icon> list </v-icon>
+                  <span class="tooltiptext"> Tasks </span>
+                </v-btn>
+              </a>
+            </v-flex>
 
-                            <!-- Column title -->
-                            <v-card-title style="font-size: 1.5rem;">{{ column.title }}
-                            </v-card-title>
-                            <v-spacer></v-spacer>
+            <v-flex xs12 sm2>
+              <v-btn class="tooltip" color="#cccccc" small flat href="map.html">
+                <v-icon> map </v-icon> <span class="tooltiptext"> maps </span>
+              </v-btn>
+            </v-flex>
 
-                            <!-- Column 'More' button -->
-                            <template>
+            <v-flex xs12 sm2>
+              <v-btn
+                class="tooltip"
+                color="#cccccc"
+                small
+                flat
+                href="metrics.html"
+              >
+                <v-icon> insert_chart </v-icon>
+                <span class="tooltiptext"> metrics </span>
+              </v-btn>
+            </v-flex>
+          </v-layout>
+
+          <v-spacer></v-spacer>
+
+          <v-flex xs12 sm2 class="pt-3">
+            <v-btn outline color="dark" small class="elevation-2">
+              <v-icon right> share </v-icon> Share Board</v-btn
+            >
+          </v-flex>
+        </v-layout>
+        <!-- End Second Tool Bar -->
+
+        <!-- Main Columns -->
+        <v-layout row align-content-center class="horizontal-scroll">
+          <v-flex xs6 v-for="column in columns">
+            <v-card
+              width="300px"
+              class="pl-4 pr-4 pt-4"
+              height="100%"
+              style="border-left: 1px solid #4444;"
+              flat
+            >
+              <!-- Column actions -->
+              <v-card-actions class="white justify-center">
+                <!-- Column Delete button -->
+                <v-btn fab icon small>
+                  <v-icon>delete</v-icon>
+                </v-btn>
+                <v-spacer></v-spacer>
+
+                <!-- Column title -->
+                <v-card-title style="font-size: 1.5rem;"
+                  >{{ column.title }}
+                </v-card-title>
+                <v-spacer></v-spacer>
+
+                <!-- Column 'More' button -->
+                <template>
                   <div class="text-xs-center">
                     <v-menu>
                       <template v-slot:activator="{ on }">
@@ -121,72 +174,87 @@
                           <v-icon>more_horiz</v-icon>
                         </v-btn>
                       </template>
-                            <v-list>
-                                <v-list-tile v-for="(item, index) in more_button_options" :key="index" @click="">
-                                    <v-list-tile-title class="mr-4">{{ item.title }}
-                                    </v-list-tile-title>
-                                    <v-icon class="ml-4">{{ item.icon }}</v-icon>
-                                </v-list-tile>
-                            </v-list>
-                            </v-menu>
-</div>
-</template>
-</v-card-actions>
+                      <v-list>
+                        <v-list-tile
+                          v-for="(item, index) in more_button_options"
+                          :key="index"
+                          @click=""
+                        >
+                          <v-list-tile-title class="mr-4"
+                            >{{ item.title }}
+                          </v-list-tile-title>
+                          <v-icon class="ml-4">{{ item.icon }}</v-icon>
+                        </v-list-tile>
+                      </v-list>
+                    </v-menu>
+                  </div>
+                </template>
+              </v-card-actions>
 
-<!-- Column jobs counter -->
-<v-subheader class="white justify-center">
-    {{ column.jobs }} Jobs
-</v-subheader>
+              <!-- Column jobs counter -->
+              <v-subheader class="white justify-center">
+                {{ column.jobs }} Jobs
+              </v-subheader>
 
-<!-- Add jobs button -->
-<v-btn block>+</v-btn>
+              <!-- Add jobs button -->
+              <v-btn block>+</v-btn>
 
-<!-- Start Job Cards -->
-<!-- Jobs v-for -->
-<div class="vertical-scroll">
-    <v-card v-for="job in filterJobs(column.column)" xs12 :color="job.color" dark max-width="400" class="mb-2">
+              <!-- Start Job Cards -->
+              <!-- Jobs v-for -->
+              <div class="vertical-scroll">
+                <v-card
+                  v-for="job in filterJobs(column.column)"
+                  xs12
+                  :color="job.color"
+                  dark
+                  max-width="400"
+                  class="mb-2"
+                >
+                  <v-list-tile class="job-card">
+                    <v-list-tile-avatar>
+                      <v-img
+                        large
+                        left
+                        :src="job.image"
+                        height="40px"
+                        contain
+                      ></v-img>
+                    </v-list-tile-avatar>
 
-        <v-list-tile class="job-card">
-            <v-list-tile-avatar>
-                <v-img large left :src="job.image" height="40px" contain></v-img>
-            </v-list-tile-avatar>
+                    <v-list-tile-content>
+                      <v-list-tile-title>{{ job.title }}</v-list-tile-title>
+                      <v-list-tile-sub-title>{{
+                        job.subtitle
+                      }}</v-list-tile-sub-title>
+                    </v-list-tile-content>
 
-            <v-list-tile-content>
-                <v-list-tile-title>{{job.title}}</v-list-tile-title>
-                <v-list-tile-sub-title>{{job.subtitle}}</v-list-tile-sub-title>
-            </v-list-tile-content>
-
-            <v-card-actions>
-                <v-list-tile class="grow">
-                    <v-layout align-center justify-end>
-                        <v-btn icon fab>
+                    <v-card-actions>
+                      <v-list-tile class="grow">
+                        <v-layout align-center justify-end>
+                          <v-btn icon fab>
                             <v-icon class="mr-1">mdi-delete</v-icon>
-                        </v-btn>
-                    </v-layout>
-                </v-list-tile>
-            </v-card-actions>
-        </v-list-tile>
+                          </v-btn>
+                        </v-layout>
+                      </v-list-tile>
+                    </v-card-actions>
+                  </v-list-tile>
 
-        <v-card-text class="text-xs-right">
-            added {{job.date_added}} ago
-        </v-card-text>
-    </v-card>
-</div>
-<!-- End Job Cards -->
+                  <v-card-text class="text-xs-right">
+                    added {{ job.date_added }} ago
+                  </v-card-text>
+                </v-card>
+              </div>
+              <!-- End Job Cards -->
+            </v-card>
+          </v-flex>
+        </v-layout>
+        <!-- End Main Columns -->
+      </v-content>
+    </v-app>
+  </div>
 
-</v-card>
-</v-flex>
-</v-layout>
-<!-- End Main Columns -->
-
-</v-content>
-</v-app>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
-<script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
-<script src="code.js"></script>
-
-
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+  <script src="code.js"></script>
 </html>

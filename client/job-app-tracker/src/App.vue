@@ -13,16 +13,15 @@ import SideNav from './components/SideNav.vue'
 import TopNav from './components/TopNav.vue'
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     SideNav,
     TopNav,
   },
-  data () {
-    return {
-    }
+  data() {
+    return {};
   }
-}
+};
 </script>
 
 <style>
