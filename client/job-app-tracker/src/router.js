@@ -8,6 +8,7 @@ import Briefcase from './views/Briefcase.vue';
 import Tasks from './views/Tasks.vue';
 import Metrics from './views/Metrics.vue';
 import Contact from './views/Contact.vue';
+import MyFirstBoard from './views/MyFirstBoard.vue';
 
 Vue.use(Router);
 
@@ -54,6 +55,11 @@ export default new Router({
       path: '/home',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/my-first-board',
+      name: 'my-first-board',
+      component: MyFirstBoard
     },
   ]
 });

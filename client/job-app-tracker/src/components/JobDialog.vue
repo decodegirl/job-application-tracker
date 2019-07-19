@@ -48,7 +48,7 @@
           </v-card-title>
           <v-divider></v-divider>
           <v-card-text class="mt-0">
-            <Tabs :job="job" :todos="todos"/>
+            <Tabs :job="job" :todos="job.todos"/>
           </v-card-text>
         </v-card>
       </v-dialog>

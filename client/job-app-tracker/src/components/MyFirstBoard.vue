@@ -97,10 +97,12 @@
 
 import JobDialog from '../components/JobDialog'
 import TopNavTwo from '../components/TopNavTwo'
+import Tasks from '../components/Tasks'
 export default {
     components: {
         JobDialog,
-        TopNavTwo
+        TopNavTwo,
+        Tasks
     },
   data () {
     return {
@@ -173,7 +175,21 @@ export default {
                     industry: "Internet Software",
                     alexa_global: "ranked 23",
                     alexa_usa: "ranked 7"
-                }
+                },
+                todos: [
+                    {
+                        title: "Follow up to find out status of application",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    },
+                    {
+                        title: "Prepare for phone interview",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    }
+                ]
             },
             {
                 column: 1,
@@ -202,7 +218,27 @@ export default {
                     industry: "Internet Software",
                     alexa_global: "ranked 23",
                     alexa_usa: "ranked 7"
-                }
+                },
+                todos: [
+                    {
+                        title: "Look for openings",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    },
+                    {
+                        title: "Prep for interview",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    },
+                    {
+                        title: "Prepare for interview",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    },
+                ]
             },
             {
                 column: 1,
@@ -231,7 +267,21 @@ export default {
                     industry: "Internet Software",
                     alexa_global: "ranked 23",
                     alexa_usa: "ranked 7"
-                }
+                },
+                todos: [
+                    {
+                        title: "Follow up to find out status of application",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    },
+                    {
+                        title: "Prepare for phone interview",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    }
+                ]
             },
             {
                 column: 1,
@@ -260,7 +310,21 @@ export default {
                     industry: "Internet Software",
                     alexa_global: "ranked 23",
                     alexa_usa: "ranked 7"
-                }
+                },
+                todos: [
+                    {
+                        title: "Follow up to find out status of application",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    },
+                    {
+                        title: "Prepare for phone interview",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    }
+                ]
             },
             {
                 column: 1,
@@ -289,7 +353,21 @@ export default {
                     industry: "Internet Software",
                     alexa_global: "ranked 23",
                     alexa_usa: "ranked 7"
-                }
+                },
+                todos: [
+                    {
+                        title: "Follow up to find out status of application",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    },
+                    {
+                        title: "Prepare for phone interview",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    }
+                ]
             },
             {
                 column: 1,
@@ -318,7 +396,21 @@ export default {
                     industry: "Internet Software",
                     alexa_global: "ranked 23",
                     alexa_usa: "ranked 7"
-                }
+                },
+                todos: [
+                    {
+                        title: "Follow up to find out status of application",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    },
+                    {
+                        title: "Prepare for phone interview",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    }
+                ]
             },
             {
                 column: 2,
@@ -347,7 +439,21 @@ export default {
                     industry: "Internet Software",
                     alexa_global: "ranked 23",
                     alexa_usa: "ranked 7"
-                }
+                },
+                todos: [
+                    {
+                        title: "Follow up to find out status of application",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    },
+                    {
+                        title: "Prepare for phone interview",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    }
+                ]
             },
             {
                 column: 2,
@@ -376,7 +482,21 @@ export default {
                     industry: "Internet Software",
                     alexa_global: "ranked 23",
                     alexa_usa: "ranked 7"
-                }
+                },
+                todos: [
+                    {
+                        title: "Follow up to find out status of application",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    },
+                    {
+                        title: "Prepare for phone interview",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    }
+                ]
             },
             {
                 column: 2,
@@ -405,7 +525,21 @@ export default {
                     industry: "Internet Software",
                     alexa_global: "ranked 23",
                     alexa_usa: "ranked 7"
-                }
+                },
+                todos: [
+                    {
+                        title: "Follow up to find out status of application",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    },
+                    {
+                        title: "Prepare for phone interview",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    }
+                ]
             },
             {
                 column: 2,
@@ -434,7 +568,21 @@ export default {
                     industry: "Internet Software",
                     alexa_global: "ranked 23",
                     alexa_usa: "ranked 7"
-                }
+                },
+                todos: [
+                    {
+                        title: "Follow up to find out status of application",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    },
+                    {
+                        title: "Prepare for phone interview",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    }
+                ]
             },
             {
                 column: 2,
@@ -463,7 +611,21 @@ export default {
                     industry: "Internet Software",
                     alexa_global: "ranked 23",
                     alexa_usa: "ranked 7"
-                }
+                },
+                todos: [
+                    {
+                        title: "Follow up to find out status of application",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    },
+                    {
+                        title: "Prepare for phone interview",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    }
+                ]
             },
             {
                 column: 3,
@@ -492,7 +654,21 @@ export default {
                     industry: "Internet Software",
                     alexa_global: "ranked 23",
                     alexa_usa: "ranked 7"
-                }
+                },
+                todos: [
+                    {
+                        title: "Follow up to find out status of application",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    },
+                    {
+                        title: "Prepare for phone interview",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    }
+                ]
             },
             {
                 column: 3,
@@ -521,7 +697,21 @@ export default {
                     industry: "Internet Software",
                     alexa_global: "ranked 23",
                     alexa_usa: "ranked 7"
-                }
+                },
+                todos: [
+                    {
+                        title: "Follow up to find out status of application",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    },
+                    {
+                        title: "Prepare for phone interview",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    }
+                ]
             },
             {
                 column: 3,
@@ -550,7 +740,21 @@ export default {
                     industry: "Internet Software",
                     alexa_global: "ranked 23",
                     alexa_usa: "ranked 7"
-                }
+                },
+                todos: [
+                    {
+                        title: "Follow up to find out status of application",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    },
+                    {
+                        title: "Prepare for phone interview",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    }
+                ]
             },
             {
                 column: 3,
@@ -579,7 +783,21 @@ export default {
                     industry: "Internet Software",
                     alexa_global: "ranked 23",
                     alexa_usa: "ranked 7"
-                }
+                },
+                todos: [
+                    {
+                        title: "Follow up to find out status of application",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    },
+                    {
+                        title: "Prepare for phone interview",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    }
+                ]
             },
             {
                 column: 4,
@@ -608,7 +826,21 @@ export default {
                     industry: "Internet Software",
                     alexa_global: "ranked 23",
                     alexa_usa: "ranked 7"
-                }
+                },
+                todos: [
+                    {
+                        title: "Follow up to find out status of application",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    },
+                    {
+                        title: "Prepare for phone interview",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    }
+                ]
             },
             {
                 column: 4,
@@ -637,7 +869,21 @@ export default {
                     industry: "Internet Software",
                     alexa_global: "ranked 23",
                     alexa_usa: "ranked 7"
-                }
+                },
+                todos: [
+                    {
+                        title: "Follow up to find out status of application",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    },
+                    {
+                        title: "Prepare for phone interview",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    }
+                ]
             },
             {
                 column: 4,
@@ -666,7 +912,21 @@ export default {
                     industry: "Internet Software",
                     alexa_global: "ranked 23",
                     alexa_usa: "ranked 7"
-                }
+                },
+                todos: [
+                    {
+                        title: "Follow up to find out status of application",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    },
+                    {
+                        title: "Prepare for phone interview",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    }
+                ]
             },
             {
                 column: 5,
@@ -695,7 +955,21 @@ export default {
                     industry: "Internet Software",
                     alexa_global: "ranked 23",
                     alexa_usa: "ranked 7"
-                }
+                },
+                todos: [
+                    {
+                        title: "Follow up to find out status of application",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    },
+                    {
+                        title: "Prepare for phone interview",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    }
+                ]
             },
             {
                 column: 5,
@@ -724,7 +998,21 @@ export default {
                     industry: "Internet Software",
                     alexa_global: "ranked 23",
                     alexa_usa: "ranked 7"
-                }
+                },
+                todos: [
+                    {
+                        title: "Follow up to find out status of application",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    },
+                    {
+                        title: "Prepare for phone interview",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    }
+                ]
             },
             {
                 column: 6,
@@ -753,7 +1041,21 @@ export default {
                     industry: "Internet Software",
                     alexa_global: "ranked 23",
                     alexa_usa: "ranked 7"
-                }
+                },
+                todos: [
+                    {
+                        title: "Follow up to find out status of application",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    },
+                    {
+                        title: "Prepare for phone interview",
+                        position: "Product Manager",
+                        image: "images/google-icon.svg",
+                        active: false
+                    }
+                ]
             }
         ],
 

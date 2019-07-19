@@ -268,11 +268,9 @@
 
 <script>
 import MyFirstBoard from '../components/MyFirstBoard.vue'
-import Tasks from '../components/Tasks.vue'
   export default {
     components: {
-        MyFirstBoard ,
-        Tasks
+        MyFirstBoard 
     },
     
     props:[

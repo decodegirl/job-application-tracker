@@ -9,7 +9,7 @@
 
             <v-layout xs6 class="pt-3" justify-center>
             <v-flex xs3 sm2>
-                <v-btn class="tooltip" color="#ccc" small flat to="/">
+                <v-btn class="tooltip" color="#ccc" small flat to="/my-first-board">
                     <v-icon> dashboard </v-icon> <span class="tooltiptext"> Board </span> 
                 </v-btn>
             </v-flex>

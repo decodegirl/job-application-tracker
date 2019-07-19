@@ -121,128 +121,128 @@
 
 <script>
 
-
   export default {
-  data () {
-    return {
-      items2: [
-            { icon: 'list', iconClass: 'indigo white--text', title: 'all' },
-            { icon: 'star', iconClass: 'amber white--text', title: 'Today' },
-            { icon: 'event', iconClass: 'blue white--text', title: 'Upcoming' },
-            { icon: 'check', iconClass: 'green white--text', title: 'Completed' }
-        ],
-        items3: [{
-            action: 'work',
-            title: 'Jobs',
-            active: true,
-            items3: [
-                { title: 'product engineer' },
-                { title: 'software engineer' },
-                { title: 'senior data engineer' },
-                { title: 'senior data engineer' },
-                { title: 'product manager' },
-                { title: 'product manager' },
-                { title: 'product manager' },
-                { title: 'product manager' },
-                { title: 'product manager' },
-                { title: 'product manager' },
-                { title: 'senior data engineer' },
-                { title: 'Software engineer' },
-                { title: 'product manager' },
-                { title: 'software engineer' }
+
+    data () {
+        return {
+        items2: [
+                { icon: 'list', iconClass: 'indigo white--text', title: 'all' },
+                { icon: 'star', iconClass: 'amber white--text', title: 'Today' },
+                { icon: 'event', iconClass: 'blue white--text', title: 'Upcoming' },
+                { icon: 'check', iconClass: 'green white--text', title: 'Completed' }
+            ],
+            items3: [{
+                action: 'work',
+                title: 'Jobs',
+                active: true,
+                items3: [
+                    { title: 'product engineer' },
+                    { title: 'software engineer' },
+                    { title: 'senior data engineer' },
+                    { title: 'senior data engineer' },
+                    { title: 'product manager' },
+                    { title: 'product manager' },
+                    { title: 'product manager' },
+                    { title: 'product manager' },
+                    { title: 'product manager' },
+                    { title: 'product manager' },
+                    { title: 'senior data engineer' },
+                    { title: 'Software engineer' },
+                    { title: 'product manager' },
+                    { title: 'software engineer' }
+                ]
+            }, ],
+
+            todos: [
+                {
+                    title: "Follow up to find out status of application",
+                    position: "Product Manager",
+                    image: "images/google-icon.svg",
+                    active: false
+                },
+                {
+                    title: "Prepare for phone interview",
+                    position: "Product Manager",
+                    image: "images/google-icon.svg",
+                    active: false
+                },
+                {
+                    title: "Look for openings",
+                    position: "Product Manager",
+                    image: "images/google-icon.svg",
+                    active: false
+                },
+                {
+                    title: "Prep for interview",
+                    position: "Product Manager",
+                    image: "images/google-icon.svg",
+                    active: false
+                },
+                {
+                    title: "Prepare for interview",
+                    position: "Product Manager",
+                    image: "images/google-icon.svg",
+                    active: false
+                },
+                {
+                    title: "Prepare for phone interview with leetcode",
+                    position: "Product Manager",
+                    image: "images/google-icon.svg",
+                    active: false
+                },
+                {
+                    title: "Apply on website",
+                    position: "Product Manager",
+                    image: "images/google-icon.svg",
+                    active: false
+                },
+                {
+                    title: "Send acceptance email!",
+                    position: "Product Manager",
+                    image: "images/google-icon.svg",
+                    active: false
+                },
+                {
+                    title: "Send cover letter",
+                    position: "Product Manager",
+                    image: "images/google-icon.svg",
+                    active: false
+                },
+                {
+                    title: "Send resume",
+                    position: "Product Manager",
+                    image: "images/google-icon.svg",
+                    active: false
+                },
+                {
+                    title: "Email Edwin",
+                    position: "Product Manager",
+                    image: "images/google-icon.svg",
+                    active: false
+                },
+                {
+                    title: "Fill out application",
+                    position: "Product Manager",
+                    image: "images/google-icon.svg",
+                    active: false
+                },
+                {
+                    title: "Work on coding challenge",
+                    position: "Product Manager",
+                    image: "images/google-icon.svg",
+                    active: false
+                }
             ]
-        }, ],
+        }
+    },
 
-         todos: [
-            {
-                title: "Follow up to find out status of application",
-                position: "Product Manager",
-                image: "images/google-icon.svg",
-                active: false
-            },
-            {
-                title: "Prepare for phone interview",
-                position: "Product Manager",
-                image: "images/google-icon.svg",
-                active: false
-            },
-            {
-                title: "Look for openings",
-                position: "Product Manager",
-                image: "images/google-icon.svg",
-                active: false
-            },
-            {
-                title: "Prep for interview",
-                position: "Product Manager",
-                image: "images/google-icon.svg",
-                active: false
-            },
-            {
-                title: "Prepare for interview",
-                position: "Product Manager",
-                image: "images/google-icon.svg",
-                active: false
-            },
-            {
-                title: "Prepare for phone interview with leetcode",
-                position: "Product Manager",
-                image: "images/google-icon.svg",
-                active: false
-            },
-            {
-                title: "Apply on website",
-                position: "Product Manager",
-                image: "images/google-icon.svg",
-                active: false
-            },
-            {
-                title: "Send acceptance email!",
-                position: "Product Manager",
-                image: "images/google-icon.svg",
-                active: false
-            },
-            {
-                title: "Send cover letter",
-                position: "Product Manager",
-                image: "images/google-icon.svg",
-                active: false
-            },
-            {
-                title: "Send resume",
-                position: "Product Manager",
-                image: "images/google-icon.svg",
-                active: false
-            },
-            {
-                title: "Email Edwin",
-                position: "Product Manager",
-                image: "images/google-icon.svg",
-                active: false
-            },
-            {
-                title: "Fill out application",
-                position: "Product Manager",
-                image: "images/google-icon.svg",
-                active: false
-            },
-            {
-                title: "Work on coding challenge",
-                position: "Product Manager",
-                image: "images/google-icon.svg",
-                active: false
-            }
-        ]
-    }
-  },
-
-  methods: {
-      
-  },
-
-  mounted: function() {
+    methods: {
         
-  },
+    },
+
+    mounted: function() {
+            
+    },
 }
    
       
