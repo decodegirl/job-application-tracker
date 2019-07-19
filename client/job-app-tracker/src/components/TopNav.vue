@@ -1,9 +1,9 @@
 <template>
     <v-toolbar flat style="background-color: #ffffff; border-bottom: 1px solid #ccc;" xs9>
         <v-flex xs6>
-            <v-btn flat>Boards</v-btn>
-            <v-btn flat>Contacts</v-btn>
-            <v-btn flat> briefcases</v-btn>
+            <v-btn flat to="/" >Boards</v-btn>
+            <v-btn flat to="/contact">Contacts</v-btn>
+            <v-btn flat to="/briefcase"> Briefcases</v-btn>
         </v-flex>
 
         <v-flex>

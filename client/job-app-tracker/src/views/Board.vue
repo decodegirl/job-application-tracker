@@ -1,12 +1,21 @@
 <template>
-  <Board />
+<v-layout v-if="first_board">
+  <MyFirstBoard />
+</v-layout>
 </template>
 
 <script>
-import Board from '../components/Board'
+import MyFirstBoard from '../components/MyFirstBoard'
   export default {
+
     components: {
-      Board
+      MyFirstBoard
+    },
+
+    data() {
+      return {
+        first_board: true,
+      }
     }
   }
 </script>

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <TopNavTwo />
     <Tasks />
     Map Page
   </div>
@@ -7,10 +8,12 @@
 
 <script>
   import Tasks from '../components/Tasks'
+  import TopNavTwo from '../components/TopNavTwo'
 
   export default {
     components: {
-      Tasks
+      Tasks,
+      TopNavTwo
     }
   }
 </script>

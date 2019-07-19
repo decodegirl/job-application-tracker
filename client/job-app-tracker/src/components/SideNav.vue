@@ -8,7 +8,6 @@
                 <img :src="require('../assets/thumbtack.png')" height="auto" width="15px" class="mt-4 mr-4"/>
                 <img :src="require('../assets/settings.png')" height="auto" width="15px" class="mt-4 mr-4"/>
                 <img :src="require('../assets/power-off.png')" height="auto" width="15px" class="mt-4 mr-4"/>
-
               </v-list-tile-action>
           </v-list-tile>
       </v-list>

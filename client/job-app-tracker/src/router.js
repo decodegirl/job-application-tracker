@@ -42,5 +42,15 @@ export default new Router({
       name: 'test',
       component: () => import(/* webpackChunkName: "test" */ './views/Test.vue')
     },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: () => import(/* webpackChunkName: "contact" */ './views/Contact.vue')
+    },
+    {
+      path: '/briefcase',
+      name: 'briefcase',
+      component: () => import(/* webpackChunkName: "briefcase" */ './views/Briefcase.vue')
+    },
   ]
 })
