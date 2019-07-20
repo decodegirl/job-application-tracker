@@ -7,26 +7,22 @@
             <v-btn :color="job.color" style="color: #fff">Move</v-btn>
           </v-flex>
         </v-layout>
+
         <v-divider></v-divider>
+
         <v-card-title>
           <v-layout row>
-            <v-flex xs2>
+            <v-flex xs1>
               <v-avatar class="mr-3">
-                <v-img
-                  large
-                  left
-                  :src="job.image"
-                  height="30px"
-                  contain
-                ></v-img>
+                <v-img :src="`//logo.clearbit.com/${job.image}.com`"></v-img>
               </v-avatar>
             </v-flex>
-            <v-flex xs4>
+            <v-flex xs10>
               <span class="headline">{{ job.title }}</span
               ><br />
-              <h3 style="color: #ccc;">{{ job.subtitle }}</h3>
+              <h3 style="color: #ccc;">{{ job.subTitle }}</h3>
             </v-flex>
-            <v-flex xs6>
+            <v-flex xs1>
               <v-layout justify-end>
                 <v-card-actions>
                   <v-btn icon flat>
@@ -41,7 +37,9 @@
             </v-flex>
           </v-layout>
         </v-card-title>
+
         <v-divider></v-divider>
+
         <v-card-text class="mt-0">
           <Tabs :job="job" :todos="job.todos" />
         </v-card-text>

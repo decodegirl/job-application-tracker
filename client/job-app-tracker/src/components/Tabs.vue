@@ -267,11 +267,8 @@
 </template>
 
 <script>
-// import MyFirstBoard from '../components/MyFirstBoard.vue'
 export default {
-  components: {
-    // MyFirstBoard
-  },
+  components: {},
 
   props: ["job", "todos"],
 
