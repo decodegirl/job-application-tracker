@@ -60,7 +60,7 @@ server.post("/jobs", function(req, res) {
     .create({
       company: req.body.company,
       title: req.body.title,
-      stage: req.body.stage
+      columnId: req.body.columnId
     })
     .then(function(job) {
       res.status(201);
