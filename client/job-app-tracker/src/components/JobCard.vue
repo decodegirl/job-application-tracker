@@ -14,7 +14,7 @@
             class="mb-2 pb-4"
           >
             <v-list-tile :class="job.color" class="pt-2">
-              <v-list-tile-avatar :size="24" class="pb-2">
+              <v-list-tile-avatar :size="24" class="pb-2 pl-2">
                 <v-img
                   :src="`//logo.clearbit.com/${job.image}.com`"
                   alt="avatar"
