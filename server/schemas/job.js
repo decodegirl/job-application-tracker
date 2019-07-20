@@ -9,7 +9,7 @@ const jobsSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  stage: {
+  columnId: {
     type: String,
     required: true
   },
