@@ -398,8 +398,7 @@ body {
   overflow-x: auto;
 }
 .ghost {
-  color: #ccc;
-  background-color: #ccc;
+  opacity: 0.3;
 }
 .job-card {
   padding-top: 5px;

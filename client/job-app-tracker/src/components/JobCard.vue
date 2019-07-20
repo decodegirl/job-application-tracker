@@ -11,7 +11,7 @@
             :color="job.color"
             :max-width="width"
             height="70"
-            class="mb-2 pb-4"
+            class="mt-2 pb-4"
           >
             <v-list-tile :class="job.color" class="pt-2">
               <v-list-tile-avatar :size="24" class="pb-2 pl-2">
@@ -37,7 +37,7 @@
               </v-list-tile-action>
             </v-list-tile>
             <v-list-tile-content
-              class="text-xs-right pr-3 pt-4 pb-1"
+              class="text-xs-right pr-3 pt-4"
               :class="job.color"
             >
               <v-list-tile-sub-title class="font-weight-light caption">
