@@ -1,14 +1,14 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import Board from './views/Board.vue';
-import Map from './views/Map.vue';
+import Vue from "vue";
+import Router from "vue-router";
+import Homepage from "./views/Homepage.vue";
 import Home from "./views/Home.vue";
-import About from './views/About.vue';
-import Briefcase from './views/Briefcase.vue';
-import Tasks from './views/Tasks.vue';
-import Metrics from './views/Metrics.vue';
-import Contact from './views/Contact.vue';
-import MyFirstBoard from './views/MyFirstBoard.vue';
+import Map from "./views/Map.vue";
+import About from "./views/About.vue";
+import Briefcase from "./views/Briefcase.vue";
+import Tasks from "./views/Tasks.vue";
+import Metrics from "./views/Metrics.vue";
+import Contact from "./views/Contact.vue";
+import BoardCollection from "./views/BoardCollection.vue";
 
 Vue.use(Router);
 
@@ -17,9 +17,9 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
-      name: 'board',
-      component: Board
+      path: "/",
+      name: "homepage",
+      component: Homepage
     },
     {
       path: "/about",
@@ -27,39 +27,39 @@ export default new Router({
       component: About
     },
     {
-      path: '/map',
-      name: 'map',
+      path: "/map",
+      name: "map",
       component: Map
     },
     {
-      path: '/tasks',
-      name: 'tasks',
+      path: "/tasks",
+      name: "tasks",
       component: Tasks
     },
     {
-      path: '/metrics',
-      name: 'metrics',
+      path: "/metrics",
+      name: "metrics",
       component: Metrics
     },
     {
-      path: '/contact',
-      name: 'contact',
+      path: "/contact",
+      name: "contact",
       component: Contact
     },
     {
-      path: '/briefcase',
-      name: 'briefcase',
+      path: "/briefcase",
+      name: "briefcase",
       component: Briefcase
     },
     {
-      path: '/home',
-      name: 'home',
+      path: "/home",
+      name: "home",
       component: Home
     },
     {
-      path: '/my-first-board',
-      name: 'my-first-board',
-      component: MyFirstBoard
-    },
+      path: "/boards",
+      name: "boards",
+      component: BoardCollection
+    }
   ]
 });

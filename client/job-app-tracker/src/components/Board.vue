@@ -1,1102 +1,426 @@
 <template>
-    <div>
-        <TopNavTwo />
-        <v-layout row align-content-center class="horizontal-scroll">
-            <v-flex xs6 v-for="column in columns">
-                <v-card width="300px" class="pl-4 pr-4 pt-4" height="100%" style="border-left: 1px solid #4444;" flat>
-                    <v-card-actions v-if="column.column == columns.length">
-                        <v-btn style="width: 100%" flat large>+ Add List</v-btn>
-                    </v-card-actions>
+  <!-- Main Columns -->
+  <v-layout row align-content-center class="horizontal-scroll">
+    <v-flex v-for="column in columns" :key="column.id">
+      <v-card
+        width="330px"
+        height="100%"
+        class="pl-3 pr-3 pt-3"
+        style="border-left: 1px solid #4444;"
+        flat
+      >
+        <!-- Column actions -->
+        <v-card-actions class="white justify-center">
+          <!-- Column Delete button -->
+          <v-btn fab icon small>
+            <v-icon>delete</v-icon>
+          </v-btn>
+          <v-spacer></v-spacer>
 
-                    <div v-if="column.column != columns.length">
-                        <!-- Column actions -->
-                        <v-card-actions class="white">
-                            <v-layout row>
-                                <v-flex xs2 text-xs-left>
-                                    <!-- Column Delete button -->
-                                    <v-btn fab icon small>
-                                        <v-icon>delete</v-icon>
-                                    </v-btn>
-                                </v-flex>
-                                
-                                <v-flex xs8>
-                                    <!-- Column title -->
-                                    <v-card-title class="mb-0 pb-0 pt-0 justify-center" style="font-size: 1.5rem;">
-                                        {{ column.title }}
-                                    </v-card-title>
-                                    <!-- Column jobs counter -->
-                                    <v-subheader class="white justify-center mt-0">
-                                        {{ column.jobs }} Jobs
-                                    </v-subheader>
-                                </v-flex>
+          <!-- Column title -->
+          <v-card-title style="font-size: 1.5rem;">
+            {{ column.title }}
+          </v-card-title>
+          <v-spacer></v-spacer>
 
-                                <v-flex xs2 text-xs-right>
-                                    <!-- Column 'More' button -->
-                                    <v-menu>
-                                        <template v-slot:activator="{ on }">
-                                            <v-btn fab icon small v-on="on">
-                                                <v-icon>more_horiz</v-icon>
-                                            </v-btn>
-                                        </template>
-                                        <v-list>
-                                            <v-list-tile v-for="(item, index) in more_button_options" :key="index" @click="">
-                                                <v-list-tile-title class="mr-4">{{ item.title }}</v-list-tile-title>
-                                                <v-icon class="ml-4">{{ item.icon }}</v-icon>
-                                            </v-list-tile>
-                                        </v-list>
-                                    </v-menu>
-                                </v-flex>
-                            </v-layout>
-                        </v-card-actions>
-                        
-                        <!-- Add jobs button -->
-                        <v-btn class=" mt-0 mb-2 ml-0 mr-0 pt-0" style="width: 100%">+</v-btn>
-                    
-                        <!-- Start Job Cards -->
-                        <!-- Jobs v-for -->
-                        <div class="vertical-scroll">
-                        
-                            <v-card v-for="job in filterJobs(column.column)" xs12 :color="job.color" dark max-width="400" class="mb-2" @click="">
-                                <v-list-tile class="job-card">
-                                    <v-list-tile-avatar class="pa-0">
-                                        <v-img large flat left :src="job.image" height="30px" contain></v-img>
-                                    </v-list-tile-avatar>
+          <!-- Column 'More' button -->
+          <template>
+            <div class="text-xs-center">
+              <v-menu>
+                <template v-slot:activator="{ on }">
+                  <v-btn fab icon small v-on="on">
+                    <v-icon>more_horiz</v-icon>
+                  </v-btn>
+                </template>
+                <v-list>
+                  <v-list-tile
+                    v-for="(item, index) in more_button_options"
+                    :key="index"
+                  >
+                    <v-list-tile-title class="mr-4">
+                      {{ item.title }}
+                    </v-list-tile-title>
+                    <v-icon class="ml-4">{{ item.icon }}</v-icon>
+                  </v-list-tile>
+                </v-list>
+              </v-menu>
+            </div>
+          </template>
+        </v-card-actions>
 
-                                    <JobDialog :job="job"/>
+        <!-- Column jobs counter -->
+        <v-subheader class="white justify-center"
+          >{{ column.jobs.length }} Jobs</v-subheader
+        >
 
-                                    
+        <!-- Add jobs button -->
+        <v-btn block>+</v-btn>
 
-                                    <v-card-actions>
-                                        <v-list-tile>
-                                            <v-layout align-center justify-end>
-                                                <v-flex>
-                                                    <v-btn icon fab small>
-                                                        <v-icon>delete</v-icon>
-                                                    </v-btn>
-                                                </v-flex>
-                                            </v-layout>
-                                        </v-list-tile>
-                                    </v-card-actions>
-                                </v-list-tile>
+        <!-- Start Job Cards -->
 
-                                <v-card-text class="text-xs-right mt-0 pt-0" style="font-size: .8rem">
-                                    added {{job.date_added}} ago
-                                </v-card-text>
-                            </v-card>
-                        </div>
-                        <!-- End Job Cards -->
-                    </div>
-                </v-card>
-            </v-flex>
-        </v-layout>
-        <!-- End Main Columns -->
-    </div>
+        <div class="vertical-scroll">
+          <Draggable
+            :list="column.jobs"
+            group="occupation"
+            :disabled="!enabled"
+            ghost-class="ghost"
+            :move="checkMove"
+            @start="dragging = true"
+            @end="dragging = false"
+          >
+            <JobCard
+              v-for="job in column.jobs"
+              :key="job.id"
+              :job="job"
+              :color="job.color"
+            />
+          </Draggable>
+        </div>
+
+        <!-- End Job Cards -->
+      </v-card>
+    </v-flex>
+  </v-layout>
+  <!-- End Main Columns -->
 </template>
 
 <script>
+import Draggable from "vuedraggable";
+import JobCard from "../components/JobCard.vue";
 
-import JobDialog from '../components/JobDialog'
-import TopNavTwo from '../components/TopNavTwo'
-import Tasks from '../components/Tasks'
 export default {
-    components: {
-        JobDialog,
-        TopNavTwo,
-        Tasks
-    },
-  data () {
+  components: {
+    Draggable,
+    JobCard
+  },
+  data() {
     return {
-        columns: [
+      enabled: true,
+      dragging: false,
+      more_button_options: [
+        { title: "Move list", icon: "open_with" },
+        { title: "Rename", icon: "edit" }
+      ],
+      columns: [
+        {
+          id: 0,
+          title: "WISHLIST",
+          jobs: []
+        },
+        {
+          id: 1,
+          title: "APPLIED",
+          jobs: []
+        },
+        {
+          id: 2,
+          title: "PHONE",
+          jobs: []
+        },
+        {
+          id: 3,
+          title: "ON SITE",
+          jobs: []
+        },
+        {
+          id: 4,
+          title: "OFFER",
+          jobs: []
+        },
+        {
+          id: 5,
+          title: "REJECTED",
+          jobs: []
+        }
+      ],
+
+      jobs: [
+        {
+          id: 1,
+          column: 1,
+          color: "green",
+          title: "Google",
+          subTitle: "Product Manager",
+          date_added: "2 Years",
+          image: "google",
+          location: "548 Market St, San Francisco, CA 94104, USA",
+          salary: "$90,000",
+          post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
+          deadline: "+set date",
+          applied: "+set date",
+          interview1: "+set date",
+          interview2: "+set date",
+          offer: "+set date",
+          description: "This is my job description ",
+          notes: "+ Add Note",
+          company_info: {
+            title: "Google",
+            description: "This is my company description",
+            website: "www.companywebsite.com",
+            founded: "2005",
+            type: "Private",
+            country: "United States",
+            industry: "Internet Software",
+            alexa_global: "ranked 23",
+            alexa_usa: "ranked 7"
+          },
+          todos: [
             {
-                column: 1,
-                title: "WISHLIST",
-                jobs: 6
+              title: "Follow up to find out status of application",
+              position: "Product Manager",
+              image: "images/google-icon.svg",
+              active: false
             },
             {
-                column: 2,
-                title: "APPLIED",
-                jobs: 5
-            },
-            {
-                column: 3,
-                title: "PHONE",
-                jobs: 4
-            },
-            {
-                column: 4,
-                title: "ON SITE",
-                jobs: 3
-            },
-            {
-                column: 5,
-                title: "OFFER",
-                jobs: 2
-            },
-            {
-                column: 6,
-                title: "REJECTED",
-                jobs: 1
-            },
-            {
-                column: 7,
+              title: "Prepare for phone interview",
+              position: "Product Manager",
+              image: "images/google-icon.svg",
+              active: false
             }
-        ],
-
-        more_button_options: [
-            { title: "Move list", icon: "open_with" },
-            { title: "Rename", icon: "edit" }
-        ],
-
-        jobs: [
+          ]
+        },
+        {
+          id: 2,
+          column: 0,
+          color: "blue",
+          title: "Twitter",
+          subTitle: "Product Manager",
+          date_added: "2 Years",
+          image: "twitter",
+          location: "548 Market St, San Francisco, CA 94104, USA",
+          salary: "$90,000",
+          post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
+          deadline: "+set date",
+          applied: "+set date",
+          interview1: "+set date",
+          interview2: "+set date",
+          offer: "+set date",
+          description: "This is my job description ",
+          notes: "+ Add Note",
+          company_info: {
+            title: "Twitter",
+            description: "This is my company description",
+            website: "www.companywebsite.com",
+            founded: "2005",
+            type: "Private",
+            country: "United States",
+            industry: "Internet Software",
+            alexa_global: "ranked 23",
+            alexa_usa: "ranked 7"
+          },
+          todos: [
             {
-                column: 1,
-                color: "green",
-                title: "Google",
-                subtitle: "Product Manager",
-                date_added: "2 Years",
-                image: require("../assets/google-icon.svg"),
-                location: "548 Market St, San Francisco, CA 94104, USA",
-                salary: "$90,000",
-                post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
-                deadline: "+set date",
-                applied: "+set date",
-                interview1: "+set date",
-                interview2: "+set date",
-                offer: "+set date",
-                description: "This is my job description ",
-                notes: "+ Add Note",
-                company_info: {
-                    title: "Google",
-                    description: "This is my company description",
-                    website: "www.companywebsite.com",
-                    founded: "2005",
-                    type: "Private",
-                    country: "United States",
-                    industry: "Internet Software",
-                    alexa_global: "ranked 23",
-                    alexa_usa: "ranked 7"
-                },
-                todos: [
-                    {
-                        title: "Follow up to find out status of application",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    },
-                    {
-                        title: "Prepare for phone interview",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    }
-                ]
+              title: "Look for openings",
+              position: "Product Manager",
+              image: "images/google-icon.svg",
+              active: false
             },
             {
-                column: 1,
-                color: "yellow",
-                title: "Twitter",
-                subtitle: "Product Manager",
-                date_added: "2 Years",
-                image: require("../assets/google-icon.svg"),
-                location: "548 Market St, San Francisco, CA 94104, USA",
-                salary: "$90,000",
-                post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
-                deadline: "+set date",
-                applied: "+set date",
-                interview1: "+set date",
-                interview2: "+set date",
-                offer: "+set date",
-                description: "This is my job description ",
-                notes: "+ Add Note",
-                company_info: {
-                    title: "Twitter",
-                    description: "This is my company description",
-                    website: "www.companywebsite.com",
-                    founded: "2005",
-                    type: "Private",
-                    country: "United States",
-                    industry: "Internet Software",
-                    alexa_global: "ranked 23",
-                    alexa_usa: "ranked 7"
-                },
-                todos: [
-                    {
-                        title: "Look for openings",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    },
-                    {
-                        title: "Prep for interview",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    },
-                    {
-                        title: "Prepare for interview",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    },
-                ]
+              title: "Prep for interview",
+              position: "Product Manager",
+              image: "images/google-icon.svg",
+              active: false
             },
             {
-                column: 1,
-                color: "blue",
-                title: "WeWork",
-                subtitle: "Product Manager",
-                date_added: "2 Years",
-                image: require("../assets/google-icon.svg"),
-                location: "548 Market St, San Francisco, CA 94104, USA",
-                salary: "$90,000",
-                post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
-                deadline: "+set date",
-                applied: "+set date",
-                interview1: "+set date",
-                interview2: "+set date",
-                offer: "+set date",
-                description: "This is my job description ",
-                notes: "+ Add Note",
-                company_info: {
-                    title: "WeWork",
-                    description: "This is my company description",
-                    website: "www.companywebsite.com",
-                    founded: "2005",
-                    type: "Private",
-                    country: "United States",
-                    industry: "Internet Software",
-                    alexa_global: "ranked 23",
-                    alexa_usa: "ranked 7"
-                },
-                todos: [
-                    {
-                        title: "Follow up to find out status of application",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    },
-                    {
-                        title: "Prepare for phone interview",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    }
-                ]
-            },
-            {
-                column: 1,
-                color: "pink",
-                title: "Weave",
-                subtitle: "Product Manager",
-                date_added: "2 Years",
-                image: require("../assets/google-icon.svg"),
-                location: "548 Market St, San Francisco, CA 94104, USA",
-                salary: "$90,000",
-                post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
-                deadline: "+set date",
-                applied: "+set date",
-                interview1: "+set date",
-                interview2: "+set date",
-                offer: "+set date",
-                description: "This is my job description ",
-                notes: "+ Add Note",
-                company_info: {
-                    title: "Weave",
-                    description: "This is my company description",
-                    website: "www.companywebsite.com",
-                    founded: "2005",
-                    type: "Private",
-                    country: "United States",
-                    industry: "Internet Software",
-                    alexa_global: "ranked 23",
-                    alexa_usa: "ranked 7"
-                },
-                todos: [
-                    {
-                        title: "Follow up to find out status of application",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    },
-                    {
-                        title: "Prepare for phone interview",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    }
-                ]
-            },
-            {
-                column: 1,
-                color: "purple",
-                title: "Weave",
-                subtitle: "Product Manager",
-                date_added: "2 Years",
-                image: require("../assets/google-icon.svg"),
-                location: "548 Market St, San Francisco, CA 94104, USA",
-                salary: "$90,000",
-                post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
-                deadline: "+set date",
-                applied: "+set date",
-                interview1: "+set date",
-                interview2: "+set date",
-                offer: "+set date",
-                description: "This is my job description ",
-                notes: "+ Add Note",
-                company_info: {
-                    title: "Weave",
-                    description: "This is my company description",
-                    website: "www.companywebsite.com",
-                    founded: "2005",
-                    type: "Private",
-                    country: "United States",
-                    industry: "Internet Software",
-                    alexa_global: "ranked 23",
-                    alexa_usa: "ranked 7"
-                },
-                todos: [
-                    {
-                        title: "Follow up to find out status of application",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    },
-                    {
-                        title: "Prepare for phone interview",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    }
-                ]
-            },
-            {
-                column: 1,
-                color: "red",
-                title: "Weave",
-                subtitle: "Product Manager",
-                date_added: "2 Years",
-                image: require("../assets/google-icon.svg"),
-                location: "548 Market St, San Francisco, CA 94104, USA",
-                salary: "$90,000",
-                post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
-                deadline: "+set date",
-                applied: "+set date",
-                interview1: "+set date",
-                interview2: "+set date",
-                offer: "+set date",
-                description: "This is my job description ",
-                notes: "+ Add Note",
-                company_info: {
-                    title: "Weave",
-                    description: "This is my company description",
-                    website: "www.companywebsite.com",
-                    founded: "2005",
-                    type: "Private",
-                    country: "United States",
-                    industry: "Internet Software",
-                    alexa_global: "ranked 23",
-                    alexa_usa: "ranked 7"
-                },
-                todos: [
-                    {
-                        title: "Follow up to find out status of application",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    },
-                    {
-                        title: "Prepare for phone interview",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    }
-                ]
-            },
-            {
-                column: 2,
-                color: "orange",
-                title: "Weave",
-                subtitle: "Product Manager",
-                date_added: "2 Years",
-                image: require("../assets/google-icon.svg"),
-                location: "548 Market St, San Francisco, CA 94104, USA",
-                salary: "$90,000",
-                post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
-                deadline: "+set date",
-                applied: "+set date",
-                interview1: "+set date",
-                interview2: "+set date",
-                offer: "+set date",
-                description: "This is my job description ",
-                notes: "+ Add Note",
-                company_info: {
-                    title: "Weave",
-                    description: "This is my company description",
-                    website: "www.companywebsite.com",
-                    founded: "2005",
-                    type: "Private",
-                    country: "United States",
-                    industry: "Internet Software",
-                    alexa_global: "ranked 23",
-                    alexa_usa: "ranked 7"
-                },
-                todos: [
-                    {
-                        title: "Follow up to find out status of application",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    },
-                    {
-                        title: "Prepare for phone interview",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    }
-                ]
-            },
-            {
-                column: 2,
-                color: "purple",
-                title: "Weave",
-                subtitle: "Product Manager",
-                date_added: "2 Years",
-                image: require("../assets/google-icon.svg"),
-                location: "548 Market St, San Francisco, CA 94104, USA",
-                salary: "$90,000",
-                post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
-                deadline: "+set date",
-                applied: "+set date",
-                interview1: "+set date",
-                interview2: "+set date",
-                offer: "+set date",
-                description: "This is my job description ",
-                notes: "+ Add Note",
-                company_info: {
-                    title: "Weave",
-                    description: "This is my company description",
-                    website: "www.companywebsite.com",
-                    founded: "2005",
-                    type: "Private",
-                    country: "United States",
-                    industry: "Internet Software",
-                    alexa_global: "ranked 23",
-                    alexa_usa: "ranked 7"
-                },
-                todos: [
-                    {
-                        title: "Follow up to find out status of application",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    },
-                    {
-                        title: "Prepare for phone interview",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    }
-                ]
-            },
-            {
-                column: 2,
-                color: "green",
-                title: "Weave",
-                subtitle: "Product Manager",
-                date_added: "2 Years",
-                image: require("../assets/google-icon.svg"),
-                location: "548 Market St, San Francisco, CA 94104, USA",
-                salary: "$90,000",
-                post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
-                deadline: "+set date",
-                applied: "+set date",
-                interview1: "+set date",
-                interview2: "+set date",
-                offer: "+set date",
-                description: "This is my job description ",
-                notes: "+ Add Note",
-                company_info: {
-                    title: "Weave",
-                    description: "This is my company description",
-                    website: "www.companywebsite.com",
-                    founded: "2005",
-                    type: "Private",
-                    country: "United States",
-                    industry: "Internet Software",
-                    alexa_global: "ranked 23",
-                    alexa_usa: "ranked 7"
-                },
-                todos: [
-                    {
-                        title: "Follow up to find out status of application",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    },
-                    {
-                        title: "Prepare for phone interview",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    }
-                ]
-            },
-            {
-                column: 2,
-                color: "yellow",
-                title: "Weave",
-                subtitle: "Product Manager",
-                date_added: "2 Years",
-                image: require("../assets/google-icon.svg"),
-                location: "548 Market St, San Francisco, CA 94104, USA",
-                salary: "$90,000",
-                post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
-                deadline: "+set date",
-                applied: "+set date",
-                interview1: "+set date",
-                interview2: "+set date",
-                offer: "+set date",
-                description: "This is my job description ",
-                notes: "+ Add Note",
-                company_info: {
-                    title: "Weave",
-                    description: "This is my company description",
-                    website: "www.companywebsite.com",
-                    founded: "2005",
-                    type: "Private",
-                    country: "United States",
-                    industry: "Internet Software",
-                    alexa_global: "ranked 23",
-                    alexa_usa: "ranked 7"
-                },
-                todos: [
-                    {
-                        title: "Follow up to find out status of application",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    },
-                    {
-                        title: "Prepare for phone interview",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    }
-                ]
-            },
-            {
-                column: 2,
-                color: "purple",
-                title: "Weave",
-                subtitle: "Product Manager",
-                date_added: "2 Years",
-                image: require("../assets/google-icon.svg"),
-                location: "548 Market St, San Francisco, CA 94104, USA",
-                salary: "$90,000",
-                post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
-                deadline: "+set date",
-                applied: "+set date",
-                interview1: "+set date",
-                interview2: "+set date",
-                offer: "+set date",
-                description: "This is my job description ",
-                notes: "+ Add Note",
-                company_info: {
-                    title: "Weave",
-                    description: "This is my company description",
-                    website: "www.companywebsite.com",
-                    founded: "2005",
-                    type: "Private",
-                    country: "United States",
-                    industry: "Internet Software",
-                    alexa_global: "ranked 23",
-                    alexa_usa: "ranked 7"
-                },
-                todos: [
-                    {
-                        title: "Follow up to find out status of application",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    },
-                    {
-                        title: "Prepare for phone interview",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    }
-                ]
-            },
-            {
-                column: 3,
-                color: "green",
-                title: "Weave",
-                subtitle: "Product Manager",
-                date_added: "2 Years",
-                image: require("../assets/google-icon.svg"),
-                location: "548 Market St, San Francisco, CA 94104, USA",
-                salary: "$90,000",
-                post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
-                deadline: "+set date",
-                applied: "+set date",
-                interview1: "+set date",
-                interview2: "+set date",
-                offer: "+set date",
-                description: "This is my job description ",
-                notes: "+ Add Note",
-                company_info: {
-                    title: "Weave",
-                    description: "This is my company description",
-                    website: "www.companywebsite.com",
-                    founded: "2005",
-                    type: "Private",
-                    country: "United States",
-                    industry: "Internet Software",
-                    alexa_global: "ranked 23",
-                    alexa_usa: "ranked 7"
-                },
-                todos: [
-                    {
-                        title: "Follow up to find out status of application",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    },
-                    {
-                        title: "Prepare for phone interview",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    }
-                ]
-            },
-            {
-                column: 3,
-                color: "orange",
-                title: "Weave",
-                subtitle: "Product Manager",
-                date_added: "2 Years",
-                image: require("../assets/google-icon.svg"),
-                location: "548 Market St, San Francisco, CA 94104, USA",
-                salary: "$90,000",
-                post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
-                deadline: "+set date",
-                applied: "+set date",
-                interview1: "+set date",
-                interview2: "+set date",
-                offer: "+set date",
-                description: "This is my job description ",
-                notes: "+ Add Note",
-                company_info: {
-                    title: "Weave",
-                    description: "This is my company description",
-                    website: "www.companywebsite.com",
-                    founded: "2005",
-                    type: "Private",
-                    country: "United States",
-                    industry: "Internet Software",
-                    alexa_global: "ranked 23",
-                    alexa_usa: "ranked 7"
-                },
-                todos: [
-                    {
-                        title: "Follow up to find out status of application",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    },
-                    {
-                        title: "Prepare for phone interview",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    }
-                ]
-            },
-            {
-                column: 3,
-                color: "purple",
-                title: "Weave",
-                subtitle: "Product Manager",
-                date_added: "2 Years",
-                image: require("../assets/google-icon.svg"),
-                location: "548 Market St, San Francisco, CA 94104, USA",
-                salary: "$90,000",
-                post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
-                deadline: "+set date",
-                applied: "+set date",
-                interview1: "+set date",
-                interview2: "+set date",
-                offer: "+set date",
-                description: "This is my job description ",
-                notes: "+ Add Note",
-                company_info: {
-                    title: "Weave",
-                    description: "This is my company description",
-                    website: "www.companywebsite.com",
-                    founded: "2005",
-                    type: "Private",
-                    country: "United States",
-                    industry: "Internet Software",
-                    alexa_global: "ranked 23",
-                    alexa_usa: "ranked 7"
-                },
-                todos: [
-                    {
-                        title: "Follow up to find out status of application",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    },
-                    {
-                        title: "Prepare for phone interview",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    }
-                ]
-            },
-            {
-                column: 3,
-                color: "yellow",
-                title: "Weave",
-                subtitle: "Product Manager",
-                date_added: "2 Years",
-                image: require("../assets/google-icon.svg"),
-                location: "548 Market St, San Francisco, CA 94104, USA",
-                salary: "$90,000",
-                post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
-                deadline: "+set date",
-                applied: "+set date",
-                interview1: "+set date",
-                interview2: "+set date",
-                offer: "+set date",
-                description: "This is my job description ",
-                notes: "+ Add Note",
-                company_info: {
-                    title: "Weave",
-                    description: "This is my company description",
-                    website: "www.companywebsite.com",
-                    founded: "2005",
-                    type: "Private",
-                    country: "United States",
-                    industry: "Internet Software",
-                    alexa_global: "ranked 23",
-                    alexa_usa: "ranked 7"
-                },
-                todos: [
-                    {
-                        title: "Follow up to find out status of application",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    },
-                    {
-                        title: "Prepare for phone interview",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    }
-                ]
-            },
-            {
-                column: 4,
-                color: "pink",
-                title: "Weave",
-                subtitle: "Product Manager",
-                date_added: "2 Years",
-                image: require("../assets/google-icon.svg"),
-                location: "548 Market St, San Francisco, CA 94104, USA",
-                salary: "$90,000",
-                post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
-                deadline: "+set date",
-                applied: "+set date",
-                interview1: "+set date",
-                interview2: "+set date",
-                offer: "+set date",
-                description: "This is my job description ",
-                notes: "+ Add Note",
-                company_info: {
-                    title: "Weave",
-                    description: "This is my company description",
-                    website: "www.companywebsite.com",
-                    founded: "2005",
-                    type: "Private",
-                    country: "United States",
-                    industry: "Internet Software",
-                    alexa_global: "ranked 23",
-                    alexa_usa: "ranked 7"
-                },
-                todos: [
-                    {
-                        title: "Follow up to find out status of application",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    },
-                    {
-                        title: "Prepare for phone interview",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    }
-                ]
-            },
-            {
-                column: 4,
-                color: "blue",
-                title: "Weave",
-                subtitle: "Product Manager",
-                date_added: "2 Years",
-                image: require("../assets/google-icon.svg"),
-                location: "548 Market St, San Francisco, CA 94104, USA",
-                salary: "$90,000",
-                post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
-                deadline: "+set date",
-                applied: "+set date",
-                interview1: "+set date",
-                interview2: "+set date",
-                offer: "+set date",
-                description: "This is my job description ",
-                notes: "+ Add Note",
-                company_info: {
-                    title: "Weave",
-                    description: "This is my company description",
-                    website: "www.companywebsite.com",
-                    founded: "2005",
-                    type: "Private",
-                    country: "United States",
-                    industry: "Internet Software",
-                    alexa_global: "ranked 23",
-                    alexa_usa: "ranked 7"
-                },
-                todos: [
-                    {
-                        title: "Follow up to find out status of application",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    },
-                    {
-                        title: "Prepare for phone interview",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    }
-                ]
-            },
-            {
-                column: 4,
-                color: "green",
-                title: "Weave",
-                subtitle: "Product Manager",
-                date_added: "2 Years",
-                image: require("../assets/google-icon.svg"),
-                location: "548 Market St, San Francisco, CA 94104, USA",
-                salary: "$90,000",
-                post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
-                deadline: "+set date",
-                applied: "+set date",
-                interview1: "+set date",
-                interview2: "+set date",
-                offer: "+set date",
-                description: "This is my job description ",
-                notes: "+ Add Note",
-                company_info: {
-                    title: "Weave",
-                    description: "This is my company description",
-                    website: "www.companywebsite.com",
-                    founded: "2005",
-                    type: "Private",
-                    country: "United States",
-                    industry: "Internet Software",
-                    alexa_global: "ranked 23",
-                    alexa_usa: "ranked 7"
-                },
-                todos: [
-                    {
-                        title: "Follow up to find out status of application",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    },
-                    {
-                        title: "Prepare for phone interview",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    }
-                ]
-            },
-            {
-                column: 5,
-                color: "red",
-                title: "Weave",
-                subtitle: "Product Manager",
-                date_added: "2 Years",
-                image: require("../assets/google-icon.svg"),
-                location: "548 Market St, San Francisco, CA 94104, USA",
-                salary: "$90,000",
-                post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
-                deadline: "+set date",
-                applied: "+set date",
-                interview1: "+set date",
-                interview2: "+set date",
-                offer: "+set date",
-                description: "This is my job description ",
-                notes: "+ Add Note",
-                company_info: {
-                    title: "Weave",
-                    description: "This is my company description",
-                    website: "www.companywebsite.com",
-                    founded: "2005",
-                    type: "Private",
-                    country: "United States",
-                    industry: "Internet Software",
-                    alexa_global: "ranked 23",
-                    alexa_usa: "ranked 7"
-                },
-                todos: [
-                    {
-                        title: "Follow up to find out status of application",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    },
-                    {
-                        title: "Prepare for phone interview",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    }
-                ]
-            },
-            {
-                column: 5,
-                color: "orange",
-                title: "Weave",
-                subtitle: "Product Manager",
-                date_added: "2 Years",
-                image: require("../assets/google-icon.svg"),
-                location: "548 Market St, San Francisco, CA 94104, USA",
-                salary: "$90,000",
-                post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
-                deadline: "+set date",
-                applied: "+set date",
-                interview1: "+set date",
-                interview2: "+set date",
-                offer: "+set date",
-                description: "This is my job description ",
-                notes: "+ Add Note",
-                company_info: {
-                    title: "Weave",
-                    description: "This is my company description",
-                    website: "www.companywebsite.com",
-                    founded: "2005",
-                    type: "Private",
-                    country: "United States",
-                    industry: "Internet Software",
-                    alexa_global: "ranked 23",
-                    alexa_usa: "ranked 7"
-                },
-                todos: [
-                    {
-                        title: "Follow up to find out status of application",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    },
-                    {
-                        title: "Prepare for phone interview",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    }
-                ]
-            },
-            {
-                column: 6,
-                color: "yellow",
-                title: "Weave",
-                subtitle: "Product Manager",
-                date_added: "2 Years",
-                image: require("../assets/google-icon.svg"),
-                location: "548 Market St, San Francisco, CA 94104, USA",
-                salary: "$90,000",
-                post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
-                deadline: "+set date",
-                applied: "+set date",
-                interview1: "+set date",
-                interview2: "+set date",
-                offer: "+set date",
-                description: "This is my job description ",
-                notes: "+ Add Note",
-                company_info: {
-                    title: "Weave",
-                    description: "This is my company description",
-                    website: "www.companywebsite.com",
-                    founded: "2005",
-                    type: "Private",
-                    country: "United States",
-                    industry: "Internet Software",
-                    alexa_global: "ranked 23",
-                    alexa_usa: "ranked 7"
-                },
-                todos: [
-                    {
-                        title: "Follow up to find out status of application",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    },
-                    {
-                        title: "Prepare for phone interview",
-                        position: "Product Manager",
-                        image: "images/google-icon.svg",
-                        active: false
-                    }
-                ]
+              title: "Prepare for interview",
+              position: "Product Manager",
+              image: "images/google-icon.svg",
+              active: false
             }
-        ],
+          ]
+        },
+        {
+          id: 3,
+          column: 1,
+          color: "grey",
+          title: "Genius",
+          subTitle: "Product Manager",
+          date_added: "2 Years",
+          image: "genius",
+          location: "548 Market St, San Francisco, CA 94104, USA",
+          salary: "$90,000",
+          post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
+          deadline: "+set date",
+          applied: "+set date",
+          interview1: "+set date",
+          interview2: "+set date",
+          offer: "+set date",
+          description: "This is my job description ",
+          notes: "+ Add Note",
+          company_info: {
+            title: "Genius",
+            description: "This is my company description",
+            website: "www.companywebsite.com",
+            founded: "2005",
+            type: "Private",
+            country: "United States",
+            industry: "Internet Software",
+            alexa_global: "ranked 23",
+            alexa_usa: "ranked 7"
+          },
+          todos: [
+            {
+              title: "Follow up to find out status of application",
+              position: "Product Manager",
+              image: "images/google-icon.svg",
+              active: false
+            },
+            {
+              title: "Prepare for phone interview",
+              position: "Product Manager",
+              image: "images/google-icon.svg",
+              active: false
+            }
+          ]
+        },
+        {
+          id: 4,
+          column: 1,
+          color: "pink",
+          title: "Weave",
+          subTitle: "Product Manager",
+          date_added: "2 Years",
+          image: "getweave",
+          location: "548 Market St, San Francisco, CA 94104, USA",
+          salary: "$90,000",
+          post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
+          deadline: "+set date",
+          applied: "+set date",
+          interview1: "+set date",
+          interview2: "+set date",
+          offer: "+set date",
+          description: "This is my job description ",
+          notes: "+ Add Note",
+          company_info: {
+            title: "Weave",
+            description: "This is my company description",
+            website: "www.companywebsite.com",
+            founded: "2005",
+            type: "Private",
+            country: "United States",
+            industry: "Internet Software",
+            alexa_global: "ranked 23",
+            alexa_usa: "ranked 7"
+          },
+          todos: [
+            {
+              title: "Follow up to find out status of application",
+              position: "Product Manager",
+              image: "images/google-icon.svg",
+              active: false
+            },
+            {
+              title: "Prepare for phone interview",
+              position: "Product Manager",
+              image: "images/google-icon.svg",
+              active: false
+            }
+          ]
+        },
+        {
+          id: 5,
+          column: 1,
+          color: "purple",
+          title: "Hashicorp",
+          subTitle: "Product Manager",
+          date_added: "2 Years",
+          image: "hashicorp",
+          location: "548 Market St, San Francisco, CA 94104, USA",
+          salary: "$90,000",
+          post_url: "https://boards.greenhouse.io/reddit#.WM7nNhLyu34",
+          deadline: "+set date",
+          applied: "+set date",
+          interview1: "+set date",
+          interview2: "+set date",
+          offer: "+set date",
+          description: "This is my job description ",
+          notes: "+ Add Note",
+          company_info: {
+            title: "Hasicorp",
+            description: "This is my company description",
+            website: "www.companywebsite.com",
+            founded: "2005",
+            type: "Private",
+            country: "United States",
+            industry: "Internet Software",
+            alexa_global: "ranked 23",
+            alexa_usa: "ranked 7"
+          },
+          todos: [
+            {
+              title: "Follow up to find out status of application",
+              position: "Product Manager",
+              image: "images/google-icon.svg",
+              active: false
+            },
+            {
+              title: "Prepare for phone interview",
+              position: "Product Manager",
+              image: "images/google-icon.svg",
+              active: false
+            }
+          ]
+        }
+      ]
+    };
+  },
 
-    }
+  created: function() {
+    this.jobs.forEach(job => {
+      this.columns[job.column].jobs.push(job);
+    });
   },
 
   methods: {
-      filterJobs: function(index) {
-            var sorted_jobs = this.jobs.filter(function(job) {
-                return job.column == index;
-            });
-            return sorted_jobs;
-        },
+    filterJobs: function(index) {
+      var sorted_jobs = this.jobs.filter(function(job) {
+        return job.column == index;
+      });
+      return sorted_jobs;
+    },
+    checkMove(e) {
+      window.console.log(`Future index: ${e.draggedContext.futureIndex}`);
+    }
   }
-}
-   
-      
+};
 </script>
 
 <style>
-    .job-card {
-            padding-top: 5px;
-        }
-        
-        .horizontal-scroll {
-            overflow-x: auto;
-        }
-        
-        .vertical-scroll {
-            height: 290px;
-            overflow: hidden;
-            overflow-y: auto;
-        }
-        
-        .column-height {
-            height: "900px";
-            overflow: scroll;
-        }
+html,
+body {
+  height: 100%;
+}
+.vertical-scroll {
+  max-height: 50vh;
+  overflow-y: auto;
+}
+.horizontal-scroll {
+  overflow-x: auto;
+}
+.ghost {
+  color: #ccc;
+  background-color: #ccc;
+}
+.job-card {
+  padding-top: 5px;
+}
 
-        .v-list__tile {
-            padding: 0 2px;
-        }
+.horizontal-scroll {
+  overflow-x: auto;
+}
 
+.vertical-scroll {
+  height: 290px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.column-height {
+  height: "900px";
+  overflow: scroll;
+}
+
+.v-list__tile {
+  padding: 0 2px;
+}
 </style>

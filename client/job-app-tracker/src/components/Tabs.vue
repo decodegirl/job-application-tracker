@@ -1,6 +1,6 @@
 <template>
     <v-container fill-height pa-0 ma-0>
-        
+
         <v-layout row>
             <v-item-group
             v-model="window"
@@ -62,7 +62,7 @@
                                             </v-flex>
                                         </v-layout>
                                     </v-flex>
-                                    
+
                                     <v-flex xs6>
                                         <h3>Log Dates</h3>
                                         <v-layout row wrap>
@@ -188,7 +188,7 @@
                                         </v-flex>
                                     </v-layout>
                                 </v-flex>
-                                
+
                                 <v-flex xs6>
                                     <v-layout row wrap>
                                         <v-flex xs12>
@@ -229,7 +229,7 @@
                                         <v-card-text>
                                             <p><v-icon>email </v-icon> billymcmahon@email.com</p>
                                             <p><v-icon>place </v-icon> Mountain View, CA, USA</p>
-                                        </v-card-text> 
+                                        </v-card-text>
                                         <v-divider></v-divider>
                                         <v-layout row justify-center>
                                             <v-flex xs4>
@@ -267,42 +267,39 @@
 </template>
 
 <script>
-import MyFirstBoard from '../components/MyFirstBoard.vue'
-  export default {
-    components: {
-        MyFirstBoard 
-    },
-    
-    props:[
-        "job",
-        "todos"
-    ],
+// import MyFirstBoard from '../components/MyFirstBoard.vue'
+export default {
+  components: {
+    // MyFirstBoard
+  },
 
-    data: () => ({
-        date: new Date().toISOString().substr(0, 10),
-        menu: false,
-        new_todo_input: "",
-        pages: [
-            {
-                tab_title: "Job Info"
-            },
-            {
-                tab_title: "Tasks"
-            },
-            {
-                tab_title: "Notes"
-            },
-            {
-                tab_title: "Company"
-            },
-            {
-                tab_title: "Directory"
-            },
-            {
-                tab_title: "Leads"
-            }
-        ],
-      window: 0
-    })
-  }
+  props: ["job", "todos"],
+
+  data: () => ({
+    date: new Date().toISOString().substr(0, 10),
+    menu: false,
+    new_todo_input: "",
+    pages: [
+      {
+        tab_title: "Job Info"
+      },
+      {
+        tab_title: "Tasks"
+      },
+      {
+        tab_title: "Notes"
+      },
+      {
+        tab_title: "Company"
+      },
+      {
+        tab_title: "Directory"
+      },
+      {
+        tab_title: "Leads"
+      }
+    ],
+    window: 0
+  })
+};
 </script>

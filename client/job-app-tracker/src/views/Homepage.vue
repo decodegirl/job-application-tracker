@@ -1,19 +1,20 @@
 <template>
-    <div>
-      <MyFirstBoard />
-    </div>
+  <div>
+    <TopNavTwo />
+    <Board />
+  </div>
 </template>
 
 <script>
-import MyFirstBoard from '../components/MyFirstBoard.vue'
+import Board from "../components/Board.vue";
+import TopNavTwo from "../components/TopNavTwo.vue";
 export default {
-    components: {
-        MyFirstBoard
-    },
-    data(){
-        return {
-
-        }
-    }
-}
+  components: {
+    Board,
+    TopNavTwo
+  },
+  data() {
+    return {};
+  }
+};
 </script>

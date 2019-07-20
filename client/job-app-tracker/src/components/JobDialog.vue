@@ -1,157 +1,153 @@
 <template>
-  <v-list-tile-content>                            
+  <v-list-tile-content>
     <v-layout>
-      <v-dialog v-model="dialog" persistent max-width="900px">
-        <template v-slot:activator="{ on }">
-          <v-layout wrap>
-            <v-flex >
-              <v-list-tile-title v-on="on" >{{job.title}}</v-list-tile-title>
+      <v-card>
+        <v-layout row justify-end>
+          <v-flex xs2 class="mt-2 mb-2">
+            <v-btn :color="job.color" style="color: #fff">Move</v-btn>
+          </v-flex>
+        </v-layout>
+        <v-divider></v-divider>
+        <v-card-title>
+          <v-layout row>
+            <v-flex xs2>
+              <v-avatar class="mr-3">
+                <v-img
+                  large
+                  left
+                  :src="job.image"
+                  height="30px"
+                  contain
+                ></v-img>
+              </v-avatar>
             </v-flex>
+            <v-flex xs4>
+              <span class="headline">{{ job.title }}</span
+              ><br />
+              <h3 style="color: #ccc;">{{ job.subtitle }}</h3>
+            </v-flex>
+            <v-flex xs6>
+              <v-layout justify-end>
+                <v-card-actions>
+                  <v-btn icon flat>
+                    <v-icon>more_horiz</v-icon>
+                  </v-btn>
 
-            <v-flex >
-              <p v-on="on" style="font-size: .9rem;"> {{ job.subtitle }}</p>
+                  <v-btn icon flat>
+                    <v-icon fab @click="handleDialogClose()">close</v-icon>
+                  </v-btn>
+                </v-card-actions>
+              </v-layout>
             </v-flex>
           </v-layout>
-        </template>
-        <v-card>
-          <v-layout row justify-end>
-              <v-flex xs2 class="mt-2 mb-2">
-                <v-btn :color="job.color" style="color: #fff">Move</v-btn>
-              </v-flex>
-            </v-layout>
-            <v-divider></v-divider>
-          <v-card-title>
-            <v-layout row>
-              <v-flex xs2>
-                <v-avatar class="mr-3">
-                  <v-img large left :src="job.image" height="30px" contain></v-img>
-                </v-avatar>
-              </v-flex>
-              <v-flex xs4>
-              <span class="headline">{{job.title}}</span><br>
-              <h3 style="color: #ccc;">{{job.subtitle}}</h3>
-              </v-flex>
-              <v-flex xs6>
-                <v-layout justify-end>
-                  <v-card-actions>
-                    <v-btn icon flat >
-                      <v-icon>more_horiz</v-icon>
-                    </v-btn>
-
-                    <v-btn icon flat>
-                      <v-icon fab @click="dialog = false">close</v-icon>
-                    </v-btn>
-                  </v-card-actions>
-                </v-layout>
-              </v-flex>
-            </v-layout>
-          </v-card-title>
-          <v-divider></v-divider>
-          <v-card-text class="mt-0">
-            <Tabs :job="job" :todos="job.todos"/>
-          </v-card-text>
-        </v-card>
-      </v-dialog>
+        </v-card-title>
+        <v-divider></v-divider>
+        <v-card-text class="mt-0">
+          <Tabs :job="job" :todos="job.todos" />
+        </v-card-text>
+      </v-card>
     </v-layout>
   </v-list-tile-content>
 </template>
 
 <script>
-  import Tabs from './Tabs.vue'
-  export default {
+import Tabs from "./Tabs.vue";
+export default {
+  components: {
+    Tabs
+  },
 
-    components: {
-        Tabs
-    },
+  props: ["job", "dialogState"],
 
-    props: [
-      "job"
-    ],
-    
-    data (){
-        return {
-            dialog: false,
-            todos: [
-              {
-                  title: "Follow up to find out status of application",
-                  position: "Product Manager",
-                  image: "images/google-icon.svg",
-                  active: false
-              },
-              {
-                  title: "Prepare for phone interview",
-                  position: "Product Manager",
-                  image: "images/google-icon.svg",
-                  active: false
-              },
-              {
-                  title: "Look for openings",
-                  position: "Product Manager",
-                  image: "images/google-icon.svg",
-                  active: false
-              },
-              {
-                  title: "Prep for interview",
-                  position: "Product Manager",
-                  image: "images/google-icon.svg",
-                  active: false
-              },
-              {
-                  title: "Prepare for interview",
-                  position: "Product Manager",
-                  image: "images/google-icon.svg",
-                  active: false
-              },
-              {
-                  title: "Prepare for phone interview with leetcode",
-                  position: "Product Manager",
-                  image: "images/google-icon.svg",
-                  active: false
-              },
-              {
-                  title: "Apply on website",
-                  position: "Product Manager",
-                  image: "images/google-icon.svg",
-                  active: false
-              },
-              {
-                  title: "Send acceptance email!",
-                  position: "Product Manager",
-                  image: "images/google-icon.svg",
-                  active: false
-              },
-              {
-                  title: "Send cover letter",
-                  position: "Product Manager",
-                  image: "images/google-icon.svg",
-                  active: false
-              },
-              {
-                  title: "Send resume",
-                  position: "Product Manager",
-                  image: "images/google-icon.svg",
-                  active: false
-              },
-              {
-                  title: "Email Edwin",
-                  position: "Product Manager",
-                  image: "images/google-icon.svg",
-                  active: false
-              },
-              {
-                  title: "Fill out application",
-                  position: "Product Manager",
-                  image: "images/google-icon.svg",
-                  active: false
-              },
-              {
-                  title: "Work on coding challenge",
-                  position: "Product Manager",
-                  image: "images/google-icon.svg",
-                  active: false
-              }
-          ]
+  data() {
+    return {
+      todos: [
+        {
+          title: "Follow up to find out status of application",
+          position: "Product Manager",
+          image: "images/google-icon.svg",
+          active: false
+        },
+        {
+          title: "Prepare for phone interview",
+          position: "Product Manager",
+          image: "images/google-icon.svg",
+          active: false
+        },
+        {
+          title: "Look for openings",
+          position: "Product Manager",
+          image: "images/google-icon.svg",
+          active: false
+        },
+        {
+          title: "Prep for interview",
+          position: "Product Manager",
+          image: "images/google-icon.svg",
+          active: false
+        },
+        {
+          title: "Prepare for interview",
+          position: "Product Manager",
+          image: "images/google-icon.svg",
+          active: false
+        },
+        {
+          title: "Prepare for phone interview with leetcode",
+          position: "Product Manager",
+          image: "images/google-icon.svg",
+          active: false
+        },
+        {
+          title: "Apply on website",
+          position: "Product Manager",
+          image: "images/google-icon.svg",
+          active: false
+        },
+        {
+          title: "Send acceptance email!",
+          position: "Product Manager",
+          image: "images/google-icon.svg",
+          active: false
+        },
+        {
+          title: "Send cover letter",
+          position: "Product Manager",
+          image: "images/google-icon.svg",
+          active: false
+        },
+        {
+          title: "Send resume",
+          position: "Product Manager",
+          image: "images/google-icon.svg",
+          active: false
+        },
+        {
+          title: "Email Edwin",
+          position: "Product Manager",
+          image: "images/google-icon.svg",
+          active: false
+        },
+        {
+          title: "Fill out application",
+          position: "Product Manager",
+          image: "images/google-icon.svg",
+          active: false
+        },
+        {
+          title: "Work on coding challenge",
+          position: "Product Manager",
+          image: "images/google-icon.svg",
+          active: false
+        }
+      ]
+    };
+  },
+
+  methods: {
+    handleDialogClose: function() {
+      this.$emit("clickedSth");
     }
   }
-}
+};
 </script>
