@@ -166,12 +166,14 @@ export default {
           },
           todos: [
             {
+              id: 1,
               title: "Follow up to find out status of application",
               position: "Product Manager",
               image: "images/google-icon.svg",
               active: false
             },
             {
+              id: 2,
               title: "Prepare for phone interview",
               position: "Product Manager",
               image: "images/google-icon.svg",
@@ -210,18 +212,21 @@ export default {
           },
           todos: [
             {
+              id: 3,
               title: "Look for openings",
               position: "Product Manager",
               image: "images/google-icon.svg",
               active: false
             },
             {
+              id: 4,
               title: "Prep for interview",
               position: "Product Manager",
               image: "images/google-icon.svg",
               active: false
             },
             {
+              id: 5,
               title: "Prepare for interview",
               position: "Product Manager",
               image: "images/google-icon.svg",
@@ -260,12 +265,14 @@ export default {
           },
           todos: [
             {
+              id: 6,
               title: "Follow up to find out status of application",
               position: "Product Manager",
               image: "images/google-icon.svg",
               active: false
             },
             {
+              id: 7,
               title: "Prepare for phone interview",
               position: "Product Manager",
               image: "images/google-icon.svg",
@@ -304,12 +311,14 @@ export default {
           },
           todos: [
             {
+              id: 8,
               title: "Follow up to find out status of application",
               position: "Product Manager",
               image: "images/google-icon.svg",
               active: false
             },
             {
+              id: 9,
               title: "Prepare for phone interview",
               position: "Product Manager",
               image: "images/google-icon.svg",
@@ -348,12 +357,14 @@ export default {
           },
           todos: [
             {
+              id: 10,
               title: "Follow up to find out status of application",
               position: "Product Manager",
               image: "images/google-icon.svg",
               active: false
             },
             {
+              id: 11,
               title: "Prepare for phone interview",
               position: "Product Manager",
               image: "images/google-icon.svg",
