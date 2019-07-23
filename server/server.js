@@ -126,7 +126,7 @@ server.post("/jobs", function(req, res) {
 });
 
 // Post stages
-server.post("/stage", function(req, res) {
+server.post("/stages", function(req, res) {
   stagesModel
     .create({
       stage: req.body.stage
