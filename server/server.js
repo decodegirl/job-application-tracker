@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const login = require('./login');
 
 var server = express();
 
@@ -10,6 +11,12 @@ var port = process.env.PORT || 3000;
 server.use(cors());
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
+
+// first make sure the user is logged in
+server.use(login);
+
+//serve static files
+server.use(express.static('dist'));
 
 const jobsModel = require("./schemas/job.js");
 const stagesModel = require("./schemas/stages.js");
