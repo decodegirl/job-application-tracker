@@ -10,7 +10,7 @@
         flat
       >
         <!-- Column actions -->
-        <v-card-actions class="white justify-center pa-0">
+        <v-card-actions class="white justify-center">
           <!-- Column Delete button -->
           <v-btn fab icon small>
             <v-icon>delete</v-icon>

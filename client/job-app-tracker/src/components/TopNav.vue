@@ -13,7 +13,8 @@
 
     <v-flex>
       <v-layout justify-end>
-        <v-btn flat outline round small color="red"> Sign up for free</v-btn>
+        <!-- <v-btn flat outline round color="red"> Sign up for free</v-btn>-->
+        <a href="/users/logout"><v-btn flat outline round color="red"> Logout </v-btn></a>
       </v-layout>
     </v-flex>
   </v-toolbar>
