@@ -6,21 +6,32 @@
       wrap
       id="dropdown-example"
       style="border-bottom: 1px solid #ccc;"
+      align-center
     >
-      <v-flex xs3 class="pl-4 pt-2">
-        <v-overflow-btn
-          height="10px"
-          :items="dropdown_font"
-          label="My first Board"
-          target="#dropdown-example"
-          box
-          outline
-          flat
-          style="width: 100%;"
-        ></v-overflow-btn>
+      <v-flex xs3>
+        <v-menu>
+          <template v-slot:activator="{ on }">
+            <v-btn
+              flat
+              outline
+              v-on="on"
+            >
+              My first board
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-tile
+              v-for="(item, index) in items"
+              :key="index"
+              @click=""
+            >
+              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
       </v-flex>
 
-      <v-layout xs6 class="pt-3" justify-center>
+      <v-layout xs6 justify-center>
         <v-flex xs3 sm2>
           <v-btn class="tooltip" color="#ccc" small flat to="/">
             <v-icon> dashboard </v-icon>
@@ -46,7 +57,7 @@
           </v-btn>
         </v-flex>
       </v-layout>
-      <v-flex xs3 class="pt-3 pr-4" text-xs-right>
+      <v-flex xs3 text-xs-right>
         <v-btn outline flat color="#000" small class="">
           <v-icon right> share </v-icon> Share Board
         </v-btn>
@@ -62,7 +73,9 @@
 export default {
   data() {
     return {
-      dropdown_font: ["My firstBoard"]
+      items: [
+        { title: 'My First Board' }
+      ]
     };
   }
 };

@@ -8,27 +8,27 @@ const jobsSchema = mongoose.Schema({
   },
   column: {
     type: Number,
-    required: true,
+    required: false,
     default: 1
   },
   color: {
     type: String,
-    required: true,
+    required: false,
     default: "blue"
   },
   title: {
     type: String,
-    required: true,
+    required: false,
     default: ""
   },
   sub_title: {
     type: String,
-    required: true,
+    required: false,
     default: ""
   },
   date_added: {
     type: String,
-    required: true,
+    required: false,
     default: new Date().toDateString()
   },
   image: {
@@ -141,7 +141,7 @@ const jobsSchema = mongoose.Schema({
       },
       title: {
         type: String,
-        required: true
+        required: false
       },
       position: {
         type: String,

@@ -1,7 +1,8 @@
 <template>
   <v-toolbar
     flat
-    style="background-color: #ffffff; border-bottom: 1px solid #ccc;"
+    style="background-color: #ffffff; border-bottom: 1px solid #ccc;" 
+    height="40px"
     xs9
   >
     <v-flex xs6>
@@ -12,7 +13,7 @@
 
     <v-flex>
       <v-layout justify-end>
-        <v-btn flat outline round color="red"> Sign up for free</v-btn>
+        <v-btn flat outline round small color="red"> Sign up for free</v-btn>
       </v-layout>
     </v-flex>
   </v-toolbar>
