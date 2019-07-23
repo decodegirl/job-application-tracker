@@ -20,10 +20,6 @@ server.use(login);
 // serve static files
 server.use(express.static("dist"));
 
-// server.use("/", (req, res, next) => {
-//     console.log(req.url);
-//     next();
-// })
 
 const jobsModel = require("./schemas/job.js");
 const stagesModel = require("./schemas/stages.js");
