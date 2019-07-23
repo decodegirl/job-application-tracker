@@ -68,11 +68,23 @@ server.delete("/stages/:id", function( req, res ) {
   });
 });
 
+//  update jobs
+server.put("/jobs/:id", function(req, res) {
+  jobsModel.findByIdAndUpdate(req.params.id).then(function(){
+
+  }).catch(function(error){
+    var response = {
+      msg: error.message
+    };
+    res.status(400);
+    res.json(response);
+  });
+});
+
 // Post Jobs
 server.post("/jobs", function(req, res) {
   jobsModel
     .create({
-      id: req.body.id,
       column: req.body.column,
       color: req.body.color,
       title: req.body.title,

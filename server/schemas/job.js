@@ -1,9 +1,14 @@
 const mongoose = require("mongoose");
 
 const jobsSchema = mongoose.Schema({
-  id: {
-    type: Number,
-    required: false,
+  title: {
+    type: String,
+    required: true,
+    default: ""
+  },
+  sub_title: {
+    type: String,
+    required: true,
     default: ""
   },
   column: {
@@ -15,16 +20,6 @@ const jobsSchema = mongoose.Schema({
     type: String,
     required: true,
     default: "blue"
-  },
-  title: {
-    type: String,
-    required: true,
-    default: ""
-  },
-  sub_title: {
-    type: String,
-    required: true,
-    default: ""
   },
   date_added: {
     type: String,
@@ -135,10 +130,6 @@ const jobsSchema = mongoose.Schema({
   },
   todos: [
     {
-      id: {
-        type: Number,
-        required: false
-      },
       title: {
         type: String,
         required: true
@@ -159,12 +150,12 @@ const jobsSchema = mongoose.Schema({
       }
     }
   ]
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
   // id: {
   //   type: Number,
   //   required: true
