@@ -1,9 +1,14 @@
 const mongoose = require("mongoose");
 
 const jobsSchema = mongoose.Schema({
-  id: {
-    type: Number,
-    required: false,
+  title: {
+    type: String,
+    required: true,
+    default: ""
+  },
+  sub_title: {
+    type: String,
+    required: true,
     default: ""
   },
   column: {
@@ -15,16 +20,6 @@ const jobsSchema = mongoose.Schema({
     type: String,
     required: false,
     default: "blue"
-  },
-  title: {
-    type: String,
-    required: false,
-    default: ""
-  },
-  sub_title: {
-    type: String,
-    required: false,
-    default: ""
   },
   date_added: {
     type: String,
@@ -135,20 +130,7 @@ const jobsSchema = mongoose.Schema({
   },
   todos: [
     {
-      id: {
-        type: Number,
-        required: false
-      },
-      title: {
-        type: String,
-        required: false
-      },
-      position: {
-        type: String,
-        required: false,
-        default: "+ add position"
-      },
-      image: {
+      content: {
         type: String,
         required: false
       },
@@ -159,45 +141,6 @@ const jobsSchema = mongoose.Schema({
       }
     }
   ]
-  
-  
-  
-  
-  
-  
-  // id: {
-  //   type: Number,
-  //   required: true
-  // },
-  // company: {
-  //   type: String,
-  //   required: true
-  // },
-  // title: {
-  //   type: String,
-  //   required: true
-  // },
-  // columnId: {
-  //   type: String,
-  //   required: true
-  // },
-  // location: {
-  //   type: String,
-  //   required: false
-  // },
-  // salary: {
-  //   type: String,
-  //   required: false
-  // },
-  // postURL: {
-  //   type: String,
-  //   required: false
-  // },
-  // date: {
-  //   type: String,
-  //   required: true,
-  //   default: new Date().toDateString()
-  // }
 });
 
 var model = mongoose.model("jobs", jobsSchema);

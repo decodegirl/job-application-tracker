@@ -152,19 +152,19 @@ export default {
     checkMove(e) {
       window.console.log(`Future index: ${e.draggedContext.futureIndex}`);
     },
-    
-    loadJobs: function () {
+
+    loadJobs: function() {
       var self = this;
-      fetch( `${ this.url }/jobs` ).then( (response) => {
-          console.log(response.status);
-          response.json(  ).then( (data) => {
-              self.jobs = data.jobs;
-              console.log(data.jobs);
-              console.log(self.jobs);
-              this.jobs.forEach(job => {
-                this.columns[job.column].jobs.push(job);
-              });
+      fetch(`${this.url}/jobs`).then(response => {
+        console.log(response.status);
+        response.json().then(data => {
+          self.jobs = data.jobs;
+          console.log(data.jobs);
+          console.log(self.jobs);
+          this.jobs.forEach(job => {
+            this.columns[job.column].jobs.push(job);
           });
+        });
       });
     }
   }
