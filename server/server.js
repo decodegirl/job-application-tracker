@@ -14,7 +14,8 @@ server.use(express.urlencoded({ extended: false }));
 const jobsModel = require("./schemas/job.js");
 const stagesModel = require("./schemas/stages.js");
 
-// REST endpoints
+/** ------------ Stages Endpoints --------------- */
+
 server.get("/stages", function (req, res) {
   stagesModel
     .find()
@@ -27,34 +28,22 @@ server.get("/stages", function (req, res) {
     });
 });
 
-// Get jobs
-server.get("/jobs", function (req, res) {
-  jobsModel
-    .find()
-    .then(function (jobs) {
-      res.status(200);
-      res.json({ jobs: jobs });
+server.post("/stages", function (req, res) {
+  stagesModel
+    .create({
+      stage: req.body.stage
     })
-    .catch(function (error) {
-      res.status(400).json({ msg: error.message });
+    .then(function (stage) {
+      res.status(201);
+      // log the stage for development purposes
+      res.json(stage);
+    })
+    .catch(function (err) {
+      res.status(400);
+      res.json({ msg: err.message });
     });
 });
 
-// Delete jobs
-server.delete("/jobs/:id", function (req, res) {
-  jobsModel.findByIdAndDelete(req.params.id).then(function () {
-    res.status(204);
-    res.send();
-  }).catch(function (error) {
-    var response = {
-      msg: error.message
-    };
-    res.status(400);
-    res.json(response);
-  });
-});
-
-// Delete stages
 server.delete("/stages/:id", function (req, res) {
   stagesModel.findByIdAndDelete(req.params.id).then(function () {
     res.status(204);
@@ -68,21 +57,18 @@ server.delete("/stages/:id", function (req, res) {
   });
 });
 
-// update jobs
-server.put("/jobs/:id", function (req, res) {
-  const options = {
-    new: true
-  }
-  jobsModel.findByIdAndUpdate(req.params.id, req.body, options).then(function (doc) {
-    res.status(200);
-    res.send(doc);
-  }).catch(function (error) {
-    var response = {
-      msg: error.message
-    };
-    res.status(400);
-    res.json(response);
-  });
+/** ------------ Jobs Endpoints --------------- */
+
+server.get("/jobs", function (req, res) {
+  jobsModel
+    .find()
+    .then(function (jobs) {
+      res.status(200);
+      res.json({ jobs: jobs });
+    })
+    .catch(function (error) {
+      res.status(400).json({ msg: error.message });
+    });
 });
 
 // Post Jobs
@@ -129,23 +115,36 @@ server.post("/jobs", function (req, res) {
     });
 });
 
-// Post stages
-server.post("/stages", function (req, res) {
-  stagesModel
-    .create({
-      stage: req.body.stage
-    })
-    .then(function (stage) {
-      res.status(201);
-      // log the stage for development purposes
-      res.json(stage);
-    })
-    .catch(function (err) {
-      res.status(400);
-      res.json({ msg: err.message });
-    });
+// Delete jobs
+server.delete("/jobs/:id", function (req, res) {
+  jobsModel.findByIdAndDelete(req.params.id).then(function () {
+    res.status(204);
+    res.send();
+  }).catch(function (error) {
+    var response = {
+      msg: error.message
+    };
+    res.status(400);
+    res.json(response);
+  });
 });
 
+// update jobs
+server.put("/jobs/:id", function (req, res) {
+  const options = {
+    new: true
+  }
+  jobsModel.findByIdAndUpdate(req.params.id, req.body, options).then(function (doc) {
+    res.status(200);
+    res.send(doc);
+  }).catch(function (error) {
+    var response = {
+      msg: error.message
+    };
+    res.status(400);
+    res.json(response);
+  });
+});
 
 // Start the server and connect to the database
 mongoose
