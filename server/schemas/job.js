@@ -130,18 +130,9 @@ const jobsSchema = mongoose.Schema({
   },
   todos: [
     {
-      title: {
+      content: {
         type: String,
         required: true
-      },
-      position: {
-        type: String,
-        required: false,
-        default: "+ add position"
-      },
-      image: {
-        type: String,
-        required: false
       },
       active: {
         type: Boolean,
@@ -150,45 +141,6 @@ const jobsSchema = mongoose.Schema({
       }
     }
   ]
-
-
-
-
-
-
-  // id: {
-  //   type: Number,
-  //   required: true
-  // },
-  // company: {
-  //   type: String,
-  //   required: true
-  // },
-  // title: {
-  //   type: String,
-  //   required: true
-  // },
-  // columnId: {
-  //   type: String,
-  //   required: true
-  // },
-  // location: {
-  //   type: String,
-  //   required: false
-  // },
-  // salary: {
-  //   type: String,
-  //   required: false
-  // },
-  // postURL: {
-  //   type: String,
-  //   required: false
-  // },
-  // date: {
-  //   type: String,
-  //   required: true,
-  //   default: new Date().toDateString()
-  // }
 });
 
 var model = mongoose.model("jobs", jobsSchema);
