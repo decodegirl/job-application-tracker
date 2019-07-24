@@ -132,10 +132,9 @@ export default {
       fetch(`${this.url}/jobs`).then(response => {
         console.log("load jobs response -> ", response.status);
         response.json().then(data => {
-          /** TODO: change column to position in the DB for more consistency */
           console.log(this.stages);
           data.jobs.forEach(job => {
-            this.stages[job.column].jobs.push(job);
+            this.stages[job.position].jobs.push(job);
           });
         });
       });

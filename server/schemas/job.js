@@ -1,35 +1,20 @@
 const mongoose = require("mongoose");
 
 const jobsSchema = mongoose.Schema({
+  company: {
+    type: String,
+    required: true,
+    default: ""
+  },
   title: {
     type: String,
     required: true,
     default: ""
   },
-  sub_title: {
-    type: String,
-    required: true,
-    default: ""
-  },
-  column: {
+  position: {
     type: Number,
     required: false,
-    default: 1
-  },
-  color: {
-    type: String,
-    required: false,
-    default: "blue"
-  },
-  date_added: {
-    type: String,
-    required: false,
-    default: new Date().toDateString()
-  },
-  image: {
-    type: String,
-    required: false,
-    default: ""
+    default: 0
   },
   location: {
     type: String,
@@ -52,9 +37,9 @@ const jobsSchema = mongoose.Schema({
     default: ""
   },
   applied: {
-    type: Number,
+    type: String,
     required: false,
-    default: 0
+    default: ""
   },
   interview1: {
     type: String,
@@ -77,6 +62,21 @@ const jobsSchema = mongoose.Schema({
     default: ""
   },
   notes: {
+    type: String,
+    required: false,
+    default: ""
+  },
+  color: {
+    type: String,
+    required: false,
+    default: "blue"
+  },
+  date_added: {
+    type: String,
+    required: false,
+    default: new Date().toDateString()
+  },
+  image: {
     type: String,
     required: false,
     default: ""

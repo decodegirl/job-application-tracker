@@ -100,36 +100,7 @@ server.get("/jobs", function (req, res) {
 // Post Jobs
 server.post("/jobs", function (req, res) {
   jobsModel
-    .create({
-      column: req.body.column,
-      color: req.body.color,
-      title: req.body.title,
-      sub_title: req.body.sub_title,
-      date_added: req.body.date_added,
-      image: req.body.image,
-      location: req.body.location,
-      salary: req.body.salary,
-      post_url: req.body.post_url,
-      dealine: req.body.deadline,
-      applied: req.body.applied,
-      interview1: req.body.interview1,
-      interview2: req.body.interview2,
-      offer: req.body.offer,
-      description: req.body.description,
-      notes: req.body.notes,
-      company_info: {
-        title: req.body.company_info.title,
-        description: req.body.company_info.description,
-        website: req.body.company_info.website,
-        founded: req.body.company_info.founded,
-        type: req.body.company_info.type,
-        country: req.body.company_info.country,
-        industry: req.body.company_info.industry,
-        alexa_global: req.body.company_info.alexa_global,
-        alexa_usa: req.body.company_info.alexa_usa
-      },
-      todos: []
-    })
+    .create(req.body)
     .then(function (job) {
       res.status(201);
       // log the job for development purposes
