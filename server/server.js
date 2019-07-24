@@ -57,6 +57,24 @@ server.delete("/stages/:id", function (req, res) {
   });
 });
 
+server.put("/stages/:id", function (req, res) {
+  const options = {
+    new: true
+  }
+  req.body.date = new Date().toDateString();
+
+  stagesModel.findByIdAndUpdate(req.params.id, req.body, options).then(function (doc) {
+    res.status(200);
+    res.send(doc);
+  }).catch(function (error) {
+    var response = {
+      msg: error.message
+    };
+    res.status(400);
+    res.json(response);
+  });
+})
+
 /** ------------ Jobs Endpoints --------------- */
 
 server.get("/jobs", function (req, res) {
