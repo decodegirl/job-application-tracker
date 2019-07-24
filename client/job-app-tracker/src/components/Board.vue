@@ -1,7 +1,7 @@
 <template>
   <!-- Main Columns -->
   <v-layout row align-center class="horizontal-scroll">
-    <v-flex v-for="column in columns" :key="column.id">
+    <v-flex v-for="stage in stages" :key="stage._id">
       <v-card
         width="330px"
         height="100%"
@@ -19,7 +19,7 @@
 
           <!-- Column title -->
           <v-card-title style="font-size: 1.25rem;" class="pa-0">
-            {{ column.title }}
+            {{ stage.title }}
           </v-card-title>
           <v-spacer></v-spacer>
 
@@ -50,7 +50,7 @@
 
         <!-- Column jobs counter -->
         <v-subheader class="white justify-center"
-          >{{ column.jobs.length }} Jobs</v-subheader
+          >{{ stage.jobs.length }} Jobs</v-subheader
         >
 
         <!-- Add jobs button -->
@@ -60,7 +60,7 @@
 
         <div class="vertical-scroll">
           <Draggable
-            :list="column.jobs"
+            :list="stage.jobs"
             group="occupation"
             :disabled="!enabled"
             ghost-class="ghost"
@@ -69,7 +69,7 @@
             @end="dragging = false"
           >
             <JobCard
-              v-for="job in column.jobs"
+              v-for="job in stage.jobs"
               :key="job.id"
               :job="job"
               :color="job.color"
@@ -102,67 +102,40 @@ export default {
         { title: "Move list", icon: "open_with" },
         { title: "Rename", icon: "edit" }
       ],
-      columns: [
-        {
-          id: 0,
-          title: "WISHLIST",
-          jobs: []
-        },
-        {
-          id: 1,
-          title: "APPLIED",
-          jobs: []
-        },
-        {
-          id: 2,
-          title: "PHONE",
-          jobs: []
-        },
-        {
-          id: 3,
-          title: "ON SITE",
-          jobs: []
-        },
-        {
-          id: 4,
-          title: "OFFER",
-          jobs: []
-        },
-        {
-          id: 5,
-          title: "REJECTED",
-          jobs: []
-        }
-      ],
+      stages: [],
       jobs: []
     };
   },
 
   created: function() {
-    this.loadJobs();
+    this.loadStages();
   },
 
   methods: {
-    filterJobs: function(index) {
-      var sorted_jobs = this.jobs.filter(function(job) {
-        return job.column == index;
-      });
-      return sorted_jobs;
-    },
     checkMove(e) {
       window.console.log(`Future index: ${e.draggedContext.futureIndex}`);
     },
-
-    loadJobs: function() {
-      var self = this;
-      fetch(`${this.url}/jobs`).then(response => {
-        console.log(response.status);
+    loadStages: function() {
+      fetch(`${this.url}/stages`).then(response => {
+        console.log(" stages response -> ", response.status);
         response.json().then(data => {
-          self.jobs = data.jobs;
-          console.log(data.jobs);
-          console.log(self.jobs);
-          this.jobs.forEach(job => {
-            this.columns[job.column].jobs.push(job);
+          const stagesLength = data.stages.length;
+          for (let i = 0; i < stagesLength; i++) {
+            data.stages[i].jobs = [];
+            this.stages.push(data.stages[i]);
+          }
+          this.loadJobs();
+        });
+      });
+    },
+    loadJobs: function() {
+      fetch(`${this.url}/jobs`).then(response => {
+        console.log("load jobs response -> ", response.status);
+        response.json().then(data => {
+          /** TODO: change column to position in the DB for more consistency */
+          console.log(this.stages);
+          data.jobs.forEach(job => {
+            this.stages[job.column].jobs.push(job);
           });
         });
       });

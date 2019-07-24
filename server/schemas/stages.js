@@ -5,7 +5,10 @@ const stagesSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  // the date it was added
+  position: {
+    type: Number,
+    required: true
+  },
   date: {
     type: String,
     required: true,

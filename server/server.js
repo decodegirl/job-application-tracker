@@ -38,7 +38,8 @@ server.get("/stages", function (req, res) {
 server.post("/stages", function (req, res) {
   stagesModel
     .create({
-      stage: req.body.stage
+      stage: req.body.stage,
+      position: req.body.position
     })
     .then(function (stage) {
       res.status(201);
