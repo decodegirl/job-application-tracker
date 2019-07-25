@@ -10,36 +10,36 @@
     <v-list>
       <v-list-tile>
         <v-list-tile-action>
-          <img
+         <a href = '#'> <img
             :src="require('../assets/huntr_logo_mini.png')"
             height="auto"
             width="15px"
             class="mt-0 mr-4 ml-0"
-          />
-          <img
+          /></a>
+         <a href = '#'> <img
             :src="require('../assets/microphone.png')"
             height="auto"
             width="15px"
             class="mt-4 mr-4"
-          />
-          <img
+          /> </a>
+          <a href = '#'> <img
             :src="require('../assets/thumbtack.png')"
             height="auto"
             width="15px"
             class="mt-4 mr-4"
-          />
-          <img
+          /> </a>
+          <a href = '#'><img
             :src="require('../assets/settings.png')"
             height="auto"
             width="15px"
             class="mt-4 mr-4"
-          />
-          <img
+          /> </a>
+           <a href="/users/logout"><img
             :src="require('../assets/power-off.png')"
             height="auto"
             width="15px"
             class="mt-4 mr-4"
-          />
+          /></a>
         </v-list-tile-action>
       </v-list-tile>
     </v-list>
