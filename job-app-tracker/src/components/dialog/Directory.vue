@@ -22,7 +22,8 @@
                   large
                   flat
                   left
-                  :src="job.image"
+                  :src="`//logo.clearbit.com/${job.image}.com`"
+                  alt="avatar"
                   height="30px"
                   contain
                 ></v-img>

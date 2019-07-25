@@ -55,14 +55,27 @@ export default {
       // make sure the text field shows the updated field on start up
       // and when a new date is picked, it should be reactive(text field should
       // change as different dates are picked)
-      if (this.job[this.dateToLog] !== "+ set date" && !this.dateUpdated) {
-        this.date = this.job[this.dateToLog];
-      } else if (
-        this.job[this.dateToLog] === "+ set date" &&
-        !this.dateUpdated
-      ) {
-        this.date = "";
-      }
+      // if (this.dateToLog == "date") {
+      //   const todoLength = this.job.todos.length();
+      //   if (this.job.todos[todoLength].date !== "+ set date" && !this.dateUpdated) {
+      //     this.date = this.job.todos[todoLength].date;
+      //   } else if (
+      //     this.job.todos[todoLength].date === "+ set date" &&
+      //     !this.dateUpdated
+      //   ) {
+      //     this.date = "";
+      //   }
+      // } else {
+        if (this.job[this.dateToLog] !== "+ set date" && !this.dateUpdated) {
+          this.date = this.job[this.dateToLog];
+        } else if (
+          this.job[this.dateToLog] === "+ set date" &&
+          !this.dateUpdated
+        ) {
+          this.date = "";
+        }
+      // }
+      
       this.dateUpdated = true;
       return this.date;
     }

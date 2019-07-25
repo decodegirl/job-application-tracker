@@ -141,6 +141,11 @@ const jobsSchema = mongoose.Schema({
             type: Boolean,
             required: false,
             default: true
+        },
+        deadline: {
+            type: String,
+            required: false,
+            default: "+ set date"
         }
     }]
 });

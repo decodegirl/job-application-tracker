@@ -31,7 +31,7 @@
               </v-list-tile-content>
 
               <v-list-tile-action v-if="hover">
-                <v-btn icon ripple v-on:click="deleteJob(job)">
+                <v-btn icon ripple v-on:click="deleteJob( job )" @mouseover="mouseOver" >
                   <v-icon color="grey lighten-1"> delete_outline </v-icon>
                 </v-btn>
               </v-list-tile-action>
@@ -41,7 +41,7 @@
               :class="job.color"
             >
               <v-list-tile-sub-title class="font-weight-light caption">
-                added {{ job.date_added }} ago
+                added {{ job.date_added }}
               </v-list-tile-sub-title>
             </v-list-tile-content>
           </v-card>
@@ -61,6 +61,7 @@ export default {
   components: { JobDialog },
   data: function() {
     return {
+      deleteHover: false,
       dialog: false,
       width: 400,
       url: "http://localhost:3000"
@@ -71,19 +72,23 @@ export default {
       this.dialog = false;
       this.$emit("updateInfoEvent", this.job);
     },
-
-    deleteJob: function(job) {
-      fetch(`${this.url}/jobs/${job._id}`, {
-        method: "DELETE"
-      }).then(response => {
-        if (response.status == 204) {
-          console.log("It worked");
-        } else if (response.status == 400) {
-          response.json().then(data => {
-            alert(data.msg);
-          });
-        }
+    mouseOver: function(){
+      this.deleteHover = true;
+    },
+    deleteJob: function  ( job ){
+      this.dialog = false;
+      fetch( `${ this.url }/jobs/${ job._id }`, {
+          method: "DELETE"
+      }).then( ( response ) =>{
+          if( response.status == 204 ){
+              console.log( "It worked" );
+          } else if ( response.status == 400 ) {
+              response.json().then( ( data ) => {
+                  alert(data.msg);
+              })
+          }
       });
+      window.location.reload();
     }
   }
 };

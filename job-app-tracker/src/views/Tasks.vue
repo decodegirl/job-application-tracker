@@ -2,7 +2,6 @@
   <div>
     <TopNavTwo />
     <Tasks />
-    Map Page
   </div>
 </template>
 
