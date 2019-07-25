@@ -58,10 +58,12 @@
         </v-flex>
       </v-layout>
       <v-flex xs3 text-xs-right>
+        <a href="mailto:?subject=<SUBJECT>&body=<index.html>">
         <v-btn outline flat color="#000" small class="">
-          <v-icon right> share </v-icon> Share Board
-        </v-btn>
-      </v-flex>
+        <v-icon right> share </v-icon> Share Board
+       </v-btn>
+        </a>
+     </v-flex>
     </v-layout>
 
     <v-spacer></v-spacer>
