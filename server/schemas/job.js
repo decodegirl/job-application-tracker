@@ -16,10 +16,10 @@ const jobsSchema = mongoose.Schema({
         required: false,
         default: 0
     },
-    // userId: {
-    //     type: String,
-    //     required: false,
-    // },
+    userId: {
+        type: String,
+        required: true,
+    },
     location: {
         type: String,
         required: false,
