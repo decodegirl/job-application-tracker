@@ -81,7 +81,9 @@
             </v-flex>
             <v-flex xs4 text-xs-right>
               {{ todo.deadline }}
-              <img :src="`//logo.clearbit.com/${job.image}.com`" height="10px" />
+              <v-avatar size="20px" color="grey lighten-4">
+                <img :src="`//logo.clearbit.com/${job.image}.com`" height="20px" />
+              </v-avatar>
             </v-flex>
 
             <v-flex xs4 text-xs-center v-if="todo.active">
