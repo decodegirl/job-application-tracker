@@ -66,12 +66,13 @@
             :disabled="!enabled"
             ghost-class="ghost"
             :move="checkMove"
+            @onUpdate="logStages"
             @start="dragging = true"
-            @end="dragging = false"
+            @end="stopDragging"
           >
             <JobCard
               v-for="job in stage.jobs"
-              :key="job.id"
+              :key="job._id"
               :job="job"
               :color="job.color"
               @updateInfoEvent="handleUpdateInfo"
@@ -115,6 +116,24 @@ export default {
   },
 
   methods: {
+    stopDragging: function(evt) {
+      this.dragging = false;
+      let jobNotFound = true;
+      let job = null;
+
+      this.stages.forEach((stage, i) => {
+        let j = 0;
+        while (jobNotFound && j < stage.jobs.length) {
+          if (i !== stage.jobs[j].position) {
+            stage.jobs[j].position = i;
+            job = stage.jobs[j];
+            jobNotFound = false;
+          }
+          j++;
+        }
+      });
+      this.handleUpdateInfo(job);
+    },
     handleUpdateInfo: function(job) {
       fetch(`${this.url}/jobs/${job._id}`, {
         method: "put",
@@ -126,8 +145,14 @@ export default {
         console.log(response.status);
       });
     },
+    logStages: function() {},
     checkMove(e) {
-      window.console.log(`Future index: ${e.draggedContext.futureIndex}`);
+      window.console.log(
+        `----------- Future index: ${e.draggedContext.futureIndex}`
+      );
+      window.console.log(`----------- Target: ${e.relatedContext.index}`);
+      // window.console.log(this.stages);
+      // this.logStages();
     },
     loadStages: function() {
       fetch(`${this.url}/stages`).then(response => {
