@@ -143,6 +143,10 @@ const jobsSchema = mongoose.Schema({
         type: String,
         required: false,
         default: "+ set date"
+      },
+      image: {
+        type: String,
+        required: false
       }
     }
   ]

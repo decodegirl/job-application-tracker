@@ -125,43 +125,46 @@
 
             <v-layout>
               <v-flex>
-                <v-layout
-                  row
-                  fluid
-                  wrap
-                  v-for="todo in todos"
-                  style="border-bottom: 1px solid #ccc"
-                  pt-2
-                  pb-2
-                  v-on:click="todo.active = !todo.active"
-                >
-                  <v-flex xs1 text-xs-center>
-                    <input type="checkbox" name="" id="" />
-                  </v-flex>
-                  <v-flex xs5>
-                    {{ todo.title }}
-                  </v-flex>
-                  <v-flex xs6 text-xs-right>
-                    {{ todo.position }}
-                    <v-avatar size="20px" color="grey lighten-4">
-                      <img :src="`//logo.clearbit.com/${todo.image}.com`" />
-                    </v-avatar>
-                  </v-flex>
+                <div v-for="job in jobs">
+                  <v-layout
+                    row
+                    fluid
+                    wrap
+                    v-for="todo in job.todos"
+                    style="border-bottom: 1px solid #ccc"
+                    pt-2
+                    pb-2
+                    v-on:click="todo.active = !todo.active"
+                  >
+                    <v-flex xs1 text-xs-center>
+                      <input type="checkbox" name="" id="" />
+                    </v-flex>
+                    <v-flex xs5>
+                      {{ todo.content }}
+                    </v-flex>
+                    <v-flex xs6 text-xs-right>
+                      {{ job.title}}
+                      <v-avatar size="15px" color="grey lighten-4">
+                        <img :src="`//logo.clearbit.com/${job.image}.com`" />
+                      </v-avatar>
+                      <span style="background-color: red; border-radius: 5px; color: #fff; padding: 3px 3px; margin-left: 5px; font-size: .7rem;">{{ todo.deadline}}</span>
+                    </v-flex>
 
-                  <v-flex xs2 text-xs-center v-if="todo.active">
-                    <v-btn icon flat outline color="#ccc">
-                      <v-icon>arrow_drop_up</v-icon>
-                    </v-btn>
-                  </v-flex>
-                  <v-flex xs10 text-xs-right v-if="todo.active">
-                    <v-btn icon flat outline color="#ccc">
-                      <v-icon>calendar_today</v-icon>
-                    </v-btn>
-                    <v-btn icon flat outline color="#ccc">
-                      <v-icon>delete</v-icon>
-                    </v-btn>
-                  </v-flex>
-                </v-layout>
+                    <v-flex xs2 text-xs-center v-if="todo.active">
+                      <v-btn icon flat outline color="#ccc">
+                        <v-icon>arrow_drop_up</v-icon>
+                      </v-btn>
+                    </v-flex>
+                    <v-flex xs10 text-xs-right v-if="todo.active">
+                      <v-btn icon flat outline color="#ccc">
+                        <v-icon>calendar_today</v-icon>
+                      </v-btn>
+                      <v-btn icon flat outline color="#ccc">
+                        <v-icon>delete</v-icon>
+                      </v-btn>
+                    </v-flex>
+                  </v-layout>
+                </div>
               </v-flex>
             </v-layout>
           </v-card-text>
@@ -175,6 +178,12 @@
 export default {
   data() {
     return {
+      myJob: "",
+      url: "http://localhost:3000",
+      date: new Date().toISOString().substring(0, 10),
+      menu: false,
+      modal: false,
+      menu2: false,
       new_todo_input: "",
       items2: [
         { icon: "list", iconClass: "indigo white--text", title: "all" },
@@ -195,48 +204,39 @@ export default {
         }
       ],
 
-      todos: [
-        {
-          title: "Follow up to find out status of application",
-          position: "Product Manager",
-          image: "google",
-          active: false
-        },
-        {
-          title: "Prepare for phone interview",
-          position: "Product Manager",
-          image: "pintrest",
-          active: false
-        },
-        {
-          title: "Look for openings",
-          position: "Product Manager",
-          image: "tinder",
-          active: false
-        },
-        {
-          title: "Prep for interview",
-          position: "Product Manager",
-          image: "facebook",
-          active: false
-        },
-        {
-          title: "Prepare for interview",
-          position: "Product Manager",
-          image: "amazon",
-          active: false
-        },
-        {
-          title: "Prepare for phone interview with leetcode",
-          position: "Product Manager",
-          image: "reddit",
-          active: false
-        }
-      ]
+      todos: [],
+      jobs: []
     };
   },
-
-  methods: {},
+  created: function() {
+    this.loadTodos();
+    this.loadJobs();
+  },
+  methods: {
+    loadTodos: function() {
+      fetch(`${this.url}/jobs`).then(response => {
+        console.log("load jobs response -> ", response.status);
+        response.json().then(data => {
+          console.log(this.stages);
+          data.jobs.forEach(job => {
+            this.todos.push(...job.todos);
+            console.log("These are my todos", this.todos);
+          });
+        });
+      });
+    },
+    loadJobs: function() {
+      fetch(`${this.url}/jobs`).then(response => {
+        console.log("load jobs response -> ", response.status);
+        response.json().then(data => {
+          data.jobs.forEach(job => {
+            this.jobs.push(job);
+            console.log("These are my Jobs", this.jobs);
+          });
+        });
+      });
+    }
+  },
 
   mounted: function() {}
 };

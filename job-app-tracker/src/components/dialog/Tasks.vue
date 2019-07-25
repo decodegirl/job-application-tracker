@@ -76,16 +76,9 @@
             <v-flex xs1 text-xs-center>
               <input type="checkbox" name="" id="" />
             </v-flex>
-            <v-flex xs7>
+            <v-flex xs11>
               {{ todo.content }}
             </v-flex>
-            <v-flex xs4 text-xs-right>
-              {{ todo.deadline }}
-              <v-avatar size="20px" color="grey lighten-4">
-                <img :src="`//logo.clearbit.com/${job.image}.com`" height="20px" />
-              </v-avatar>
-            </v-flex>
-
             <v-flex xs4 text-xs-center v-if="todo.active">
               <v-btn icon flat outline color="#ccc">
                 <v-icon>arrow_drop_up</v-icon>
@@ -108,6 +101,7 @@
 
 <script>
 import DatePicker from './DatePicker.vue'
+import moment from 'moment'
 export default {
   props: ["page", "job"],
   components: {
@@ -120,7 +114,7 @@ export default {
       modal: false,
       menu2: false,
       dateLogs: "date",
-      new_todo_content: "This is a New todo",
+      new_todo_content: "",
     }
   },
   methods: {
@@ -128,7 +122,8 @@ export default {
       var new_todo = {
         content: this.new_todo_content,
         active: false,
-        deadline: this.date
+        deadline: moment(this.date).format("MMM Do YY"),
+        image: this.job.image
       };
       console.log("deadline -----------> ", new_todo.deadline);
       this.job.todos.push(new_todo);
@@ -137,6 +132,3 @@ export default {
   }
 };
 </script>
-
-<style>
-</style>
