@@ -1,10 +1,10 @@
 <template>
   <!-- Main Columns -->
-  <v-layout row align-center class="horizontal-scroll">
+  <v-layout row class="horizontal-scroll" ma-0 pa-0>
     <v-flex v-for="stage in stages" :key="stage._id">
       <v-card
         width="330px"
-        height="100%"
+        height="85vh"
         class="pl-3 pr-3 pt-3"
         style="border-left: 1px solid #4444;"
         flat
@@ -54,11 +54,12 @@
         >
 
         <!-- Add jobs button -->
-        <v-btn block to="/add-job">+</v-btn>
+          <AddJobBtn :stage="stage"/>
+        
 
         <!-- Start Job Cards -->
 
-        <div class="vertical-scroll">
+        <div style="height: 57vh; overflow: scroll; padding-top: 0; margin-top: 0;">
           <Draggable
             :list="stage.jobs"
             group="occupation"
@@ -88,11 +89,13 @@
 <script>
 import Draggable from "vuedraggable";
 import JobCard from "../components/JobCard.vue";
+import AddJobBtn from "../components/AddJobBtn.vue";
 
 export default {
   components: {
     Draggable,
-    JobCard
+    JobCard,
+    AddJobBtn
   },
   data() {
     return {
@@ -159,33 +162,15 @@ html,
 body {
   height: 100%;
 }
-.vertical-scroll {
-  max-height: 50vh;
-  overflow-y: auto;
-}
-.horizontal-scroll {
-  overflow-x: auto;
-}
 .ghost {
   opacity: 0.3;
 }
 .job-card {
-  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .horizontal-scroll {
   overflow-x: auto;
-}
-
-.vertical-scroll {
-  height: 290px;
-  overflow: hidden;
-  overflow-y: auto;
-}
-
-.column-height {
-  height: "900px";
-  overflow: scroll;
 }
 
 .v-list__tile {

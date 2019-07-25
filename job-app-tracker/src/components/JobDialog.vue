@@ -1,5 +1,5 @@
 <template>
-  <v-card min-width="760">
+  <v-card min-width="300">
     <v-layout row justify-end>
       <v-flex xs2 class="mt-2 mb-2">
         <v-btn :color="job.color" style="color: #fff">Move</v-btn>

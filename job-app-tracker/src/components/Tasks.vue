@@ -1,13 +1,12 @@
 <template>
   <v-container
     fluid
-    grid-list-md
-    class="pl-0 pr-0 pt-0 mr-0 mt-0 ml-0"
+    class="pa-0 ma-0"
     fill-height
   >
     <v-layout row wrap>
-      <v-flex d-flex xs12 sm4 md2 class="pl-0 pt-0 mt-0 pr-0 mr-0 ml-0">
-        <v-card color="dark" white>
+      <v-flex d-flex xs12 sm4 md3 class="pa-0 ma-0">
+        <v-card color="dark" white height="87vh">
           <v-card-text>
             <v-list>
               <v-list-tile
@@ -25,7 +24,7 @@
                 </v-list-tile-content>
               </v-list-tile>
               <div class="vertical-scroll">
-                <v-list style="width:200px;">
+                <v-list>
                   <v-list-group
                     v-for="item in items3"
                     :key="item.title"
@@ -67,14 +66,14 @@
       </v-flex>
 
       <!--tasks todopage-->
-      <v-flex d-flex xs12 sm8 md10 class="pl-0 mt-0 pt-0 pr-0 mr-0 ml-0">
+      <v-flex d-flex xs12 sm8 md9 class="pa-0 ma-0">
         <v-card color="dark" white>
           <v-card-text>
             <input
               type="text"
               v-model="new_todo_input"
               placeholder=" + Add Task"
-              style="width :1074px; height:44px; border:1px solid #ccc; border-radius:5px;"
+              style="width : 100%; height:44px; border:1px solid #ccc; border-radius:5px;"
             />
             <br />
             <v-layout>
@@ -113,12 +112,14 @@
               </v-flex>
               <v-spacer></v-spacer>
               <v-flex xs12 sm2>
-                <button
+                <v-btn
                   v-on:click="addNewTodo()"
-                  style="width:80px; height:31px; background-color: #8C35FF; color:#ffffff; "
+                  style="color:#ffffff; "
+                  color="#8C35FF"
+                  class="mt-4"
                 >
                   Save
-                </button>
+                </v-btn>
               </v-flex>
             </v-layout>
 
@@ -140,17 +141,19 @@
                   <v-flex xs5>
                     {{ todo.title }}
                   </v-flex>
-                  <v-flex xs4 text-xs-right>
+                  <v-flex xs6 text-xs-right>
                     {{ todo.position }}
-                    <img :src="todo.image" height="10px" />
+                    <v-avatar size="20px" color="grey lighten-4">
+                      <img :src="`//logo.clearbit.com/${todo.image}.com`" />
+                    </v-avatar>
                   </v-flex>
 
-                  <v-flex xs2 text-xs-right mr-4 pr-4 v-if="todo.active">
+                  <v-flex xs2 text-xs-center v-if="todo.active">
                     <v-btn icon flat outline color="#ccc">
                       <v-icon>arrow_drop_up</v-icon>
                     </v-btn>
                   </v-flex>
-                  <v-flex xs8 text-xs-right mr-4 pr-4 v-if="todo.active">
+                  <v-flex xs10 text-xs-right v-if="todo.active">
                     <v-btn icon flat outline color="#ccc">
                       <v-icon>calendar_today</v-icon>
                     </v-btn>
@@ -172,6 +175,7 @@
 export default {
   data() {
     return {
+      new_todo_input: "",
       items2: [
         { icon: "list", iconClass: "indigo white--text", title: "all" },
         { icon: "star", iconClass: "amber white--text", title: "Today" },
@@ -186,18 +190,7 @@ export default {
           items3: [
             { title: "product engineer" },
             { title: "software engineer" },
-            { title: "senior data engineer" },
-            { title: "senior data engineer" },
-            { title: "product manager" },
-            { title: "product manager" },
-            { title: "product manager" },
-            { title: "product manager" },
-            { title: "product manager" },
-            { title: "product manager" },
-            { title: "senior data engineer" },
-            { title: "Software engineer" },
-            { title: "product manager" },
-            { title: "software engineer" }
+            { title: "senior data engineer" }
           ]
         }
       ],
@@ -206,79 +199,37 @@ export default {
         {
           title: "Follow up to find out status of application",
           position: "Product Manager",
-          image: "images/google-icon.svg",
+          image: "google",
           active: false
         },
         {
           title: "Prepare for phone interview",
           position: "Product Manager",
-          image: "images/google-icon.svg",
+          image: "pintrest",
           active: false
         },
         {
           title: "Look for openings",
           position: "Product Manager",
-          image: "images/google-icon.svg",
+          image: "tinder",
           active: false
         },
         {
           title: "Prep for interview",
           position: "Product Manager",
-          image: "images/google-icon.svg",
+          image: "facebook",
           active: false
         },
         {
           title: "Prepare for interview",
           position: "Product Manager",
-          image: "images/google-icon.svg",
+          image: "amazon",
           active: false
         },
         {
           title: "Prepare for phone interview with leetcode",
           position: "Product Manager",
-          image: "images/google-icon.svg",
-          active: false
-        },
-        {
-          title: "Apply on website",
-          position: "Product Manager",
-          image: "images/google-icon.svg",
-          active: false
-        },
-        {
-          title: "Send acceptance email!",
-          position: "Product Manager",
-          image: "images/google-icon.svg",
-          active: false
-        },
-        {
-          title: "Send cover letter",
-          position: "Product Manager",
-          image: "images/google-icon.svg",
-          active: false
-        },
-        {
-          title: "Send resume",
-          position: "Product Manager",
-          image: "images/google-icon.svg",
-          active: false
-        },
-        {
-          title: "Email Edwin",
-          position: "Product Manager",
-          image: "images/google-icon.svg",
-          active: false
-        },
-        {
-          title: "Fill out application",
-          position: "Product Manager",
-          image: "images/google-icon.svg",
-          active: false
-        },
-        {
-          title: "Work on coding challenge",
-          position: "Product Manager",
-          image: "images/google-icon.svg",
+          image: "reddit",
           active: false
         }
       ]
@@ -292,7 +243,5 @@ export default {
 </script>
 
 <style>
-.map {
-  height: 500px;
-}
+
 </style>

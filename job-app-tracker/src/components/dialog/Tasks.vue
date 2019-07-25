@@ -8,7 +8,7 @@
             rounded
             type="text"
             label=""
-            v-model="new_todo_input"
+            v-model="new_todo_content"
             placeholder=" + Add Task"
             style="width: 100%"
           ></v-text-field>
@@ -16,7 +16,7 @@
       </v-layout>
       <v-layout>
         <v-flex xs12 sm4>
-          <v-menu
+         <v-menu
             ref="menu"
             v-model="menu"
             :close-on-content-click="false"
@@ -37,13 +37,15 @@
                 v-on="on"
               ></v-text-field>
             </template>
-            <v-date-picker v-model="date" no-title scrollable>
+           
+           <v-date-picker v-model="date" no-title scrollable>
               <v-spacer></v-spacer>
               <v-btn flat color="primary" @click="menu = false">Cancel</v-btn>
               <v-btn flat color="primary" @click="$refs.menu.save(date)"
                 >OK</v-btn
               >
             </v-date-picker>
+            <!-- <DatePicker :job="job" :dateToLog ="dateLogs"></DatePicker> -->
           </v-menu>
         </v-flex>
         <v-spacer></v-spacer>
@@ -64,7 +66,7 @@
             row
             fluid
             wrap
-            v-for="todo in todos"
+            v-for="todo in job.todos"
             :key="todo.id"
             style="border-bottom: 1px solid #ccc"
             pt-2
@@ -75,11 +77,11 @@
               <input type="checkbox" name="" id="" />
             </v-flex>
             <v-flex xs7>
-              {{ todo.title }}
+              {{ todo.content }}
             </v-flex>
             <v-flex xs4 text-xs-right>
-              {{ todo.position }}
-              <img :src="job.image" height="10px" />
+              {{ todo.deadline }}
+              <img :src="`//logo.clearbit.com/${job.image}.com`" height="10px" />
             </v-flex>
 
             <v-flex xs4 text-xs-center v-if="todo.active">
@@ -103,8 +105,34 @@
 </template>
 
 <script>
+import DatePicker from './DatePicker.vue'
 export default {
-  props: ["page", "job"]
+  props: ["page", "job"],
+  components: {
+    DatePicker
+  },
+  data () {
+    return {
+      date: new Date().toISOString().substring(0, 10),
+      menu: false,
+      modal: false,
+      menu2: false,
+      dateLogs: "date",
+      new_todo_content: "This is a New todo",
+    }
+  },
+  methods: {
+    addNewTodo: function( ) {
+      var new_todo = {
+        content: this.new_todo_content,
+        active: false,
+        deadline: this.date
+      };
+      console.log("deadline -----------> ", new_todo.deadline);
+      this.job.todos.push(new_todo);
+      console.log(new_todo);
+    }
+  }
 };
 </script>
 
