@@ -47,7 +47,7 @@
           </v-card>
         </v-hover>
       </template>
-      <JobDialog :job="job" @clickedSth="dialog = false" />
+      <JobDialog :job="job" @clickedClose="closeDialog()" />
     </v-dialog>
   </div>
 </template>
@@ -67,6 +67,11 @@ export default {
     };
   },
   methods: {
+    closeDialog: function() {
+      this.dialog = false;
+      this.$emit("updateInfoEvent", this.job);
+    },
+
     deleteJob: function(job) {
       fetch(`${this.url}/jobs/${job._id}`, {
         method: "DELETE"

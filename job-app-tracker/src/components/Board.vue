@@ -73,6 +73,7 @@
               :key="job.id"
               :job="job"
               :color="job.color"
+              @updateInfoEvent="handleUpdateInfo"
             />
           </Draggable>
         </div>
@@ -102,8 +103,7 @@ export default {
         { title: "Move list", icon: "open_with" },
         { title: "Rename", icon: "edit" }
       ],
-      stages: [],
-      jobs: []
+      stages: []
     };
   },
 
@@ -112,6 +112,17 @@ export default {
   },
 
   methods: {
+    handleUpdateInfo: function(job) {
+      fetch(`${this.url}/jobs/${job._id}`, {
+        method: "put",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(job)
+      }).then(response => {
+        console.log(response.status);
+      });
+    },
     checkMove(e) {
       window.console.log(`Future index: ${e.draggedContext.futureIndex}`);
     },

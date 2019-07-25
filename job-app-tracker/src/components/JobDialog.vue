@@ -42,7 +42,7 @@
     <v-divider></v-divider>
 
     <v-card-text class="mt-0">
-      <Tabs :job="job" :todos="job.todos" />
+      <Tabs :job="job" :todos="job.todos" @updateInfoEvent="updateInfo()" />
     </v-card-text>
   </v-card>
 </template>
@@ -143,7 +143,7 @@ export default {
 
   methods: {
     handleDialogClose: function() {
-      this.$emit("clickedSth");
+      this.$emit("clickedClose");
     }
   }
 };
