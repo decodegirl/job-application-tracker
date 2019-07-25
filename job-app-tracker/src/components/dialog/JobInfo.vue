@@ -77,69 +77,39 @@
         <v-flex xs6>
           <span class="title font-weight-regular">Log Dates</span>
           <v-layout row wrap>
-            <v-flex xs3 class="pb-1">
+            <v-flex xs3 class="pt-2">
               <span>Deadline </span>
             </v-flex>
-            <v-flex xs9 class="pb-1">
-              <v-hover v-slot:default="{ hover }">
-                <input
-                  class="font-weight-light"
-                  type="text"
-                  v-model="job.deadline"
-                />
-              </v-hover>
+            <v-flex xs9 class="pl-2">
+              <DatePicker :job="job" :dateToLog="dateLogs[0]"></DatePicker>
             </v-flex>
 
-            <v-flex xs3 class="pb-1">
+            <v-flex xs3 class="pt-2">
               <span>Applied </span>
             </v-flex>
-            <v-flex xs9 class="pb-1">
-              <v-hover v-slot:default="{ hover }">
-                <input
-                  class="font-weight-light"
-                  type="text"
-                  v-model="job.applied"
-                />
-              </v-hover>
+            <v-flex xs9 class="pl-2">
+              <DatePicker :job="job" :dateToLog="dateLogs[1]"></DatePicker>
             </v-flex>
 
-            <v-flex xs3 class="pb-1">
+            <v-flex xs3 class="pt-2">
               <span>Interview 1 </span>
             </v-flex>
-            <v-flex xs9 class="pb-1">
-              <v-hover v-slot:default="{ hover }">
-                <input
-                  class="font-weight-light"
-                  type="text"
-                  v-model="job.interview1"
-                />
-              </v-hover>
+            <v-flex xs9 class="pl-2">
+              <DatePicker :job="job" :dateToLog="dateLogs[2]"></DatePicker>
             </v-flex>
 
-            <v-flex xs3 class="pb-1">
+            <v-flex xs3 class="pt-2">
               <span>Interview 2 </span>
             </v-flex>
-            <v-flex xs9 class="pb-1">
-              <v-hover v-slot:default="{ hover }">
-                <input
-                  class="font-weight-light"
-                  type="text"
-                  v-model="job.interview2"
-                />
-              </v-hover>
+            <v-flex xs9 class="pl-2">
+              <DatePicker :job="job" :dateToLog="dateLogs[3]"></DatePicker>
             </v-flex>
 
-            <v-flex xs3 class="pb-1">
+            <v-flex xs3 class="pt-2">
               <span>Offer </span>
             </v-flex>
-            <v-flex xs9 class="pb-1">
-              <v-hover v-slot:default="{ hover }">
-                <input
-                  class="font-weight-light"
-                  type="text"
-                  v-model="job.offer"
-                />
-              </v-hover>
+            <v-flex xs9 class="pl-2">
+              <DatePicker :job="job" :dateToLog="dateLogs[4]"></DatePicker>
             </v-flex>
           </v-layout>
         </v-flex>
@@ -159,8 +129,16 @@
 </template>
 
 <script>
+import DatePicker from "./DatePicker.vue";
+
 export default {
-  props: ["job", "page"]
+  props: ["job", "page"],
+  components: { DatePicker },
+  data: function() {
+    return {
+      dateLogs: ["deadline", "applied", "interview1", "interview2", "offer"]
+    };
+  }
 };
 </script>
 <style scoped>
