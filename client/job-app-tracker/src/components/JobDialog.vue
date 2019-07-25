@@ -1,5 +1,5 @@
 <template>
-  <v-card min-width="760">
+  <v-card min-width="300">
     <v-layout row justify-end>
       <v-flex xs2 class="mt-2 mb-2">
         <v-btn :color="job.color" style="color: #fff">Move</v-btn>
@@ -16,9 +16,9 @@
           </v-avatar>
         </v-flex>
         <v-flex xs10>
-          <span class="headline">{{ job.title }}</span
+          <span class="headline">{{ job.company_info.title }}</span
           ><br />
-          <h3 style="color: #ccc;">{{ job.subTitle }}</h3>
+          <h3 style="color: #ccc;">{{ job.title }}</h3>
         </v-flex>
         <v-flex xs1>
           <v-layout justify-end>

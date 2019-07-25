@@ -1,6 +1,8 @@
 <template>
   <v-layout row>
-    <v-flex id="map" class="map"> </v-flex>
+    <v-flex> 
+      <div id="map" class="map"> </div>
+    </v-flex>
   </v-layout>
 </template>
 
@@ -114,7 +116,7 @@ export default {
 </script>
 
 <style>
-.map {
-  height: 500px;
+#map {
+  height: 87vh;
 }
 </style>

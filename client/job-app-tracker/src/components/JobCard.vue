@@ -23,15 +23,15 @@
 
               <v-list-tile-content>
                 <v-list-tile-title class="font-weight-regular">
-                  {{ job.title }}
+                  {{ job.company_info.title }}
                 </v-list-tile-title>
                 <v-list-tile-sub-title class="font-weight-light">
-                  {{ job.subTitle }}
+                  {{ job.title }}
                 </v-list-tile-sub-title>
               </v-list-tile-content>
 
               <v-list-tile-action v-if="hover">
-                <v-btn icon ripple v-on:click="deleteJob( job )">
+                <v-btn icon ripple v-on:click="deleteJob( job )" @mouseover="mouseOver" >
                   <v-icon color="grey lighten-1"> delete_outline </v-icon>
                 </v-btn>
               </v-list-tile-action>
@@ -41,13 +41,13 @@
               :class="job.color"
             >
               <v-list-tile-sub-title class="font-weight-light caption">
-                added {{ job.date_added }} ago
+                added {{ job.date_added }}
               </v-list-tile-sub-title>
             </v-list-tile-content>
           </v-card>
         </v-hover>
       </template>
-      <JobDialog :job="job" @clickedSth="dialog = false" />
+      <JobDialog v-if="!deleteHover" :job="job" @clickedSth="dialog = false" />
     </v-dialog>
   </div>
 </template>
@@ -61,13 +61,18 @@ export default {
   components: { JobDialog },
   data: function() {
     return {
+      deleteHover: false,
       dialog: false,
       width: 400,
       url: "http://localhost:3000",
     };
   },
   methods: {
+    mouseOver: function(){
+      this.deleteHover = true;
+    },
     deleteJob: function  ( job ){
+      this.dialog = false;
       fetch( `${ this.url }/jobs/${ job._id }`, {
           method: "DELETE"
       }).then( ( response ) =>{
@@ -79,6 +84,7 @@ export default {
               })
           }
       });
+      window.location.reload();
     }
   }
 };

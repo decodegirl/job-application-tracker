@@ -9,7 +9,6 @@ import Tasks from "./views/Tasks.vue";
 import Metrics from "./views/Metrics.vue";
 import Contact from "./views/Contact.vue";
 import BoardCollection from "./views/BoardCollection.vue";
-import CreateJob from "./views/CreateJob.vue";
 
 Vue.use(Router);
 
@@ -61,11 +60,6 @@ export default new Router({
       path: "/boards",
       name: "boards",
       component: BoardCollection
-    },
-    {
-      path: "/add-job",
-      name: "add-job",
-      component: CreateJob
     }
   ]
 });

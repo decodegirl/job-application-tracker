@@ -34,14 +34,14 @@
                     <v-layout row wrap>
                       <v-flex xs12>
                         <strong>Company: </strong>
-                        <input type="text" v-model="job.title" flat rounded />
+                        <input type="text" v-model="job.company_info.title" flat rounded />
                       </v-flex>
 
                       <v-flex xs12>
-                        <strong>Title: </strong>
+                        <strong>Position: </strong>
                         <input
                           type="text"
-                          v-model="job.subtitle"
+                          v-model="job.title"
                           flat
                           rounded
                         />
@@ -210,7 +210,7 @@
                       </v-flex>
                       <v-flex xs4 text-xs-right>
                         {{ todo.position }}
-                        <img :src="job.image" height="10px" />
+                        <v-img :src="`//logo.clearbit.com/${job.image}.com`" height="10px" ></v-img>
                       </v-flex>
 
                       <v-flex xs4 text-xs-center v-if="todo.active">
@@ -310,7 +310,8 @@
                             large
                             flat
                             left
-                            :src="job.image"
+                            :src="`//logo.clearbit.com/${job.image}.com`"
+                            alt="avatar"
                             height="30px"
                             contain
                           ></v-img>
