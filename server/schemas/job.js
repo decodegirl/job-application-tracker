@@ -8,8 +8,8 @@ const jobsSchema = mongoose.Schema({
   },
   title: {
     type: String,
-    required: true,
-    default: ""
+    required: false,
+    default: "No Job Title"
   },
   position: {
     type: Number,
@@ -19,42 +19,42 @@ const jobsSchema = mongoose.Schema({
   location: {
     type: String,
     required: false,
-    default: ""
+    default: "+ add location"
   },
   salary: {
-    type: Number,
+    type: String,
     required: false,
-    default: 0
+    default: "+ add salary"
   },
   post_url: {
     type: String,
     required: false,
-    default: ""
+    default: "+ add URL"
   },
   deadline: {
     type: String,
     required: false,
-    default: ""
+    default: "+ set date"
   },
   applied: {
     type: String,
     required: false,
-    default: ""
+    default: "+ set date"
   },
   interview1: {
     type: String,
     required: false,
-    default: ""
+    default: "+ set date"
   },
   interview2: {
     type: String,
     required: false,
-    default: ""
+    default: "+ set date"
   },
   offer: {
     type: String,
     required: false,
-    default: ""
+    default: "+ set date"
   },
   description: {
     type: String,

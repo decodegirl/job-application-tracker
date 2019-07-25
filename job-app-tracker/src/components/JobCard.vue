@@ -23,15 +23,15 @@
 
               <v-list-tile-content>
                 <v-list-tile-title class="font-weight-regular">
-                  {{ job.title }}
+                  {{ job.company }}
                 </v-list-tile-title>
                 <v-list-tile-sub-title class="font-weight-light">
-                  {{ job.subTitle }}
+                  {{ job.title }}
                 </v-list-tile-sub-title>
               </v-list-tile-content>
 
               <v-list-tile-action v-if="hover">
-                <v-btn icon ripple v-on:click="deleteJob( job )">
+                <v-btn icon ripple v-on:click="deleteJob(job)">
                   <v-icon color="grey lighten-1"> delete_outline </v-icon>
                 </v-btn>
               </v-list-tile-action>
@@ -63,21 +63,21 @@ export default {
     return {
       dialog: false,
       width: 400,
-      url: "http://localhost:3000",
+      url: "http://localhost:3000"
     };
   },
   methods: {
-    deleteJob: function  ( job ){
-      fetch( `${ this.url }/jobs/${ job._id }`, {
-          method: "DELETE"
-      }).then( ( response ) =>{
-          if( response.status == 204 ){
-              console.log( "It worked" );
-          } else if ( response.status == 400 ) {
-              response.json().then( ( data ) => {
-                  alert(data.msg);
-              })
-          }
+    deleteJob: function(job) {
+      fetch(`${this.url}/jobs/${job._id}`, {
+        method: "DELETE"
+      }).then(response => {
+        if (response.status == 204) {
+          console.log("It worked");
+        } else if (response.status == 400) {
+          response.json().then(data => {
+            alert(data.msg);
+          });
+        }
       });
     }
   }

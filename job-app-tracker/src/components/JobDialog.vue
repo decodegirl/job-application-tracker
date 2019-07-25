@@ -11,14 +11,17 @@
     <v-card-title>
       <v-layout row>
         <v-flex xs1>
-          <v-avatar class="mr-3">
+          <v-avatar class="pl-4">
             <v-img :src="`//logo.clearbit.com/${job.image}.com`"></v-img>
           </v-avatar>
         </v-flex>
-        <v-flex xs10>
-          <span class="headline">{{ job.title }}</span
-          ><br />
-          <h3 style="color: #ccc;">{{ job.subTitle }}</h3>
+        <v-flex xs10 class="pl-4">
+          <v-layout align-start justify-center column>
+            <span class="display-1 font-weight-regular pb-2">{{
+              job.company
+            }}</span>
+            <span class="title font-weight-light">{{ job.title }}</span>
+          </v-layout>
         </v-flex>
         <v-flex xs1>
           <v-layout justify-end>
