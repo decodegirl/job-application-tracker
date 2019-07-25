@@ -45,7 +45,6 @@
                 >OK</v-btn
               >
             </v-date-picker>
-            <!-- <DatePicker :job="job" :dateToLog ="dateLogs"></DatePicker> -->
           </v-menu>
         </v-flex>
         <v-spacer></v-spacer>
@@ -100,13 +99,9 @@
 </template>
 
 <script>
-import DatePicker from './DatePicker.vue'
 import moment from 'moment'
 export default {
   props: ["page", "job"],
-  components: {
-    DatePicker
-  },
   data () {
     return {
       date: new Date().toISOString().substring(0, 10),
