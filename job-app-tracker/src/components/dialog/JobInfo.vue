@@ -12,7 +12,6 @@
             <v-flex xs9 class="pb-1">
               <v-hover v-slot:default="{ hover }">
                 <input
-                  :class="hover ? 'grey lighten-3' : 'white'"
                   class="font-weight-light"
                   type="text"
                   v-model="job.company"
@@ -26,9 +25,6 @@
             <v-flex xs9 class="pb-1">
               <v-hover v-slot:default="{ hover }">
                 <input
-                  :class="
-                    hover ? 'grey lighten-3 info-input' : 'white info-input'
-                  "
                   class="font-weight-light"
                   type="text"
                   v-model="job.title"
@@ -42,9 +38,6 @@
             <v-flex xs9 class="pb-1">
               <v-hover v-slot:default="{ hover }">
                 <input
-                  :class="
-                    hover ? 'grey lighten-3 info-input' : 'white info-input'
-                  "
                   class="font-weight-light"
                   type="text"
                   v-model="job.location"
@@ -58,9 +51,6 @@
             <v-flex xs9 class="pb-1">
               <v-hover v-slot:default="{ hover }">
                 <input
-                  :class="
-                    hover ? 'grey lighten-3 info-input' : 'white info-input'
-                  "
                   class="font-weight-light"
                   type="text"
                   v-model="job.salary"
@@ -74,9 +64,6 @@
             <v-flex xs9 class="pb-1">
               <v-hover v-slot:default="{ hover }">
                 <input
-                  :class="
-                    hover ? 'grey lighten-3 info-input' : 'white info-input'
-                  "
                   class="font-weight-light"
                   type="text"
                   v-model="job.post_url"
@@ -96,7 +83,6 @@
             <v-flex xs9 class="pb-1">
               <v-hover v-slot:default="{ hover }">
                 <input
-                  :class="hover ? 'grey lighten-3' : 'white'"
                   class="font-weight-light"
                   type="text"
                   v-model="job.deadline"
@@ -110,9 +96,6 @@
             <v-flex xs9 class="pb-1">
               <v-hover v-slot:default="{ hover }">
                 <input
-                  :class="
-                    hover ? 'grey lighten-3 info-input' : 'white info-input'
-                  "
                   class="font-weight-light"
                   type="text"
                   v-model="job.applied"
@@ -126,9 +109,6 @@
             <v-flex xs9 class="pb-1">
               <v-hover v-slot:default="{ hover }">
                 <input
-                  :class="
-                    hover ? 'grey lighten-3 info-input' : 'white info-input'
-                  "
                   class="font-weight-light"
                   type="text"
                   v-model="job.interview1"
@@ -142,9 +122,6 @@
             <v-flex xs9 class="pb-1">
               <v-hover v-slot:default="{ hover }">
                 <input
-                  :class="
-                    hover ? 'grey lighten-3 info-input' : 'white info-input'
-                  "
                   class="font-weight-light"
                   type="text"
                   v-model="job.interview2"
@@ -158,9 +135,6 @@
             <v-flex xs9 class="pb-1">
               <v-hover v-slot:default="{ hover }">
                 <input
-                  :class="
-                    hover ? 'grey lighten-3 info-input' : 'white info-input'
-                  "
                   class="font-weight-light"
                   type="text"
                   v-model="job.offer"
@@ -189,3 +163,9 @@ export default {
   props: ["job", "page"]
 };
 </script>
+<style scoped>
+input[type="text"]:focus,
+input[type="text"]:hover {
+  background-color: #eeeeee;
+}
+</style>

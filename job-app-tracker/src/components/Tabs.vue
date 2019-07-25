@@ -26,21 +26,16 @@
           style="height: 400px; overflow: scroll; border-left: 1px solid #ccc;"
         >
           <v-window-item v-for="(page, index) in pages" :key="index">
-            <!-- Job Info -->
             <JobInfo :job="job" :page="page"></JobInfo>
-            <!-- Tasks -->
+
             <Tasks :job="job" :page="page"></Tasks>
 
-            <!-- Notes -->
             <Notes :job="job" :page="page"></Notes>
 
-            <!-- Company -->
             <Company :job="job" :page="page"></Company>
 
-            <!-- Directory -->
             <Directory :job="job" :page="page"></Directory>
 
-            <!-- Leads -->
             <Leads :job="job" :page="page"></Leads>
           </v-window-item>
         </v-window>
