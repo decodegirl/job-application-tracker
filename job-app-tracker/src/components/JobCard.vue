@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-dialog v-model="dialog" max-width="900">
+    <v-dialog v-model="dialog" max-width="900" persistent="true">
       <template v-slot:activator="{ on }">
         <v-hover>
           <v-card
-            v-on="on"
+            v-on="deleteHover ? '' : on"
             slot-scope="{ hover }"
             xs12
             dark
@@ -31,7 +31,13 @@
               </v-list-tile-content>
 
               <v-list-tile-action v-if="hover">
-                <v-btn icon ripple v-on:click="deleteJob( job )" @mouseover="mouseOver" >
+                <v-btn
+                  icon
+                  ripple
+                  v-on:click="deleteJob(job)"
+                  @mouseover="mouseOver"
+                  @mouseout="mouseOut"
+                >
                   <v-icon color="grey lighten-1"> delete_outline </v-icon>
                 </v-btn>
               </v-list-tile-action>
@@ -72,23 +78,28 @@ export default {
       this.dialog = false;
       this.$emit("updateInfoEvent", this.job);
     },
-    mouseOver: function(){
+    mouseOver: function() {
       this.deleteHover = true;
+      console.log(this.deleteHover);
     },
-    deleteJob: function  ( job ){
-      this.dialog = false;
-      fetch( `${ this.url }/jobs/${ job._id }`, {
-          method: "DELETE"
-      }).then( ( response ) =>{
-          if( response.status == 204 ){
-              console.log( "It worked" );
-          } else if ( response.status == 400 ) {
-              response.json().then( ( data ) => {
-                  alert(data.msg);
-              })
-          }
+    mouseOut: function() {
+      this.deleteHover = false;
+      console.log(this.deleteHover);
+    },
+    deleteJob: function(job) {
+      fetch(`${this.url}/jobs/${job._id}`, {
+        method: "DELETE"
+      }).then(response => {
+        if (response.status == 204) {
+          console.log("It worked");
+          this.$emit("updateJobsEvent");
+        } else if (response.status == 400) {
+          response.json().then(data => {
+            alert(data.msg);
+          });
+        }
       });
-      window.location.reload();
+      // window.location.reload();
     }
   }
 };

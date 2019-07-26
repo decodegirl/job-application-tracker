@@ -141,9 +141,9 @@ export default {
   }
 };
 </script>
-<style>
-input[type="text"]:focus,
-input[type="text"]:hover {
-  background-color: #eeeeee;
+<style scoped>
+input[type="text"] {
+  letter-spacing: 1px;
+  text-align: left;
 }
 </style>

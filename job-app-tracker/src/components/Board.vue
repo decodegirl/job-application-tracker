@@ -21,7 +21,7 @@
           <v-card-title class="pa-0">
             <v-hover v-slot:default="{ hover }">
               <input
-                class="text-uppercase font-weight-medium"
+                class="text-uppercase font-weight-medium stage-title"
                 type="text"
                 v-model="stage.title"
                 @focusout="handleStageUpdate(stage)"
@@ -85,6 +85,7 @@
               :job="job"
               :color="job.color"
               @updateInfoEvent="handleUpdateInfo"
+              @updateJobsEvent="removeJob(job)"
             />
           </Draggable>
         </div>
@@ -172,12 +173,18 @@ export default {
         console.log(response.status);
       });
     },
-    logStages: function() {},
     checkMove(e) {
       window.console.log(
         `----------- Future index: ${e.draggedContext.futureIndex}`
       );
       window.console.log(`----------- Target: ${e.relatedContext.index}`);
+    },
+    removeJob: function(job) {
+      const indexInStage = null;
+      this.stages[job.position].jobs.forEach((jobInStage, i) => {
+        if (jobInStage._id === job._id)
+          this.stages[job.position].jobs.splice(i, 1);
+      });
     },
     loadStages: function() {
       fetch(`${this.url}/stages`).then(response => {
@@ -208,27 +215,7 @@ export default {
 </script>
 
 <style>
-html,
-body {
-  height: 100%;
-  letter-spacing: 0.7px;
-}
-.ghost {
-  opacity: 0.3;
-}
-.job-card {
-  padding-bottom: 5px;
-}
-
-.horizontal-scroll {
-  overflow-x: auto;
-}
-
-.v-list__tile {
-  padding: 0 2px;
-}
-
-input[type="text"] {
+.stage-title {
   font-size: 20px;
   letter-spacing: 1px;
   text-align: center;
