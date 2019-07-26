@@ -5,7 +5,7 @@ const stagesSchema = mongoose.Schema({
     //     type: String,
     //     required: true,
     // },
-    stage: {
+    title: {
         type: String,
         required: true
     },

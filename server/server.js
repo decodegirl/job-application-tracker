@@ -23,40 +23,40 @@ const stagesModel = require("./schemas/stages.js");
 
 /** ------------ Stages Endpoints --------------- */
 
-server.get("/stages", function(req, res) {
+server.get("/stages", function (req, res) {
     stagesModel
         .find()
-        .then(function(stages) {
+        .then(function (stages) {
             res.status(200);
             res.json({ stages: stages });
         })
-        .catch(function(error) {
+        .catch(function (error) {
             res.status(400).json({ msg: error.message });
         });
 });
 
-server.post("/stages", function(req, res) {
+server.post("/stages", function (req, res) {
     stagesModel
         .create({
             stage: req.body.stage,
             position: req.body.position
         })
-        .then(function(stage) {
+        .then(function (stage) {
             res.status(201);
             // log the stage for development purposes
             res.json(stage);
         })
-        .catch(function(err) {
+        .catch(function (err) {
             res.status(400);
             res.json({ msg: err.message });
         });
 });
 
-server.delete("/stages/:id", function(req, res) {
-    stagesModel.findByIdAndDelete(req.params.id).then(function() {
+server.delete("/stages/:id", function (req, res) {
+    stagesModel.findByIdAndDelete(req.params.id).then(function () {
         res.status(204);
         res.send();
-    }).catch(function(error) {
+    }).catch(function (error) {
         var response = {
             msg: error.message
         };
@@ -65,16 +65,16 @@ server.delete("/stages/:id", function(req, res) {
     });
 });
 
-server.put("/stages/:id", function(req, res) {
+server.put("/stages/:id", function (req, res) {
     const options = {
         new: true
     }
     req.body.date = new Date().toDateString();
 
-    stagesModel.findByIdAndUpdate(req.params.id, req.body, options).then(function(doc) {
+    stagesModel.findByIdAndUpdate(req.params.id, req.body, options).then(function (doc) {
         res.status(200);
         res.send(doc);
-    }).catch(function(error) {
+    }).catch(function (error) {
         var response = {
             msg: error.message
         };
@@ -85,41 +85,42 @@ server.put("/stages/:id", function(req, res) {
 
 /** ------------ Jobs Endpoints --------------- */
 
-server.get("/jobs", function(req, res) {
+server.get("/jobs", function (req, res) {
     jobsModel
+        // .find({ position: 0 })
         .find({ userId: req.user['_id'] })
-        .then(function(jobs) {
+        .then(function (jobs) {
             res.status(200);
             res.json({ jobs: jobs });
         })
-        .catch(function(error) {
+        .catch(function (error) {
             res.status(400).json({ msg: error.message });
         });
 });
 
 // Post Jobs
-server.post("/jobs", function(req, res) {
+server.post("/jobs", function (req, res) {
     var newJob = req.body;
     newJob['userId'] = req.user['_id']
     jobsModel
         .create(newJob)
-        .then(function(job) {
+        .then(function (job) {
             res.status(201);
             // log the job for development purposes
             res.json(job);
         })
-        .catch(function(err) {
+        .catch(function (err) {
             res.status(400);
             res.json({ msg: err.message });
         });
 });
 
 // Delete jobs
-server.delete("/jobs/:id", function(req, res) {
-    jobsModel.findByIdAndDelete(req.params.id).then(function() {
+server.delete("/jobs/:id", function (req, res) {
+    jobsModel.findByIdAndDelete(req.params.id).then(function () {
         res.status(204);
         res.send();
-    }).catch(function(error) {
+    }).catch(function (error) {
         var response = {
             msg: error.message
         };
@@ -129,14 +130,14 @@ server.delete("/jobs/:id", function(req, res) {
 });
 
 // update jobs
-server.put("/jobs/:id", function(req, res) {
+server.put("/jobs/:id", function (req, res) {
     const options = {
         new: true
     }
-    jobsModel.findByIdAndUpdate(req.params.id, req.body, options).then(function(doc) {
+    jobsModel.findByIdAndUpdate(req.params.id, req.body, options).then(function (doc) {
         res.status(200);
         res.send(doc);
-    }).catch(function(error) {
+    }).catch(function (error) {
         var response = {
             msg: error.message
         };
@@ -153,8 +154,8 @@ mongoose
             useFindAndModify: false
         }
     )
-    .then(function() {
-        server.listen(port, function() {
+    .then(function () {
+        server.listen(port, function () {
             console.log(`Listening on port ${port}`);
         });
     });

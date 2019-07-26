@@ -141,7 +141,7 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style>
 input[type="text"]:focus,
 input[type="text"]:hover {
   background-color: #eeeeee;

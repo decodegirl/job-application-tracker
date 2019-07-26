@@ -10,18 +10,26 @@
         flat
       >
         <!-- Column actions -->
-        <v-card-actions class="white justify-center">
+        <v-card-actions class="white justify-center pb-0">
           <!-- Column Delete button -->
           <v-btn fab icon small>
             <v-icon>delete</v-icon>
           </v-btn>
-          <v-spacer></v-spacer>
+          <!-- <v-spacer></v-spacer> -->
 
           <!-- Column title -->
-          <v-card-title style="font-size: 1.25rem;" class="pa-0">
-            {{ stage.title }}
+          <v-card-title class="pa-0">
+            <v-hover v-slot:default="{ hover }">
+              <input
+                class="text-uppercase font-weight-medium"
+                type="text"
+                v-model="stage.title"
+                @focusout="handleStageUpdate(stage)"
+              />
+            </v-hover>
+            <!-- {{ stage.title }} -->
           </v-card-title>
-          <v-spacer></v-spacer>
+          <!-- <v-spacer></v-spacer> -->
 
           <!-- Column 'More' button -->
           <template>
@@ -49,17 +57,18 @@
         </v-card-actions>
 
         <!-- Column jobs counter -->
-        <v-subheader class="white justify-center"
+        <v-subheader class="white justify-center pb-4"
           >{{ stage.jobs.length }} Jobs</v-subheader
         >
 
         <!-- Add jobs button -->
-          <AddJobBtn :stage="stage"/>
-        
+        <AddJobBtn :stage="stage" />
 
         <!-- Start Job Cards -->
 
-        <div style="height: 57vh; overflow: scroll; padding-top: 0; margin-top: 0;">
+        <div
+          style="height: 57vh; overflow: scroll; padding-top: 0; margin-top: 0;"
+        >
           <Draggable
             :list="stage.jobs"
             group="occupation"
@@ -116,6 +125,12 @@ export default {
   },
 
   methods: {
+    doSth: function() {
+      console.log("in focus");
+    },
+    doSthElse: function() {
+      console.log("out of focus");
+    },
     stopDragging: function(evt) {
       this.dragging = false;
       let jobNotFound = true;
@@ -134,6 +149,18 @@ export default {
       });
       this.handleUpdateInfo(job);
     },
+    handleStageUpdate: function(stage) {
+      console.log(stage);
+      fetch(`${this.url}/stages/${stage._id}`, {
+        method: "put",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(stage)
+      }).then(response => {
+        console.log(response.status);
+      });
+    },
     handleUpdateInfo: function(job) {
       fetch(`${this.url}/jobs/${job._id}`, {
         method: "put",
@@ -151,8 +178,6 @@ export default {
         `----------- Future index: ${e.draggedContext.futureIndex}`
       );
       window.console.log(`----------- Target: ${e.relatedContext.index}`);
-      // window.console.log(this.stages);
-      // this.logStages();
     },
     loadStages: function() {
       fetch(`${this.url}/stages`).then(response => {
@@ -186,6 +211,7 @@ export default {
 html,
 body {
   height: 100%;
+  letter-spacing: 0.7px;
 }
 .ghost {
   opacity: 0.3;
@@ -200,5 +226,11 @@ body {
 
 .v-list__tile {
   padding: 0 2px;
+}
+
+input[type="text"] {
+  font-size: 20px;
+  letter-spacing: 1px;
+  text-align: center;
 }
 </style>
