@@ -13,7 +13,7 @@
         <v-card-actions class="white justify-center pb-0">
           <!-- Column Delete button -->
           <v-btn fab icon small>
-            <v-icon>delete</v-icon>
+            <v-icon>star</v-icon>
           </v-btn>
           <!-- <v-spacer></v-spacer> -->
 
