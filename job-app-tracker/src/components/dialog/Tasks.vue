@@ -73,10 +73,13 @@
             v-on:click="todo.active = !todo.active"
           >
             <v-flex xs1 text-xs-center>
-              <input type="checkbox" name="" id="" />
+              <input type="checkbox" name="" id="" @click="todo.completed = !todo.completed" />
             </v-flex>
-            <v-flex xs11>
+            <v-flex xs11 v-if="!todo.completed">
               {{ todo.content }}
+            </v-flex>
+            <v-flex xs11 v-else>
+              <span style="text-decoration: line-through; color: #ccc;">{{ todo.content }}</span>
             </v-flex>
             <v-flex xs4 text-xs-center v-if="todo.active">
               <v-btn icon flat outline color="#ccc">
@@ -87,7 +90,7 @@
               <v-btn icon flat outline color="#ccc">
                 <v-icon>calendar_today</v-icon>
               </v-btn>
-              <v-btn icon flat outline color="#ccc">
+              <v-btn icon flat outline color="#ccc" @click="">
                 <v-icon>delete</v-icon>
               </v-btn>
             </v-flex>
@@ -123,6 +126,24 @@ export default {
       console.log("deadline -----------> ", new_todo.deadline);
       this.job.todos.push(new_todo);
       console.log(new_todo);
+    },
+    deleteTodo: function  ( job, todo ){
+      console.log(job, todo);
+      // job.todos.forEach(todo => {
+        
+      // });
+      // fetch( `${ this.url }/jobs/${ job._id }`, {
+      //     method: "PUT"
+      // }).then( ( response ) =>{
+      //     if( response.status == 204 ){
+      //         console.log( "It worked" );
+      //     } else if ( response.status == 400 ) {
+      //         response.json().then( ( data ) => {
+      //             alert(data.msg);
+      //         })
+      //     }
+      // });
+      // window.location.reload();
     }
   }
 };
