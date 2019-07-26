@@ -87,7 +87,8 @@ server.put("/stages/:id", function(req, res) {
 
 server.get("/jobs", function(req, res) {
     jobsModel
-        .find({ userId: req.user['_id'] })
+        // .find({ userId: req.user['_id'] })
+        .find({})
         .then(function(jobs) {
             res.status(200);
             res.json({ jobs: jobs });

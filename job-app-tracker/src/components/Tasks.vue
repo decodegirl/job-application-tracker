@@ -134,14 +134,20 @@
                     style="border-bottom: 1px solid #ccc"
                     pt-2
                     pb-2
-                    v-on:click="todo.active = !todo.active"
                   >
+                    
                     <v-flex xs1 text-xs-center>
-                      <input type="checkbox" name="" id="" />
+                      <input type="checkbox" name="" id="" @click="updateTasks(todo, job)" />
                     </v-flex>
-                    <v-flex xs5>
+
+                    <v-flex xs5 v-if="!todo.completed" v-on:click="todo.active = !todo.active">
                       {{ todo.content }}
                     </v-flex>
+
+                    <v-flex xs5 v-else>
+                      <span style="text-decoration: line-through; color: #ccc;">{{ todo.content }}</span>
+                    </v-flex>
+
                     <v-flex xs6 text-xs-right>
                       {{ job.title}}
                       <v-avatar size="15px" color="grey lighten-4">
@@ -160,7 +166,7 @@
                         <v-icon>calendar_today</v-icon>
                       </v-btn>
                       <v-btn icon flat outline color="#ccc">
-                        <v-icon>delete</v-icon>
+                        <v-icon @click="deleteTodo(job, todo)">delete</v-icon>
                       </v-btn>
                     </v-flex>
                   </v-layout>
@@ -204,27 +210,44 @@ export default {
         }
       ],
 
-      todos: [],
+      // todos: [],
       jobs: []
     };
   },
   created: function() {
-    this.loadTodos();
+    // this.loadTodos();
     this.loadJobs();
   },
   methods: {
-    loadTodos: function() {
-      fetch(`${this.url}/jobs`).then(response => {
-        console.log("load jobs response -> ", response.status);
-        response.json().then(data => {
-          console.log(this.stages);
-          data.jobs.forEach(job => {
-            this.todos.push(...job.todos);
-            console.log("These are my todos", this.todos);
-          });
-        });
-      });
+    deleteTodo: function  ( job, todo ){
+      console.log(todo);
+      // job.todos.forEach(todo => {
+        
+      // });
+      // fetch( `${ this.url }/jobs/${ job._id }`, {
+      //     method: "PUT"
+      // }).then( ( response ) =>{
+      //     if( response.status == 204 ){
+      //         console.log( "It worked" );
+      //     } else if ( response.status == 400 ) {
+      //         response.json().then( ( data ) => {
+      //             alert(data.msg);
+      //         })
+      //     }
+      // });
+      // window.location.reload();
     },
+    // loadTodos: function() {
+    //   fetch(`${this.url}/jobs`).then(response => {
+    //     console.log("load jobs response -> ", response.status);
+    //     response.json().then(data => {
+    //       data.jobs.forEach(job => {
+    //         this.todos.push(...job.todos);
+    //         console.log("These are my todos", this.todos);
+    //       });
+    //     });
+    //   });
+    // },
     loadJobs: function() {
       fetch(`${this.url}/jobs`).then(response => {
         console.log("load jobs response -> ", response.status);
@@ -235,7 +258,20 @@ export default {
           });
         });
       });
-    }
+    },
+    updateTasks: function(todo, job) {
+      todo.completed = !todo.completed;
+      // console.log(job);
+      fetch(`${this.url}/jobs/${job._id}`, {
+        method: "put",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(job)
+      }).then(response => {
+        console.log(response.status);
+      });
+    },
   },
 
   mounted: function() {}
