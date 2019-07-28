@@ -10,9 +10,10 @@ This project was built by
 - [Dami](https://github.com/obayanju)
 
 ## Highlighted Features
-- Create an account
+- Creating an account
 - Multiple stages of the application process as columns
-- Job cards that store multiple information about a particular job
+- Job cards that store multiple information about a particular job.
+- log dates of different deadlines.
 - drag and drop a card from one application stage to another
 - Create a list of todos for each job
 - Chart to help visualize every action taken i.e all jobs added to the wishlist column
