@@ -26,6 +26,7 @@ This project was built by
 - 🥳🥳🥳🥳
 * If You experience any issue, you can add a new issue in the issues tab, and we'll be happy to assist with it 😊
 
+<img width="1427" alt="Screen Shot 2019-07-27 at 7 45 16 PM" src="https://user-images.githubusercontent.com/39537291/62001284-3c0e2680-b0aa-11e9-9015-de0858786944.png">
 
 
 
