@@ -26,8 +26,8 @@ This project was built by
 - 🥳🥳🥳🥳
 * If You experience any issue, you can add a new issue in the issues tab, and we'll be happy to assist with it 😊
 
-## Screenshot
-![screenshot](job-app-tracker.png)
+
+
 
 ## Technologies used
 - Frontend
