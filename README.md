@@ -2,13 +2,16 @@
 
 
 
-If you've ever applied to multiple jobs and needed somewhere to track everything, this is for you. This is a trello style software to help manage the tracking of job applications. It is a clone of huntr.
+If you've ever applied to multiple jobs and needed somewhere to track everything, this is for you. This is a trello style software to help manage the tracking of job applications. This is a clone of huntr
 
 This project was built by
 
 Celine
 Brennyn
 Dami
+
+
+
 Highlighted Features
 Create an account
 Multiple stages of the application process as columns
@@ -17,6 +20,8 @@ drag and drop a card from one application stage to another
 Create a list of todos for each job
 Chart to help visualize every action taken i.e all jobs added to the wishlist column
 map showing the location of every company on your board
+
+
 How To Run
 clone the repository
 cd into server folder
