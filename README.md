@@ -46,8 +46,10 @@ This project was built by
   - Mongoose
 
 ## Todos
-- Host on Heroku
 - Improve drag and drop of job cards
 - Delete and add new columns
 - Add unit tests
 - Improve metrics and maps page to reflect a users jobs
+
+
+checkout the whole application on : https://fast-citadel-67812.herokuapp.com/users/login
